@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class signup extends AppCompatActivity {
     EditText mail, pass;
     //,mophone,usrusr;
     Button sup;
+    ProgressBar pb;
     TextView lin;
     private FirebaseAuth mAuth;
 
@@ -33,6 +35,7 @@ public class signup extends AppCompatActivity {
         pass = (EditText) findViewById(R.id.pwd);
         sup = (Button) findViewById(R.id.signup);
         lin = (TextView) findViewById(R.id.tv2);
+        pb = (ProgressBar) findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
         //Use Later
         //usrusr = (EditText) findViewById(R.id.username);
@@ -63,9 +66,11 @@ public class signup extends AppCompatActivity {
                     pass.requestFocus();
                     return;
                 }
+                pb.setVisibility(View.VISIBLE);
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        pb.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "User Registered", Toast.LENGTH_LONG).show();
                             Intent it = new Intent(signup.this,login.class);

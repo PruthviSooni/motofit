@@ -1,6 +1,7 @@
 package com.test.motofit_temp.test_1;
 
 import android.content.Intent;
+import android.media.tv.TvContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class login extends AppCompatActivity
     EditText pwd,mail;
     Button loginup;
     TextView signup;
+    ProgressBar pb;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +36,7 @@ public class login extends AppCompatActivity
         mail= (EditText) findViewById(R.id.email);
         pwd = (EditText) findViewById(R.id.password);
         signup = (TextView) findViewById(R.id.tv1);
+        pb = (ProgressBar)  findViewById(R.id.progressBar);
         loginup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,9 +62,11 @@ public class login extends AppCompatActivity
                     pwd.requestFocus();
                     return;
                 }
+                pb.setVisibility(View.VISIBLE);
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        pb.setVisibility(View.GONE);
                         if(task.isSuccessful()){
                             Intent it = new Intent(login.this, home.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP);
