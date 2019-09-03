@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "894050433093",
+    "firebase_url": "https://motofit-33a89.firebaseio.com",
+    "project_id": "motofit-33a89",
+    "storage_bucket": "motofit-33a89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894050433093:android:16a3a1009f6ee957",
+        "android_client_info": {
+          "package_name": "com.example.kamran.logingreentheme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894050433093-051t5gis382r3qalvgolml13ukc4nb88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kamran.logingreentheme",
+            "certificate_hash": "ea60d9e640fcdcea1ac8aa2d30276b270c22c058"
+          }
+        },
+        {
+          "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy0nqlzJII4joKU0UJSISfKwhiLDTsBAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894050433093:android:ac0ab240224f3a50",
+        "android_client_info": {
+          "package_name": "com.example.vaibhav.k_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894050433093-mh89ljb3gvecof2s9h8eutihf5g2ftq2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vaibhav.k_login",
+            "certificate_hash": "ea60d9e640fcdcea1ac8aa2d30276b270c22c058"
+          }
+        },
+        {
+          "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy0nqlzJII4joKU0UJSISfKwhiLDTsBAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894050433093:android:6ac1d49658c62b64",
+        "android_client_info": {
+          "package_name": "com.test.motofit_temp.test_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy0nqlzJII4joKU0UJSISfKwhiLDTsBAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
