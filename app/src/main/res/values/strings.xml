@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Motofit</string>
+    <string name="title_activity_navigation">navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_signout">Settings</string>
+
+    <string name="menu_user">User Info</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_signout">Signout</string>
+    <string name="this_is_signout">This is Signout</string>
+    <string name="this_is_user_info">This is User Info</string>
 </resources>

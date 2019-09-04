@@ -68,7 +68,7 @@ public class login extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
                         if(task.isSuccessful()){
-                            Intent it = new Intent(login.this, home.class);
+                            Intent it = new Intent(login.this, navigation.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(it);
                         }
