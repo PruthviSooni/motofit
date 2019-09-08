@@ -10,13 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".navigation"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".home" />
-        <activity android:name="com.example.kamran.logingreentheme.home" />
+        <activity android:name="com.example.kamran.logingreentheme.home"
+            android:noHistory="true"/>
         <activity android:name=".login">
+            android:noHistory="true"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
