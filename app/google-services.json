@@ -8,12 +8,57 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:894050433093:android:db91dcad8a8f34e5f88b2c",
+        "android_client_info": {
+          "package_name": "com.example.final_moto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894050433093-kpp8js1cf6h0obg863r43igfhmesqeus.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.final_moto",
+            "certificate_hash": "b9dade26cdce16ce78d406149c7f05d17dd84739"
+          }
+        },
+        {
+          "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy0nqlzJII4joKU0UJSISfKwhiLDTsBAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894050433093-i28uqgcmg57liogkgebvdvqftu8g8pcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:894050433093:android:16a3a1009f6ee957",
         "android_client_info": {
           "package_name": "com.example.kamran.logingreentheme"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "894050433093-66235mt825jhfc8g1pb1qpg2hdddp4vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kamran.logingreentheme",
+            "certificate_hash": "b9dade26cdce16ce78d406149c7f05d17dd84739"
+          }
+        },
         {
           "client_id": "894050433093-051t5gis382r3qalvgolml13ukc4nb88.apps.googleusercontent.com",
           "client_type": 1,

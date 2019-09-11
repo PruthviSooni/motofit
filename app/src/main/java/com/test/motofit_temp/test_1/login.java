@@ -1,8 +1,13 @@
 package com.test.motofit_temp.test_1;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.tv.TvContract;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -31,6 +36,17 @@ public class login extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+      ///For Check Connection
+        if(!isConnected(login.this)) buildDialog(login.this).show();
+        else {
+            setContentView(R.layout.login);
+        }
+
+     //
+     //For Authentication to Firebase
+     //
+
         mAuth = FirebaseAuth.getInstance();
         loginup = (Button) findViewById(R.id.but1);
         mail= (EditText) findViewById(R.id.email);
@@ -79,22 +95,7 @@ public class login extends AppCompatActivity
                 });
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        ///Goto To Signup Activity
         signup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,5 +103,65 @@ public class login extends AppCompatActivity
                 startActivity(it);
             }
         });
+    }
+    ///
+    ///Function For Check Internet Connection
+    ///
+    public boolean isConnected(Context context) {
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
+        else return false;
+        } else
+        return false;
+    }
+
+    public AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                finish();
+            }
+        });
+
+        return builder;
+    }
+    //
+    //For Close the App
+    //
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(login.this);
+        builder.setTitle(R.string.app_name);
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setMessage("Do you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }
