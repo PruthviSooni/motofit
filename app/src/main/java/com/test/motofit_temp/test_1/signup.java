@@ -20,8 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class signup extends AppCompatActivity {
-    EditText mail, pass;
-    //,mophone,usrusr;
+    EditText mail, pass,mophone,usrname;
     Button sup;
     ProgressBar pb;
     TextView lin;
@@ -37,15 +36,17 @@ public class signup extends AppCompatActivity {
         lin = (TextView) findViewById(R.id.tv2);
         pb = (ProgressBar) findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
-        //Use Later
-        //usrusr = (EditText) findViewById(R.id.username);
-        //mophone = (EditText) findViewById(R.id.mobphone);
+
+        usrname = (EditText) findViewById(R.id.usrname);
+        mophone = (EditText) findViewById(R.id.mobphone);
         //
         sup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mail.getText().toString().trim();
                 String password = pass.getText().toString().trim();
+                final String usr_name = usrname.getText().toString().trim();
+                final String mob_num = mophone.getText().toString().trim();
                 if (email.isEmpty()) {
                     mail.setError("Email Required!");
                     mail.requestFocus();
@@ -74,6 +75,8 @@ public class signup extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "User Registered", Toast.LENGTH_LONG).show();
                             Intent it = new Intent(signup.this,login.class);
+                            it.putExtra("username",usr_name);
+                            it.putExtra("mobphone",mob_num);
                             startActivity(it);
                         } else {
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){

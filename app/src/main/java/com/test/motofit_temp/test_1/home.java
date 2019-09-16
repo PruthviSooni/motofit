@@ -33,7 +33,16 @@ public class home extends AppCompatActivity {
                             selectedFragment = new MotorcycleFragment();
                             break;
                         case R.id.nav_userinfo:
+                            Intent i=getIntent();
+                            String usrname=i.getStringExtra("username");
+                            String mobphone=i.getStringExtra("mobphone");
+                            String email=i.getStringExtra("email");
+                            Bundle bundle=new Bundle();
+                            bundle.putString("usrname",usrname);
+                            bundle.putString("mob",mobphone);
+                            bundle.putString("email",email);
                             selectedFragment = new User_infoFragment();
+                            selectedFragment.setArguments(bundle);
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

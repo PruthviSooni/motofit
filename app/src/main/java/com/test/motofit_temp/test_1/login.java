@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity
 {
@@ -31,6 +32,7 @@ public class login extends AppCompatActivity
     TextView signup;
     ProgressBar pb;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -42,8 +44,8 @@ public class login extends AppCompatActivity
         else {
             setContentView(R.layout.login);
         }
-
      //
+
      //For Authentication to Firebase
      //
 
@@ -84,8 +86,15 @@ public class login extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
                         if(task.isSuccessful()){
+                            Intent i=getIntent();
+                            String usrname=i.getStringExtra("username");
+                            String mobphone=i.getStringExtra("mobphone");
+                            String email=mail.getText().toString().trim();
                             Intent it = new Intent(login.this, home.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP);
+                            it.putExtra("username",usrname);
+                            it.putExtra("mobphone",mobphone);
+                            it.putExtra("email",email);
                             startActivity(it);
                         }
                         else {
@@ -139,6 +148,10 @@ public class login extends AppCompatActivity
 
         return builder;
     }
+
+
+
+
     //
     //For Close the App
     //

@@ -28,8 +28,6 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
     implementation 'android.arch.navigation:navigation-ui:1.0.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
-    implementation 'com.android.support:design:26.0.0'
-    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     implementation 'com.google.firebase:firebase-analytics:16.0.5'
     androidTestImplementation 'com.android.support.test:runner:0.5'
