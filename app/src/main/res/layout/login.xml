@@ -6,12 +6,15 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:layout_centerInParent="true"
+        android:layout_height="30dp"
+        android:indeterminate="true"
         android:indeterminateTint="@color/accentcolor"
-        android:visibility="gone"/>
+        android:progress="25"
+        android:scrollbarStyle="insideOverlay"
+        android:visibility="gone" />
+        //android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
