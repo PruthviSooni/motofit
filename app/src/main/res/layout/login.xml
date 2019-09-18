@@ -14,7 +14,7 @@
         android:progress="25"
         android:scrollbarStyle="insideOverlay"
         android:visibility="gone" />
-        //android:visibility="gone"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
