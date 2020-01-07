@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "894050433093-g2in2lu13q58k1eercbpqnsqn0kt1pi1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kamran.logingreentheme",
+            "certificate_hash": "2df6f76982d55f28f7f0e5f0d4228bf3d45a5897"
+          }
+        },
+        {
           "client_id": "894050433093-66235mt825jhfc8g1pb1qpg2hdddp4vd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

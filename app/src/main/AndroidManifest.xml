@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Doorstep"></activity>
         <activity android:name="com.example.kamran.logingreentheme.home" />
         <activity
             android:name=".home"

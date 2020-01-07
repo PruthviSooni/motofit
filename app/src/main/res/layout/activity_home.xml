@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grdnt"
-    tools:context="com.test.motofit_temp.test_1.home">
+    tools:context="com.test.motofit_temp.test_1.home"
+    android:id="@+id/home_layout">
 
     <FrameLayout
         android:id="@+id/fragment_container"

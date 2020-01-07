@@ -10,9 +10,9 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="52dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginRight="-10dp"
         android:gravity="center"
-        android:text="Welcome To Motofit"
+        android:text="Welcome to MOTOFIT"
         android:textSize="30dp" />
 </RelativeLayout>

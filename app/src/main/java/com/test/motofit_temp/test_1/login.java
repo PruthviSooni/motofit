@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class login extends AppCompatActivity
 {
@@ -32,6 +34,8 @@ public class login extends AppCompatActivity
     TextView signup;
     ProgressBar pb;
     private FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,10 +50,11 @@ public class login extends AppCompatActivity
         }
      //
 
-     //For Authentication to Firebase
-     //
-
+     //Get Firebase Instance
         mAuth = FirebaseAuth.getInstance();
+
+
+     //Assigning Id to variables
         loginup = (Button) findViewById(R.id.but1);
         mail= (EditText) findViewById(R.id.email);
         pwd = (EditText) findViewById(R.id.password);
@@ -79,6 +84,7 @@ public class login extends AppCompatActivity
                     pwd.setError("Minimum Length of Password be 6");
                     pwd.requestFocus();
                     return;
+
                 }
                 pb.setVisibility(View.VISIBLE);
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -86,15 +92,10 @@ public class login extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
                         if(task.isSuccessful()){
-                            Intent i=getIntent();
-                            String usrname=i.getStringExtra("username");
-                            String mobphone=i.getStringExtra("mobphone");
-                            String email=mail.getText().toString().trim();
+
                             Intent it = new Intent(login.this, home.class);
-                            it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP);
-                            it.putExtra("username",usrname);
-                            it.putExtra("mobphone",mobphone);
-                            it.putExtra("email",email);
+                            it.addFlags(it.FLAG_ACTIVITY_CLEAR_TASK);
+
                             startActivity(it);
                         }
                         else {
@@ -104,14 +105,16 @@ public class login extends AppCompatActivity
                 });
             }
         });
+
         ///Goto To Signup Activity
         signup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(login.this,signup.class);
+                Intent it = new Intent( login.this,signup.class);
                 startActivity(it);
             }
         });
+
     }
     ///
     ///Function For Check Internet Connection
@@ -158,14 +161,16 @@ public class login extends AppCompatActivity
     @Override
     public void onBackPressed() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(login.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder( login.this);
         builder.setTitle(R.string.app_name);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setMessage("Do you want to exit?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
+                        login.this.finish();
+
+
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

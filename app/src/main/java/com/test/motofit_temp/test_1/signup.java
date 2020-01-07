@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
     EditText mail, pass,mophone,usrname;
@@ -25,25 +28,35 @@ public class signup extends AppCompatActivity {
     ProgressBar pb;
     TextView lin;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mreference;
+
+    private String userId;
+    private  String Email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
+
+
+        //Get Firebase Instance
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+
         mail = (EditText) findViewById(R.id.email);
         pass = (EditText) findViewById(R.id.pwd);
         sup = (Button) findViewById(R.id.signup);
         lin = (TextView) findViewById(R.id.tv2);
         pb = (ProgressBar) findViewById(R.id.progressBar);
-        mAuth = FirebaseAuth.getInstance();
-
         usrname = (EditText) findViewById(R.id.usrname);
         mophone = (EditText) findViewById(R.id.mobphone);
-        //
+
         sup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mail.getText().toString().trim();
+                final String email = mail.getText().toString().trim();
                 String password = pass.getText().toString().trim();
                 final String usr_name = usrname.getText().toString().trim();
                 final String mob_num = mophone.getText().toString().trim();
@@ -75,8 +88,16 @@ public class signup extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "User Registered", Toast.LENGTH_LONG).show();
                             Intent it = new Intent(signup.this,login.class);
-                            it.putExtra("username",usr_name);
-                            it.putExtra("mobphone",mob_num);
+                            it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP | it.FLAG_ACTIVITY_CLEAR_TASK);
+
+                            // Firebase Database
+                            mreference = mFirebaseDatabase.getReference("Users");
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            userId = user.getUid();
+                            Email = user.getEmail();
+                            Users myUser = new Users(usr_name,email,mob_num);
+                            mreference.child(userId).setValue(myUser);
+
                             startActivity(it);
                         } else {
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
@@ -94,6 +115,7 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(signup.this, login.class);
+                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
