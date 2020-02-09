@@ -14,20 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Doorstep"></activity>
-        <activity android:name="com.example.kamran.logingreentheme.home" />
-        <activity
-            android:name=".home"
-            android:theme="@style/App_Theme"
-            tools:ignore="DuplicateActivity" />
-        <activity android:name=".login">
+        <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup" />
+        <activity android:name=".Doorstep" />
+        <activity
+            android:name=".home"
+            android:screenOrientation="portrait"
+            android:theme="@style/App_Theme"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".login"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".signup"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

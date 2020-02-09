@@ -60,7 +60,7 @@ public class home extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
         builder.setTitle(R.string.app_name);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setMessage("Do you want to exit?")
+        builder.setMessage("Do you want to Signout?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

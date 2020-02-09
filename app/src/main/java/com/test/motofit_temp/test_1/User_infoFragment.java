@@ -89,6 +89,7 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
                 // Check for null
                 if (user == null) {
                     Log.e(TAG, "User data is null!");
+                    Toast.makeText(getContext(),"User Data is null",Toast.LENGTH_LONG).show();
                     return;
                 }
 
