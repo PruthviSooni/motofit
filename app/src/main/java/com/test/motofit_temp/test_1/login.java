@@ -3,10 +3,12 @@ package com.test.motofit_temp.test_1;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.tv.TvContract;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
+import java.util.Set;
+
 public class login extends AppCompatActivity
 {
     EditText pwd,mail;
@@ -34,7 +39,8 @@ public class login extends AppCompatActivity
     TextView signup;
     ProgressBar pb;
     private FirebaseAuth mAuth;
-
+    private SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -43,13 +49,15 @@ public class login extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        sharedPreferences = this.getSharedPreferences("Login",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("loginStatus",false)){
+            startActivity(new Intent(this,home.class));
+        }
       ///For Check Connection
         if(!isConnected(login.this)) buildDialog(login.this).show();
         else {
             setContentView(R.layout.login);
         }
-     //
-
      //Get Firebase Instance
         mAuth = FirebaseAuth.getInstance();
 
@@ -92,7 +100,10 @@ public class login extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
                         if(task.isSuccessful()){
-
+                            sharedPreferences = login.this.getSharedPreferences("Login",Context.MODE_PRIVATE);
+                            editor = sharedPreferences.edit();
+                            editor.putBoolean("loginStatus",true);
+                            editor.apply();
                             Intent it = new Intent(login.this, home.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TASK);
 

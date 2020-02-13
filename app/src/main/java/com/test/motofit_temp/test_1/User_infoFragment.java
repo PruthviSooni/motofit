@@ -1,7 +1,9 @@
 package com.test.motofit_temp.test_1;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,23 +28,18 @@ import static android.support.constraint.Constraints.TAG;
 
 @SuppressLint("ValidFragment")
 public class User_infoFragment extends Fragment implements View.OnClickListener {
-     Button b1;
-     View v;
+    Button b1;
+    View v;
     TextView t1,t2,t3;
     @SuppressLint("ValidFragment")
     public User_infoFragment() {
-
-
-
     }
 
     @Nullable
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
-
     private String userId;
-    private String email;
-    private String name;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        v = inflater.inflate(R.layout.fragment_userinfo,container,false);
@@ -55,7 +52,9 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         // add it only if it is not saved to database
-        userId = user.getUid();
+        if (user != null) {
+            userId = user.getUid();
+        }
 
         addUserChangeListener();
         b1.setOnClickListener(this);
@@ -71,6 +70,10 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("loginStatus",false);
+                editor.apply();
                 break;
             default:
         }
@@ -81,33 +84,36 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
     private void addUserChangeListener() {
 
         // User data change listener
-        mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Users user = dataSnapshot.getValue(Users.class);
+        if (mFirebaseDatabase != null) {
+            mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Users user = dataSnapshot.getValue(Users.class);
 
-                // Check for null
-                if (user == null) {
-                    Log.e(TAG, "User data is null!");
-                    Toast.makeText(getContext(),"User Data is null",Toast.LENGTH_LONG).show();
-                    return;
+                    // Check for null
+                    if (user == null) {
+                        Log.e(TAG, "User data is null!");
+                        Toast.makeText(getContext(),"User Data is null",Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
+
+                    // Display newly updated name and email
+                    t1.setText("User Name : "+user.name);
+                    t2.setText("Mobile Number : "+user.mobnum);
+                    t3.setText("Email : "+user.email);
+
                 }
 
-                Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
-
-                // Display newly updated name and email
-                t1.setText("User Name : "+user.name);
-                t2.setText("Mobile Number : "+user.mobnum);
-                t3.setText("Email : "+user.email);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.e(TAG, "Failed to read user", error.toException());
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.e(TAG, "Failed to read user", error.toException());
+                }
+            });
+        }
     }
 }
 
