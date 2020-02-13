@@ -65,6 +65,7 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.signout:
+                //Fire base Auth Instance
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(),login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -97,7 +98,6 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
                         Toast.makeText(getContext(),"User Data is null",Toast.LENGTH_LONG).show();
                         return;
                     }
-
                     Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
 
                     // Display newly updated name and email
@@ -106,7 +106,6 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
                     t3.setText("Email : "+user.email);
 
                 }
-
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value

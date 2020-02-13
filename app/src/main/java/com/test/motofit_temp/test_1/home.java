@@ -32,11 +32,12 @@ public class home extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
-
+    // Buttom Navigation
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    //Organise Fragment while selecting
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.nav_home:
@@ -56,9 +57,9 @@ public class home extends AppCompatActivity {
                 }
 
             };
-
+    // Showed when back button is pressed
     public void onBackPressed() {
-
+        //Alert for confirm to exit the app
         AlertDialog.Builder builder = new AlertDialog.Builder(home.this);
         builder.setTitle(R.string.app_name);
         builder.setIcon(R.mipmap.ic_launcher);

@@ -42,32 +42,34 @@ public class login extends AppCompatActivity
     private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        //Shared Preference For Saving User Login state
         sharedPreferences = this.getSharedPreferences("Login",MODE_PRIVATE);
         if(sharedPreferences.getBoolean("loginStatus",false)){
             startActivity(new Intent(this,home.class));
         }
-      ///For Check Connection
+
+        //For Check Connection
         if(!isConnected(login.this)) buildDialog(login.this).show();
         else {
             setContentView(R.layout.login);
         }
-     //Get Firebase Instance
+
+        //Get Firebase Instance
         mAuth = FirebaseAuth.getInstance();
 
-
-     //Assigning Id to variables
+        //Assigning Id to variables
         loginup = (Button) findViewById(R.id.but1);
         mail= (EditText) findViewById(R.id.email);
         pwd = (EditText) findViewById(R.id.password);
         signup = (TextView) findViewById(R.id.tv1);
         pb = (ProgressBar)  findViewById(R.id.progressBar);
+        //Login Button Onclick listener
         loginup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +96,11 @@ public class login extends AppCompatActivity
                     return;
 
                 }
+
+                //Progress Bar Vertical
                 pb.setVisibility(View.VISIBLE);
+
+                //FireBase Authentication Check Method
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -127,9 +133,8 @@ public class login extends AppCompatActivity
         });
 
     }
-    ///
-    ///Function For Check Internet Connection
-    ///
+
+    //Function For Check Internet Connection
     public boolean isConnected(Context context) {
 
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -145,6 +150,7 @@ public class login extends AppCompatActivity
         return false;
     }
 
+    //Alert Dialog for Exiting App
     public AlertDialog.Builder buildDialog(Context c) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
@@ -163,12 +169,7 @@ public class login extends AppCompatActivity
         return builder;
     }
 
-
-
-
-    //
     //For Close the App
-    //
     @Override
     public void onBackPressed() {
 
