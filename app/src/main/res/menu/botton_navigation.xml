@@ -10,8 +10,14 @@
         android:title="Bike"
         android:icon="@drawable/ic_motorcycle"/>
     <item
+        android:id="@+id/nav_services"
+        android:title="Services"
+        android:icon="@drawable/ic_services"/>
+
+    <item
         android:id="@+id/nav_userinfo"
         android:title="Account"
         android:icon="@drawable/ic_user_info"/>
+
 
 </menu>

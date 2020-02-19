@@ -49,6 +49,9 @@ public class home extends AppCompatActivity {
                         case R.id.nav_userinfo:
                             selectedFragment = new User_infoFragment();
                             break;
+                        case R.id.nav_services:
+                            selectedFragment = new ServicesFragment();
+                            break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();

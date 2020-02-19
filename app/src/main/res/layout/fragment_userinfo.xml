@@ -57,8 +57,22 @@
                 android:text=""
                 android:textSize="24sp"
                 tools:ignore="MissingConstraints" />
-        </TableRow>
 
+
+        </TableRow>
+<TableRow>
+    <ProgressBar
+        android:id="@+id/progressBar_1"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/accentcolor"
+        android:progress="25"
+        android:scrollbarStyle="insideOverlay"
+        tools:ignore="MissingConstraints"
+        android:visibility="gone"/>
+</TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -82,13 +96,15 @@
 
     <Button
         android:id="@+id/signout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="133dp"
+        android:layout_height="46dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="51dp"
         android:layout_marginBottom="220dp"
+        android:background="@color/accentcolor"
         android:text="Signout"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,25 +115,26 @@
         android:id="@+id/imageView3"
         android:layout_width="200dp"
         android:layout_height="186dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_user_info" />
+        app:srcCompat="@drawable/ic_user_info"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="49dp"
         android:text="Account Detail's"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 

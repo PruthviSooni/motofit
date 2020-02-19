@@ -1,6 +1,7 @@
 package com.test.motofit_temp.test_1;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +33,12 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
     Button b1;
     View v;
     TextView t1,t2,t3;
-    @SuppressLint("ValidFragment")
+    ProgressBar pb;
+
+
     public User_infoFragment() {
     }
+
 
     @Nullable
     private DatabaseReference mFirebaseDatabase;
@@ -47,6 +52,7 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
         t1=(TextView)v.findViewById(R.id.t2);
         t2=(TextView)v.findViewById(R.id.t3);
         t3=(TextView)v.findViewById(R.id.t5);
+        pb = v.findViewById(R.id.progressBar_1);
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -55,6 +61,8 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
         if (user != null) {
             userId = user.getUid();
         }
+
+
 
         addUserChangeListener();
         b1.setOnClickListener(this);
@@ -86,6 +94,7 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
 
         // User data change listener
         if (mFirebaseDatabase != null) {
+            pb.setVisibility(View.VISIBLE);
             mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
                 @SuppressLint("SetTextI18n")
                 @Override
@@ -104,7 +113,7 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
                     t1.setText("User Name : "+user.name);
                     t2.setText("Mobile Number : "+user.mobnum);
                     t3.setText("Email : "+user.email);
-
+                    pb.setVisibility(View.GONE);
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {
