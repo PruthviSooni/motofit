@@ -48,10 +48,10 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        v = inflater.inflate(R.layout.fragment_userinfo,container,false);
-        b1 = (Button) v.findViewById(R.id.signout);
-        t1=(TextView)v.findViewById(R.id.t2);
-        t2=(TextView)v.findViewById(R.id.t3);
-        t3=(TextView)v.findViewById(R.id.t5);
+        b1 =  v.findViewById(R.id.signout);
+        t1=v.findViewById(R.id.t2);
+        t2=v.findViewById(R.id.t3);
+        t3=v.findViewById(R.id.t5);
         pb = v.findViewById(R.id.progressBar_1);
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("Users");

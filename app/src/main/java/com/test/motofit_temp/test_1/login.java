@@ -64,11 +64,11 @@ public class login extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
 
         //Assigning Id to variables
-        loginup = (Button) findViewById(R.id.but1);
-        mail= (EditText) findViewById(R.id.email);
-        pwd = (EditText) findViewById(R.id.password);
-        signup = (TextView) findViewById(R.id.tv1);
-        pb = (ProgressBar)  findViewById(R.id.progressBar);
+        loginup = findViewById(R.id.but1);
+        mail=  findViewById(R.id.email);
+        pwd = findViewById(R.id.password);
+        signup = findViewById(R.id.tv1);
+        pb =  findViewById(R.id.progressBar);
         //Login Button Onclick listener
         loginup.setOnClickListener(new OnClickListener() {
             @Override
