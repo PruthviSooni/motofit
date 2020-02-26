@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/nav_home"
         android:title="Home"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home"
+        tools:ignore="HardcodedText" />
     <item
         android:id="@+id/nav_motorcycle"
         android:title="Bike"
-        android:icon="@drawable/ic_motorcycle"/>
+        android:icon="@drawable/ic_motorcycle"
+        tools:ignore="HardcodedText" />
     <item
         android:id="@+id/nav_services"
         android:title="Services"
-        android:icon="@drawable/ic_services"/>
+        android:icon="@drawable/ic_services"
+        tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/nav_userinfo"
         android:title="Account"
-        android:icon="@drawable/ic_user_info"/>
+        android:icon="@drawable/ic_user_info"
+        tools:ignore="HardcodedText" />
 
 
 </menu>

@@ -2,6 +2,8 @@ package com.test.motofit_temp.test_1;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -30,6 +32,7 @@ public class signup extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mreference;
+    private CoordinatorLayout coordinatorLayout;
 
     private String userId;
     private  String Email;
@@ -44,7 +47,7 @@ public class signup extends AppCompatActivity {
         //Get Firebase Instance
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
         mail = (EditText) findViewById(R.id.email);
         pass = (EditText) findViewById(R.id.pwd);
         sup = (Button) findViewById(R.id.signup);
@@ -101,9 +104,12 @@ public class signup extends AppCompatActivity {
                             startActivity(it);
                         } else {
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(getApplicationContext(),"You Are Already Registered",Toast.LENGTH_LONG).show();
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout,"You Are Already Registered", Snackbar.LENGTH_LONG);
+                                snackbar.show();
+
                             }else{
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout,task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                                snackbar.show();
                             }
                         }
                     }

@@ -9,6 +9,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +43,7 @@ public class login extends AppCompatActivity
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -64,6 +67,7 @@ public class login extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
 
         //Assigning Id to variables
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
         loginup = findViewById(R.id.but1);
         mail=  findViewById(R.id.email);
         pwd = findViewById(R.id.password);
@@ -116,7 +120,8 @@ public class login extends AppCompatActivity
                             startActivity(it);
                         }
                         else {
-                            Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout,task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                            snackbar.show();
                         }
                     }
                 });

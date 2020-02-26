@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grdnt">
@@ -49,7 +50,7 @@
                     android:textSize="16dp"
                     android:inputType="text"
                     android:textColor="#000000"
-                    />
+                    tools:ignore="HardcodedText,RtlHardcoded,SpUsage,TextFields,UnusedAttribute" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,12 +114,14 @@
         <TextView
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="25dp"
             android:gravity="center_horizontal"
+            android:layout_marginBottom="75dp"
             android:layout_gravity="center"
             android:letterSpacing="0.1"
             android:text="Create Account ? Signup"
-            android:textColor="#111" />
+            android:textColor="#111"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -131,5 +134,10 @@
             android:src="@drawable/motofit_img"
             />
     </LinearLayout>
-
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+         />
 </RelativeLayout>

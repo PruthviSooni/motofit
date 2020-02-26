@@ -8,13 +8,33 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="182dp"
-        android:layout_height="36dp"
+        android:layout_width="210dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginLeft="101dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:gravity="center"
         android:text="Type of Services"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="410dp"
+        android:layout_height="596dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+
+    </ListView>
+
+
 </android.support.constraint.ConstraintLayout>

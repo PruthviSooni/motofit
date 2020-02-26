@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register"
+        tools:context=".MainActivity"
+        tools:ignore="MissingConstraints" />
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="357dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            tools:ignore="ExtraText">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_time"
+                tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
+
+            <EditText
+                android:id="@+id/et_date"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:focusableInTouchMode="false"
+                android:hint="Date"
+                android:inputType="textPersonName"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,TextFields" />
+
+            <EditText
+                android:id="@+id/et_time"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:focusableInTouchMode="false"
+                android:hint="Time"
+                android:inputType="textPersonName"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:text=""
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_speedometer"
+                tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
+
+            <EditText
+                android:id="@+id/kilometer"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:ems="10"
+                android:hint="Odometer (Km)"
+                android:inputType="number"
+                android:maxLength="8"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:text=""
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_repair"
+                tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:layout_span="2"
+                android:hint="Select Service Type"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                tools:ignore="RtlHardcoded" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_location"
+                tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat"
+                tools:layout_editor_absoluteX="7dp"
+                tools:layout_editor_absoluteY="214dp" />
+
+            <EditText
+                android:id="@+id/location"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:ems="10"
+                android:hint="Location"
+                android:inputType="textPersonName"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:text=""
+                tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:minHeight="250dp">
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_notes"
+                tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
+
+            <EditText
+                android:id="@+id/notes"
+                android:layout_width="328dp"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:ems="10"
+                android:hint="@string/hint"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:minWidth="50dp"
+                android:minHeight="250dp"
+                android:maxLength="120"
+                android:text=""
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+        </TableRow>
+
+    </TableLayout>
+    <Button
+        android:id="@+id/register"
+        android:layout_width="206dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="112dp"
+        android:layout_span="2"
+        android:background="#876854"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="286dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="@string/service_title"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

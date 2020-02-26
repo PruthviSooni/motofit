@@ -16,4 +16,9 @@
     <string name="menu_signout">Signout</string>
     <string name="this_is_signout">This is Signout</string>
     <string name="this_is_user_info">This is User Info</string>
+    <string name="title_1">Regular Repair and Maintenance</string>
+    <string name="title_2">Accidental Repair and Free Breakdown.</string>
+    <string name="hint">Write description in detail. \n \n \n \n</string>
+    <string name="service_title">Register Your Service</string>
+
 </resources>

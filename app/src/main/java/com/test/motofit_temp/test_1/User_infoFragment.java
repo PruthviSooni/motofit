@@ -56,13 +56,12 @@ public class User_infoFragment extends Fragment implements View.OnClickListener 
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mFirebaseDatabase.keepSynced(true);
 
         // add it only if it is not saved to database
         if (user != null) {
             userId = user.getUid();
         }
-
-
 
         addUserChangeListener();
         b1.setOnClickListener(this);
