@@ -89,7 +89,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/ic_speedometer"
+                app:srcCompat="@drawable/ic_odometer"
                 tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
 
             <EditText
