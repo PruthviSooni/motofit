@@ -156,6 +156,8 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
+                android:editable="false"
+                android:focusableInTouchMode="false"
                 android:ems="10"
                 android:hint="Location"
                 android:inputType="textPersonName"

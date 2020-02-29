@@ -3,6 +3,7 @@ package com.test.motofit_temp.test_1;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Map;
 
 public class ServicesFragment  extends Fragment  {
     private  View v;
@@ -58,13 +60,19 @@ public class ServicesFragment  extends Fragment  {
         mAuth = FirebaseAuth.getInstance();
         coordinatorLayout = v.findViewById(R.id.coordinatorLayout);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        final int title = R.string.title_1;
 
         ArrayAdapter<String> service = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services));
         service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(service);
+        e4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),MapFragment.class);
+                startActivity(i);
 
+            }
+        });
 
         ///Register Button Logic
         reg_btn.setOnClickListener(new View.OnClickListener() {

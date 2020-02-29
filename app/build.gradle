@@ -38,4 +38,11 @@ dependencies {
     //noinspection GradleDependency
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    //noinspection UseOfBundledGooglePlayServices
+    implementation 'com.google.android.gms:play-services-basement:15.0.1'
+    implementation 'com.google.android.gms:play-services-base:15.0.1'
+    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.maps.android:android-maps-utils:1.0.0'
 }
