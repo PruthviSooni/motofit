@@ -23,8 +23,8 @@ public class MotorcycleFragment extends Fragment{
         doorstep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getContext(),Doorstep.class);
-                startActivity(i);
+//                Intent i=new Intent(getContext(),Doorstep.class);
+//                startActivity(i);
 
             }
         });

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grdnt"
     >
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="16dp"
+        android:layout_alignParentTop="true"
         android:indeterminate="true"
         android:indeterminateTint="@color/accentcolor"
         android:progress="25"
         android:scrollbarStyle="insideOverlay"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -203,4 +207,4 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         />
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

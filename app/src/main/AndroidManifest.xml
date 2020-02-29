@@ -10,29 +10,28 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".user_profile"></activity>
         <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name=".ServicesFragment"/>
+                <action android:name=".ServicesFragment" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Doorstep" />
         <activity
             android:name=".home"
             android:screenOrientation="portrait"
             android:theme="@style/App_Theme"
             tools:ignore="DuplicateActivity" />
-
         <activity
             android:name=".login"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".signup"
             android:screenOrientation="portrait" />
