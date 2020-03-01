@@ -1,4 +1,4 @@
-package com.test.motofit_temp.test_1;
+package com.test.motofit_temp.test_1.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.test.motofit_temp.test_1.R;
-
-import java.util.zip.Inflater;
 
 public class HomeFragment extends Fragment {
     @Nullable

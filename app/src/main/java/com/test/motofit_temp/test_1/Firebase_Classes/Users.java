@@ -1,4 +1,4 @@
-package com.test.motofit_temp.test_1;
+package com.test.motofit_temp.test_1.Firebase_Classes;
 
 public class Users {
     public String name;

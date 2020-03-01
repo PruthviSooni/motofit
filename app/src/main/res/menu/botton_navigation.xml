@@ -19,9 +19,9 @@
         tools:ignore="HardcodedText" />
 
     <item
-        android:id="@+id/nav_userinfo"
-        android:title="Account"
-        android:icon="@drawable/ic_user_info"
+        android:id="@+id/nav_more"
+        android:title="More"
+        android:icon="@drawable/ic_more_horiz"
         tools:ignore="HardcodedText" />
 
 

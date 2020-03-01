@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.test.motofit_temp.test_1.Firebase_Classes.Users;
 
 public class signup extends AppCompatActivity {
     EditText mail, pass,mophone,usrname;

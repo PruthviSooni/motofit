@@ -4,17 +4,21 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.test.motofit_temp.test_1.Fragment.HomeFragment;
+import com.test.motofit_temp.test_1.Fragment.MotorcycleFragment;
+import com.test.motofit_temp.test_1.Fragment.ServicesFragment;
+import com.test.motofit_temp.test_1.Fragment.more_infoFragment;
 
 public class home extends AppCompatActivity {
 
@@ -69,16 +73,15 @@ public class home extends AppCompatActivity {
                         case R.id.nav_motorcycle:
                             selectedFragment = new MotorcycleFragment();
                             break;
-                        case R.id.nav_userinfo:
-                            selectedFragment = new more_infoFragment();
-                            break;
                         case R.id.nav_services:
                             selectedFragment = new ServicesFragment();
+                            break;
+                        case R.id.nav_more:
+                            selectedFragment = new more_infoFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
-
                     return true;
                 }
 

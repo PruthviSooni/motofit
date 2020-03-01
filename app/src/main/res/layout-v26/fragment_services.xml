@@ -22,7 +22,7 @@
 
     <TableLayout
         android:id="@+id/tableLayout2"
-        android:layout_width="357dp"
+        android:layout_width="400dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
@@ -44,6 +44,7 @@
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="40dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_time"
@@ -88,6 +89,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_odometer"
                 tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
@@ -118,6 +120,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_repair"
                 tools:ignore="ContentDescription,VectorDrawableCompat" />
@@ -145,6 +148,7 @@
                 android:id="@+id/imageView14"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_location"
                 tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat"
@@ -159,19 +163,30 @@
                 android:editable="false"
                 android:focusableInTouchMode="false"
                 android:ems="10"
-                android:hint="Location"
-                android:inputType="textPersonName"
+                android:hint="@string/location_hint"
+                android:lines="4"
+                android:inputType="textMultiLine"
                 android:minWidth="50dp"
+                android:autoSizeTextType="uniform"
                 android:minHeight="50dp"
                 android:text=""
                 tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_my_location"
+                android:background="@color/ic_launcher_background"
+                tools:ignore="VectorDrawableCompat" />
+
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="50dp"
-            android:minHeight="250dp">
+            android:minHeight="50dp">
 
             <ImageView
                 android:id="@+id/imageView13"
@@ -179,6 +194,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 app:srcCompat="@drawable/ic_notes"
                 tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
 
@@ -190,9 +206,9 @@
                 android:ems="10"
                 android:hint="@string/hint"
                 android:inputType="textMultiLine"
-                android:lines="5"
+                android:lines="1"
                 android:minWidth="50dp"
-                android:minHeight="250dp"
+                android:minHeight="50dp"
                 android:maxLength="120"
                 android:text=""
                 tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
