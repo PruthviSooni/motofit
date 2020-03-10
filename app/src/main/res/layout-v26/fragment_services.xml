@@ -6,34 +6,20 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="25dp">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register"
-        tools:context=".MainActivity"
-        tools:ignore="MissingConstraints" />
-
     <TableLayout
         android:id="@+id/tableLayout2"
         android:layout_width="400dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TableRow
             android:layout_width="400dp"
@@ -44,8 +30,8 @@
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="40dp"
-                android:layout_marginLeft="10dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_time"
                 tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
@@ -100,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_span="2"
                 android:ems="10"
+
                 android:hint="Odometer (Km)"
                 android:inputType="number"
                 android:maxLength="8"
@@ -160,14 +147,14 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:ems="10"
-                android:hint="@string/location_hint"
-                android:lines="4"
-                android:inputType="textMultiLine"
-                android:minWidth="50dp"
                 android:autoSizeTextType="uniform"
+                android:editable="false"
+                android:ems="10"
+                android:focusableInTouchMode="false"
+                android:hint="@string/location_hint"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:minWidth="50dp"
                 android:minHeight="50dp"
                 android:text=""
                 tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded" />
@@ -176,8 +163,8 @@
                 android:id="@+id/imageButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/white"
                 app:srcCompat="@drawable/ic_my_location"
-                android:background="@color/ic_launcher_background"
                 tools:ignore="VectorDrawableCompat" />
 
         </TableRow>
@@ -193,8 +180,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_notes"
                 tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
 
@@ -207,45 +194,68 @@
                 android:hint="@string/hint"
                 android:inputType="textMultiLine"
                 android:lines="1"
+                android:maxLength="120"
                 android:minWidth="50dp"
                 android:minHeight="50dp"
-                android:maxLength="120"
                 android:text=""
                 tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
         </TableRow>
 
     </TableLayout>
+
     <Button
         android:id="@+id/register"
         android:layout_width="206dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginRight="103dp"
+        android:layout_marginBottom="24dp"
         android:layout_span="2"
         android:background="#876854"
         android:gravity="center"
         android:text="Register"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="286dp"
         android:layout_height="34dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:text="@string/service_title"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".MainActivity"
+        tools:ignore="MissingConstraints" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/accentcolor</item>
         <item name="colorAccent">@color/accentcolor</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop" tools:ignore="NewApi">true</item>
     </style>
     <style name="App_Theme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

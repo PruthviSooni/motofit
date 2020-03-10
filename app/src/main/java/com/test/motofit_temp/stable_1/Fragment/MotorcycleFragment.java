@@ -1,4 +1,4 @@
-package com.test.motofit_temp.test_1.Fragment;
+package com.test.motofit_temp.stable_1.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +10,14 @@ import android.view.ViewGroup;
 
 import com.test.motofit_temp.test_1.R;
 
-public class HomeFragment extends Fragment {
+public class MotorcycleFragment extends Fragment{
+    View v;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home,container,false);
+        v = inflater.inflate(R.layout.fragment_motorcycle, container, false);
+        return v;
     }
+
+
 }

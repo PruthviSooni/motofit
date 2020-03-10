@@ -1,4 +1,4 @@
-package com.test.motofit_temp.test_1;
+package com.test.motofit_temp.stable_1;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,29 +15,30 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.motofit_temp.test_1.Fragment.HomeFragment;
-import com.test.motofit_temp.test_1.Fragment.MotorcycleFragment;
-import com.test.motofit_temp.test_1.Fragment.ServicesFragment;
-import com.test.motofit_temp.test_1.Fragment.more_infoFragment;
+import com.test.motofit_temp.stable_1.Fragment.MotorcycleFragment;
+import com.test.motofit_temp.stable_1.Fragment.more_infoFragment;
+import com.test.motofit_temp.stable_1.Fragment.HomeFragment;
+import com.test.motofit_temp.stable_1.Fragment.ServicesFragment;
+import com.test.motofit_temp.test_1.R;
 
 public class home extends AppCompatActivity {
-
+    private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        BottomNavigationView bottomNav = findViewById(R.id.buttom_navigation);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
-
+    //Creating Menu Item Option
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.item_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    // Three Dot Menu Item Action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -53,8 +54,6 @@ public class home extends AppCompatActivity {
                 editor.putBoolean("loginStatus",false);
                 editor.apply();
                 break;
-
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -69,23 +68,29 @@ public class home extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
+                            item.setChecked(true);
                             break;
                         case R.id.nav_motorcycle:
                             selectedFragment = new MotorcycleFragment();
+                            item.setChecked(true);
                             break;
                         case R.id.nav_services:
                             selectedFragment = new ServicesFragment();
+                            item.setChecked(true);
                             break;
                         case R.id.nav_more:
                             selectedFragment = new more_infoFragment();
+                            item.setChecked(true);
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
-                    return true;
+                    return false;
                 }
 
             };
+
+
     // Showed when back button is pressed
     public void onBackPressed() {
         //Alert for confirm to exit the app

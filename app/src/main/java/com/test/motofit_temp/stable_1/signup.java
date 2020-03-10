@@ -1,11 +1,11 @@
-package com.test.motofit_temp.test_1;
+package com.test.motofit_temp.stable_1;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +22,8 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.test.motofit_temp.test_1.Firebase_Classes.Users;
+import com.test.motofit_temp.stable_1.Firebase_Classes.Users;
+import com.test.motofit_temp.test_1.R;
 
 public class signup extends AppCompatActivity {
     EditText mail, pass,mophone,usrname;
@@ -90,7 +90,8 @@ public class signup extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "User Registered", Toast.LENGTH_LONG).show();
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout,"User Registered", Snackbar.LENGTH_LONG);
+                            snackbar.show();
                             Intent it = new Intent(signup.this,login.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP | it.FLAG_ACTIVITY_CLEAR_TASK);
 

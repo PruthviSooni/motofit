@@ -1,4 +1,4 @@
-package com.test.motofit_temp.test_1;
+package com.test.motofit_temp.stable_1;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,16 +22,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.test.motofit_temp.test_1.Firebase_Classes.Users;
+import com.test.motofit_temp.stable_1.Firebase_Classes.Users;
+import com.test.motofit_temp.test_1.R;
 
 import static android.support.constraint.Constraints.TAG;
 
 public class user_profile extends AppCompatActivity {
     private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
     private String userId;
+    public String Name;
     Button b1;
-
     TextView t1,t2,t3;
     ProgressBar pb;
     @Override
@@ -45,7 +45,7 @@ public class user_profile extends AppCompatActivity {
         t3=findViewById(R.id.t5);
         pb =findViewById(R.id.progressBar_1);
         ///Firebase DB Variables
-        mFirebaseInstance = FirebaseDatabase.getInstance();
+        FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mFirebaseDatabase.keepSynced(true);
@@ -59,7 +59,6 @@ public class user_profile extends AppCompatActivity {
                 onBackPressed(); // Implemented by activity
             }
         });
-
         // add it only if it is not saved to database
         if (user != null) {
             userId = user.getUid();
@@ -88,12 +87,10 @@ public class user_profile extends AppCompatActivity {
             }
         });
     }
-
     /**
      * User data change listener
      */
     private void addUserChangeListener() {
-
         // User data change listener
         if (mFirebaseDatabase != null) {
             pb.setVisibility(View.VISIBLE);
@@ -102,7 +99,6 @@ public class user_profile extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Users user = dataSnapshot.getValue(Users.class);
-
                     // Check for null
                     if (user == null) {
                         Log.e(TAG, "User data is null!");
@@ -110,11 +106,11 @@ public class user_profile extends AppCompatActivity {
                         return;
                     }
                     Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
-
                     // Display newly updated name and email
                     t1.setText("User Name : "+user.name);
                     t2.setText("Mobile Number : "+user.mobnum);
                     t3.setText("Email : "+user.email);
+                    Name = user.name;
                     pb.setVisibility(View.GONE);
                 }
                 @Override
