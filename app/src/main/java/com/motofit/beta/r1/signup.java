@@ -1,4 +1,4 @@
-package com.test.motofit_temp.stable_1;
+package com.motofit.beta.r1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,8 +22,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.test.motofit_temp.stable_1.Firebase_Classes.Users;
-import com.test.motofit_temp.test_1.R;
+import com.motofit.beta.r1.Firebase_Classes.Users;
 
 public class signup extends AppCompatActivity {
     EditText mail, pass,mophone,usrname;

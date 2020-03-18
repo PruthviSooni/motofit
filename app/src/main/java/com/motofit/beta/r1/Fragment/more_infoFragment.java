@@ -1,4 +1,4 @@
-package com.test.motofit_temp.stable_1.Fragment;
+package com.motofit.beta.r1.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.test.motofit_temp.stable_1.about_us;
-import com.test.motofit_temp.test_1.R;
-import com.test.motofit_temp.stable_1.user_profile;
+import com.motofit.beta.r1.about_us;
+import com.motofit.beta.r1.user_profile;
+import com.motofit.beta.r1.R;
 
 @SuppressLint("ValidFragment")
 public class more_infoFragment extends Fragment  {

@@ -1,18 +1,16 @@
-package com.test.motofit_temp.stable_1;
+package com.motofit.beta.r1;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.test.motofit_temp.test_1.R;
-
-public class about_us extends AppCompatActivity {
+public class service_info extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_us_activity);
+        setContentView(R.layout.activity_service_info);
         ///Toolbar For Going Back
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

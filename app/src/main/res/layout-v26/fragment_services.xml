@@ -4,18 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:layout_editor_absoluteY="25dp">
 
     <TableLayout
         android:id="@+id/tableLayout2"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="411dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,24 +41,19 @@
                 android:ems="10"
                 android:focusableInTouchMode="false"
                 android:hint="Date"
-                android:inputType="textPersonName"
                 android:minWidth="50dp"
                 android:minHeight="50dp"
                 tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,TextFields" />
 
-            <EditText
-                android:id="@+id/et_time"
+            <Spinner
+                android:id="@+id/spinner_time"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:editable="false"
-                android:ems="10"
-                android:focusableInTouchMode="false"
-                android:hint="Time"
-                android:inputType="textPersonName"
+                android:layout_height="40dp"
                 android:minWidth="50dp"
                 android:minHeight="50dp"
-                android:text=""
-                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+                android:theme="@style/Spinner"
+                tools:ignore="RtlHardcoded" />
         </TableRow>
 
         <TableRow
@@ -86,7 +78,6 @@
                 android:layout_height="wrap_content"
                 android:layout_span="2"
                 android:ems="10"
-
                 android:hint="Odometer (Km)"
                 android:inputType="number"
                 android:maxLength="8"
@@ -116,12 +107,23 @@
                 android:id="@+id/spinner"
                 style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:layout_width="300dp"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:layout_span="2"
                 android:hint="Select Service Type"
                 android:minWidth="50dp"
                 android:minHeight="50dp"
                 tools:ignore="RtlHardcoded" />
+
+            <ImageButton
+                android:layout_marginTop="15dp"
+                android:id="@+id/info_btn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@android:color/white"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_info"
+                tools:ignore="VectorDrawableCompat" />
         </TableRow>
 
         <TableRow
@@ -163,7 +165,8 @@
                 android:id="@+id/imageButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@color/white"
+                android:background="@android:color/white"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 app:srcCompat="@drawable/ic_my_location"
                 tools:ignore="VectorDrawableCompat" />
 
@@ -171,7 +174,7 @@
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="63dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
@@ -188,8 +191,9 @@
             <EditText
                 android:id="@+id/notes"
                 android:layout_width="328dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_span="2"
+                android:autoSizePresetSizes="50dp"
                 android:ems="10"
                 android:hint="@string/hint"
                 android:inputType="textMultiLine"
@@ -207,11 +211,8 @@
         android:id="@+id/register"
         android:layout_width="206dp"
         android:layout_height="41dp"
-        android:layout_marginStart="102dp"
-        android:layout_marginLeft="102dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginRight="103dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="32dp"
         android:layout_span="2"
         android:background="#876854"
         android:gravity="center"
@@ -220,19 +221,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="286dp"
         android:layout_height="34dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:text="@string/service_title"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

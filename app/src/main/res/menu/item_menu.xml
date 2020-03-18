@@ -6,4 +6,8 @@
         android:id="@+id/signout_action"
         android:title="Signout"
         tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/exit_action"
+        android:title="Exit"
+        tools:ignore="HardcodedText" />
 </menu>

@@ -1,11 +1,9 @@
-package com.test.motofit_temp.stable_1;
+package com.motofit.beta.r1;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.test.motofit_temp.test_1.R;
 
 public class splash extends AppCompatActivity {
 

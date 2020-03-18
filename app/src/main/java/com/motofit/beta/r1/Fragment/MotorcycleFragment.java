@@ -1,4 +1,4 @@
-package com.test.motofit_temp.stable_1.Fragment;
+package com.motofit.beta.r1.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.test.motofit_temp.test_1.R;
+import com.motofit.beta.r1.R;
 
 public class MotorcycleFragment extends Fragment{
     View v;

@@ -7,4 +7,11 @@
         <item>Engine Repair</item>
         <item>Spare Parts Installation</item>
     </string-array>
+    <string-array name="Services_time">
+        <item>9AM - 10AM</item>
+        <item>11PM - 12PM</item>
+        <item>1PM - 2PM</item>
+        <item>3PM - 4PM</item>
+        <item>5PM - 6PM</item>
+    </string-array>
 </resources>

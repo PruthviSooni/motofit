@@ -9,8 +9,8 @@
         tools:ignore="HardcodedText" />
     <item
         android:id="@+id/nav_motorcycle"
-        android:title="Bike"
-        android:icon="@drawable/ic_motorcycle"
+        android:title="Break Down"
+        android:icon="@drawable/ic_break_down"
         tools:ignore="HardcodedText" />
     <item
         android:id="@+id/nav_services"

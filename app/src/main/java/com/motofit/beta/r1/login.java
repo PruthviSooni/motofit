@@ -1,4 +1,4 @@
-package com.test.motofit_temp.stable_1;
+package com.motofit.beta.r1;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,11 +19,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.test.motofit_temp.test_1.R;
 
 public class login extends AppCompatActivity
 {

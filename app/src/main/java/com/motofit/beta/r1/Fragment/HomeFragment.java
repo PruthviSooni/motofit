@@ -1,4 +1,4 @@
-package com.test.motofit_temp.stable_1.Fragment;
+package com.motofit.beta.r1.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.test.motofit_temp.test_1.R;
+import com.motofit.beta.r1.R;
 
 public class HomeFragment extends Fragment {
     public HomeFragment(){}

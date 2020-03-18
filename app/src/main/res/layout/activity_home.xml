@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grdnt"
-    tools:context="com.test.motofit_temp.stable_1.home"
+    tools:context="com.motofit.beta.r1.home"
     android:id="@+id/home_layout">
 
     <FrameLayout
@@ -22,5 +22,10 @@
        app:menu="@menu/botton_navigation"
        android:background="?android:attr/windowBackground"
        />
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/bottom_navigation"/>
 
 </RelativeLayout>
