@@ -31,18 +31,19 @@ public class user_profile extends AppCompatActivity {
     private String userId;
     public String Name;
     Button b1;
-    TextView t1,t2,t3;
+    TextView t1, t2, t3;
     ProgressBar pb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         //Id of Activity Components
-        b1 =  findViewById(R.id.signout);
-        t1=findViewById(R.id.t2);
-        t2=findViewById(R.id.t3);
-        t3=findViewById(R.id.t5);
-        pb =findViewById(R.id.progressBar_1);
+        b1 = findViewById(R.id.signout);
+        t1 = findViewById(R.id.t2);
+        t2 = findViewById(R.id.t3);
+        t3 = findViewById(R.id.t5);
+        pb = findViewById(R.id.progressBar_1);
         ///Firebase DB Variables
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("Users");
@@ -68,17 +69,17 @@ public class user_profile extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.signout:
                         //Fire base Auth Instance
                         FirebaseAuth.getInstance().signOut();
-                        Intent intent = new Intent(getApplicationContext(),login.class);
+                        Intent intent = new Intent(getApplicationContext(), login.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Login", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("loginStatus",false);
+                        editor.putBoolean("loginStatus", false);
                         editor.apply();
                         break;
                     default:
@@ -86,6 +87,7 @@ public class user_profile extends AppCompatActivity {
             }
         });
     }
+
     /**
      * User data change listener
      */
@@ -101,17 +103,18 @@ public class user_profile extends AppCompatActivity {
                     // Check for null
                     if (user == null) {
                         Log.e(TAG, "User data is null!");
-                        Toast.makeText(getApplicationContext(),"User Data is null",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "User Data is null", Toast.LENGTH_LONG).show();
                         return;
                     }
                     Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
                     // Display newly updated name and email
-                    t1.setText("User Name : "+user.name);
-                    t2.setText("Mobile Number : "+user.mobnum);
-                    t3.setText("Email : "+user.email);
+                    t1.setText("User Name : " + user.name);
+                    t2.setText("Mobile Number : " + user.mobnum);
+                    t3.setText("Email : " + user.email);
                     Name = user.name;
                     pb.setVisibility(View.GONE);
                 }
+
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value

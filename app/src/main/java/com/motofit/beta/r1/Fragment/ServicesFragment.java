@@ -69,7 +69,36 @@ public class ServicesFragment  extends Fragment {
         username = v.findViewById(R.id.username);
         coordinatorLayout = v.findViewById(R.id.coordinatorLayout);
         ImageButton info_btn = v.findViewById(R.id.info_btn);
+        //Getting user Name
+        get_user_data();
+        ////Date Picker
+        get_time();
+        //Send Data To Friebase
+        Firebase_RealTimeDB();
+        //Service's DropDown
+        ArrayAdapter<String> service = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services));
+        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s1.setPrompt("Select Service");
+        s1.setAdapter(service);
 
+        //Time Dropdown
+        ArrayAdapter<String> service_time = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services_time));
+        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_time.setPrompt("Select Time");
+        sp_time.setAdapter(service_time);
+
+        info_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), com.motofit.beta.r1.service_info.class);
+                startActivity(i);
+            }
+        });
+        return v;
+    }
+    private void get_user_data(){
         //FireBase Variables
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         DatabaseReference mFirebaseDB = mFirebaseInstance.getReference("Users");
@@ -101,28 +130,36 @@ public class ServicesFragment  extends Fragment {
             }
         });
 
-        //Service's DropDown
-        ArrayAdapter<String> service = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services));
-        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s1.setPrompt("Select Service");
-        s1.setAdapter(service);
-
-        //Time Dropdown
-        ArrayAdapter<String> service_time = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services_time));
-        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_time.setPrompt("Select Time");
-        sp_time.setAdapter(service_time);
-
-        info_btn.setOnClickListener(new View.OnClickListener() {
+    }
+    private void get_time(){
+        //Date Picker Logic
+        et_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), com.motofit.beta.r1.service_info.class);
-                startActivity(i);
+                final Calendar myCalendar = Calendar.getInstance();
+                final Calendar system = Calendar.getInstance();
+                DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // TODO Auto-generated method stub
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH, monthOfYear);
+                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        String myFormat = "dd-MMM-yyyy"; // your format
+                        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
+                        if (system.getTimeInMillis() > myCalendar.getTimeInMillis()) {
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Please Enter Another Date", Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                        } else {
+                            et_date.setText(sdf.format(myCalendar.getTime()));
+                        }
+                    }
+                };
+                new DatePickerDialog(getContext(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+    }
+    private void Firebase_RealTimeDB(){
         ///Register Button Logic
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,41 +199,5 @@ public class ServicesFragment  extends Fragment {
             }
         });
 
-        //Date Picker Logic
-        et_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar myCalendar = Calendar.getInstance();
-                final Calendar system = Calendar.getInstance();
-                DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        // TODO Auto-generated method stub
-                        myCalendar.set(Calendar.YEAR, year);
-                        myCalendar.set(Calendar.MONTH, monthOfYear);
-                        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        String myFormat = "dd-MMM-yyyy"; // your format
-                        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
-                        if (system.getTimeInMillis() > myCalendar.getTimeInMillis()) {
-                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Please Enter Another Date", Snackbar.LENGTH_LONG);
-                            snackbar.show();
-                        } else {
-                            et_date.setText(sdf.format(myCalendar.getTime()));
-                        }
-                    }
-                };
-                new DatePickerDialog(getContext(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-        return v;
     }
 }
-
-
-
-
-
-
-
-
-

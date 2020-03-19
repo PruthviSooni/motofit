@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Motofit.iml" filepath="$PROJECT_DIR$/Motofit.iml" group="Motofit" />
-      <module fileurl="file://$PROJECT_DIR$/app/Motofit-app.iml" filepath="$PROJECT_DIR$/app/Motofit-app.iml" group="Motofit/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Motofit/app" />
     </modules>
   </component>
 </project>

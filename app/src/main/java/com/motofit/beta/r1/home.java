@@ -56,8 +56,7 @@ public class home extends AppCompatActivity {
                 editor.apply();
                 break;
             case R.id.exit_action:
-                moveTaskToBack(true);
-                System.exit(1);
+               finishAffinity();
         }
         return super.onOptionsItemSelected(item);
     }

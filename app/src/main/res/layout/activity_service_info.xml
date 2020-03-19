@@ -1,131 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerHorizontal="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.motofit.beta.r1.service_info">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/dgrate"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+            <LinearLayout
+                android:layout_width="400dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Regular Repair and Maintenance"
-                android:textAlignment="center"
-                android:textColor="@color/accentcolor"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:text="@string/regualr_service"
-                android:textSize="25sp"
-                android:textAlignment="center"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/dgrate"
-            android:orientation="vertical">
+                android:background="@drawable/dgrate"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Custom Accessories and Spare Parts Installation"
-                android:textAlignment="center"
-                android:textColor="@color/accentcolor"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:text="@string/custom_parts"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/dgrate"
-            android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Regular Repair and Maintenance"
+                    android:textAlignment="center"
+                    android:textColor="@color/accentcolor"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Accidental Repair and Free Breakdown."
-                android:textAlignment="center"
-                android:textColor="@color/accentcolor"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:text="@string/Accidental_repair"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:text="@string/regualr_service"
+                    android:textAlignment="center"
+                    android:textSize="25sp" />
+            </LinearLayout>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/dgrate"
-            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="400dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dgrate"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Engine Tune Up and Rebuild"
-                android:textAlignment="center"
-                android:textColor="@color/accentcolor"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:text="@string/engine_tuneup"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Custom Accessories and Spare Parts Installation"
+                    android:textAlignment="center"
+                    android:textColor="@color/accentcolor"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:text="@string/custom_parts"
+                    android:textAlignment="center"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="400dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dgrate"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Accidental Repair and Free Breakdown."
+                    android:textAlignment="center"
+                    android:textColor="@color/accentcolor"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:text="@string/Accidental_repair"
+                    android:textAlignment="center"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="400dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dgrate"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Engine Tune Up and Rebuild"
+                    android:textAlignment="center"
+                    android:textColor="@color/accentcolor"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:text="@string/engine_tuneup"
+                    android:textAlignment="center"
+                    android:textSize="22sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    </RelativeLayout>
+</RelativeLayout>

@@ -25,7 +25,7 @@
     </string-array>
 
     <string-array name="company">
-        <item>- SELECT BRAND -</item>
+        <item>-SELECT BRAND-</item>
         <item>Hero Motors</item>
         <item>Honda Motors</item>
         <item>TVS Motors</item>
@@ -163,6 +163,6 @@
     </string-array>
 
     <string-array name="select_model">
-        <item>- SELECT BRAND FIRST -</item>
+        <item>-SELECT BRAND FIRST-</item>
     </string-array>
 </resources>

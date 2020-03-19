@@ -25,9 +25,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class login extends AppCompatActivity
-{
-    private EditText pwd,mail;
+public class login extends AppCompatActivity {
+    private EditText pwd, mail;
     Button loginup;
     TextView signup;
     private ProgressBar pb;
@@ -35,18 +34,18 @@ public class login extends AppCompatActivity
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private CoordinatorLayout coordinatorLayout;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         //Shared Preference For Saving User Login state
-        sharedPreferences = this.getSharedPreferences("Login",MODE_PRIVATE);
-        if(sharedPreferences.getBoolean("loginStatus",false)){
-            startActivity(new Intent(this,home.class));
+        sharedPreferences = this.getSharedPreferences("Login", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("loginStatus", false)) {
+            startActivity(new Intent(this, home.class));
         }
         //For Check Connection
-        if(!isConnected(login.this)) buildDialog(login.this).show();
+        if (!isConnected(login.this)) buildDialog(login.this).show();
         else {
             setContentView(R.layout.login);
         }
@@ -55,10 +54,10 @@ public class login extends AppCompatActivity
         //Assigning Component's Id to variables
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
         loginup = findViewById(R.id.but1);
-        mail=  findViewById(R.id.email);
+        mail = findViewById(R.id.email);
         pwd = findViewById(R.id.password);
         signup = findViewById(R.id.tv1);
-        pb =  findViewById(R.id.progressBar);
+        pb = findViewById(R.id.progressBar);
         //Login Button Onclick listener
         loginup.setOnClickListener(new OnClickListener() {
             @Override
@@ -90,21 +89,20 @@ public class login extends AppCompatActivity
                 pb.setVisibility(View.VISIBLE);
 
                 //FireBase Authentication Check Method
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
-                        if(task.isSuccessful()){
-                            sharedPreferences = login.this.getSharedPreferences("Login",Context.MODE_PRIVATE);
+                        if (task.isSuccessful()) {
+                            sharedPreferences = login.this.getSharedPreferences("Login", Context.MODE_PRIVATE);
                             editor = sharedPreferences.edit();
-                            editor.putBoolean("loginStatus",true);
+                            editor.putBoolean("loginStatus", true);
                             editor.apply();
                             Intent it = new Intent(login.this, home.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(it);
-                        }
-                        else {
-                            Snackbar snackbar = Snackbar.make(coordinatorLayout,task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                        } else {
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout, task.getException().getMessage(), Snackbar.LENGTH_LONG);
                             snackbar.show();
                         }
                     }
@@ -115,11 +113,12 @@ public class login extends AppCompatActivity
         signup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent( login.this,signup.class);
+                Intent it = new Intent(login.this, signup.class);
                 startActivity(it);
             }
         });
     }
+
     //Function For Check Internet Connection
     public boolean isConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -130,11 +129,13 @@ public class login extends AppCompatActivity
         if (netinfo != null && netinfo.isConnectedOrConnecting()) {
             android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
             android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
-        else return false;
+            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
+                return true;
+            else return false;
         } else
-        return false;
+            return false;
     }
+
     //Alert Dialog for Exiting App
     public AlertDialog.Builder buildDialog(Context c) {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
@@ -148,10 +149,11 @@ public class login extends AppCompatActivity
         });
         return builder;
     }
+
     //For Close the App
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder( login.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(login.this);
         builder.setTitle(R.string.app_name);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setMessage("Do you want to exit?")
