@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
@@ -8,101 +9,195 @@
     android:padding="20dp">
 
     <LinearLayout
-        android:background="@drawable/dgrate"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="@drawable/sharp_dgrate"
         android:orientation="vertical">
+
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/accentcolor"
+            android:layout_marginTop="10dp"
             android:text="Select Your Bike Brand"
+            android:textAlignment="center"
+            android:textColor="@color/accentcolor"
+            android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
-        <Spinner
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:background="@drawable/dgrate"
-        android:layout_width="match_parent"
-        android:layout_marginTop="110dp"
-        android:layout_height="100dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/accentcolor"
-            android:text="Select Your Bike Brand"
-            tools:ignore="HardcodedText" />
-
-        <Spinner
-            android:layout_width="350dp"
-            android:prompt="@string/app_name"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:background="@drawable/dgrate"
-        android:layout_width="match_parent"
-        android:layout_marginTop="220dp"
-        android:layout_height="100dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/accentcolor"
-            android:text="Select Your Bike Brand"
-            tools:ignore="HardcodedText" />
-
-        <Spinner
-            android:layout_width="350dp"
-            android:prompt="@string/app_name"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
-    <LinearLayout
-        android:background="@drawable/dgrate"
-        android:layout_width="match_parent"
-        android:layout_marginTop="330dp"
-        android:layout_height="100dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@color/accentcolor"
-            android:text="Select Your Bike Brand"
-            tools:ignore="HardcodedText" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <ImageView
-            android:layout_marginStart="30dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_location"/>
-        <EditText
-            android:layout_marginStart="5dp"
-            android:layout_width="250dp"
-            android:layout_height="40dp">
-        </EditText>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_brand_logo" />
+
+            <Spinner
+                android:id="@+id/brand"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp" />
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/sharp_dgrate"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Select Your Bike Model"
+            android:textAlignment="center"
+            android:textColor="@color/accentcolor"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_motorcycle_2" />
+
+            <Spinner
+                android:id="@+id/model"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:prompt="@string/app_name" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/sharp_dgrate"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Select Doorstep Services"
+            android:textAlignment="center"
+            android:textColor="@color/accentcolor"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_doorstep_service" />
+
+            <Spinner
+                android:id="@+id/service_drop"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:prompt="@string/app_name" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/getloc"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="330dp"
+        android:background="@drawable/sharp_dgrate"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Get Current Location"
+            android:textAlignment="center"
+            android:textColor="@color/accentcolor"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_location" />
+
+            <EditText
+                android:id="@+id/e1"
+                android:layout_width="240dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="15dp"
+                android:autoSizeTextType="uniform"
+                android:editable="false"
+                android:maxLines="4"
+                android:focusableInTouchMode="false"
+                android:inputType="textMultiLine"
+                tools:targetApi="o" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="40dp"
+                android:layout_marginTop="30dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:layout_height="40dp"
+                android:background="@drawable/dgrate"
+                app:srcCompat="@drawable/ic_my_location"
+                tools:ignore="UnusedAttribute,VectorDrawableCompat"
+                tools:targetApi="m" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="250dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/getloc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="30dp"
+        android:background="#876854"
+        android:gravity="center"
+        android:text="Book Service"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/doorstep_coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp" />
 </RelativeLayout>

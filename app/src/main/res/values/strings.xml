@@ -21,7 +21,14 @@
     <string name="hint">Write description in detail. \n \n \n \n</string>
     <string name="location_hint">Get Current Location \n \n \n \n</string>
     <string name="service_title">Register Your Service</string>
-    <string name="gmap_API_key">AIzaSyCnamvbF_WXwvDeGlRdzkwtONlb05VQ8u0</string>
+<!--    <string name="gmap_API_key">AIzaSyCnamvbF_WXwvDeGlRdzkwtONlb05VQ8u0</string>-->
     <string name="transitionName">hello</string>
-
+    
+    
+    
+    <!--Types Of Service information -->
+    <string name="regualr_service">Whatever problem you bring to us, we know how to fix it. Rest Assured.</string>
+    <string name="Accidental_repair">Anytime, Anywhere, you can count on us for your crashed bike.</string>
+    <string name="engine_tuneup">Engine gave up? Need not worry, with our vast experience and expertise, we will rebuild it to make it work like as good as new.</string>
+    <string name="custom_parts">With our wide range of genuine accessories and spare parts, we are sure we’ll fulfil all your demands with utmost satisfaction.</string>
 </resources>

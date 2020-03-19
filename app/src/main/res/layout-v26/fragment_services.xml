@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:layout_editor_absoluteY="25dp">
 
     <TableLayout
         android:id="@+id/tableLayout2"
-        android:layout_width="411dp"
+        android:layout_width="400dp"
         android:layout_height="350dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/sharp_dgrate"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +22,14 @@
             android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
             tools:ignore="ExtraText">
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_time"
@@ -60,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="7dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
@@ -67,6 +70,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_odometer"
@@ -91,13 +95,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="7dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_repair"
@@ -109,17 +115,16 @@
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_span="2"
-                android:hint="Select Service Type"
                 android:minWidth="50dp"
                 android:minHeight="50dp"
                 tools:ignore="RtlHardcoded" />
 
             <ImageButton
-                android:layout_marginTop="15dp"
                 android:id="@+id/info_btn"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:background="#E9E9E9"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_info"
@@ -130,6 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="7dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
@@ -137,6 +143,7 @@
                 android:id="@+id/imageView14"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_location"
@@ -147,41 +154,29 @@
             <EditText
                 android:id="@+id/location"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_span="2"
                 android:autoSizeTextType="uniform"
-                android:editable="false"
                 android:ems="10"
-                android:focusableInTouchMode="false"
                 android:hint="@string/location_hint"
                 android:inputType="textMultiLine"
                 android:lines="4"
                 android:minWidth="50dp"
-                android:minHeight="50dp"
-                android:text=""
-                tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded" />
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@android:color/white"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/ic_my_location"
-                tools:ignore="VectorDrawableCompat" />
+                android:minHeight="50dp" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="63dp"
+            android:layout_marginTop="7dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -229,7 +224,7 @@
         android:layout_width="286dp"
         android:layout_height="34dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="1dp"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:text="@string/service_title"
@@ -246,7 +241,8 @@
         android:layout_height="30dp"
         android:visibility="invisible"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="4dp" />
+        tools:layout_editor_absoluteY="4dp"
+        tools:ignore="MissingConstraints" />
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
     <string-array name="Services">
         <item>Regular Repair</item>
@@ -13,5 +12,157 @@
         <item>1PM - 2PM</item>
         <item>3PM - 4PM</item>
         <item>5PM - 6PM</item>
+    </string-array>
+
+    <!--Motor Cycle Fragment Data-->
+    <string-array name="doorstep_service">
+        <item>Mechanical Repairs</item>
+        <item>Collision Repairs</item>
+        <item>Speed Wash</item>
+        <item>Quick Service</item>
+        <item>Wheels and Tyers</item>
+        <item>Knox</item>
+    </string-array>
+
+    <string-array name="company">
+        <item>- SELECT BRAND -</item>
+        <item>Hero Motors</item>
+        <item>Honda Motors</item>
+        <item>TVS Motors</item>
+        <item>Bajaj Motors</item>
+        <item>Yamaha Motors</item>
+        <item>Royol Enfield</item>
+        <item>Mahindra Motors</item>
+        <item>KTM</item>
+        <item>Piaggio</item>
+        <item>BMW</item>
+    </string-array>
+
+    <string-array name="hero">
+        <item>HF Duluxe</item>
+        <item>Splendor Plus i3s</item>
+        <item>Splendor Plus</item>
+        <item>Passion PRO i3s</item>
+        <item>Super Splendor</item>
+        <item>Glamour</item>
+        <item>Passion Pro 110</item>
+        <item>Xpulse 200</item>
+        <item>Pleasure_ 110</item>
+        <item>Mestro Edge</item>
+    </string-array>
+
+    <string-array name="honda">
+        <item>Shine</item>
+        <item>CB Unicon 150</item>
+        <item>SP 125</item>
+        <item>CB Hornet 160R</item>
+        <item>Honda Activa 6g</item>
+        <item>Honda Activa 5g</item>
+        <item>Honda Activa 4g</item>
+        <item>Honda Activa 3</item>
+        <item>Dio</item>
+        <item>Honda Activa 125 Bs6</item>
+    </string-array>
+
+    <string-array name="tvs">
+        <item>Apache RTR 160</item>
+        <item>Apache RTR 160 4V</item>
+        <item>Ntroq 125</item>
+        <item>Apache RTR 200 $V</item>
+        <item>Jupiter</item>
+        <item>Sport</item>
+        <item>Apache RTR 180 ABS</item>
+        <item>Apache RR310</item>
+        <item>Scooty Pep</item>
+        <item>Radeon</item>
+    </string-array>
+
+    <string-array name="bajaj">
+        <item>Pulsar 150</item>
+        <item>Pulsar 220 F</item>
+        <item>Pulsar RS200</item>
+        <item>Dominar 400</item>
+        <item>Platina 100</item>
+        <item>CT 100</item>
+        <item>Platina 110</item>
+        <item>Bajab chetak</item>
+        <item>Avenger Street 220</item>
+        <item>Aenger Street 160</item>
+    </string-array>
+
+    <string-array name="yamaha">
+        <item>Yamaha YZF R15 V3</item>
+        <item>Yamaha Mt-15</item>
+        <item>Yamaha FZ-S</item>
+        <item>Fascino</item>
+        <item>Yamaha Mt-15 BS6</item>
+        <item>Yamaha FZ 25</item>
+        <item>YamahaFZ-FI</item>
+        <item>Saluto</item>
+        <item>Yamaha SZ-RR</item>
+        <item>Yamaha RayZR 125</item>
+    </string-array>
+
+    <string-array name="royol_enfield">
+        <item>Royol Enfield Classic 350</item>
+        <item>Royol Enfield BULLET 350</item>
+        <item>Royol Enfield Thunderbird 350X</item>
+        <item>Royol Enfield Himalayan</item>
+        <item>Royol Enfield Interceptor 650</item>
+        <item>Royol Enfield Continental GT650</item>
+        <item>Royol Enfield Thunderbird 350</item>
+        <item>Royol Enfield Bullet Trails 350</item>
+    </string-array>
+
+    <string-array name="mahindra">
+        <item>MOJO XT 300</item>
+        <item>Gusto 125</item>
+        <item>Gusto</item>
+        <item>Centuro</item>
+        <item>MOJO 300</item>
+        <item>MOJO UT 300</item>
+        <item>Guesto Electric</item>
+    </string-array>
+
+    <string-array name="ktm">
+        <item>KTM 200 Duke</item>
+        <item>KTM 125 Duke</item>
+        <item>KTM RC 200</item>
+        <item>KTM RC 125</item>
+        <item>KTM 250 Dukw</item>
+        <item>KTM 250 Duke</item>
+        <item>KTM RC 390</item>
+        <item>KTM 390 Duke</item>
+        <item>KTM 390 Adventure</item>
+        <item>KTM 790 Adve</item>
+    </string-array>
+    <string-array name="piaggio">
+        <item>Vespa SXL 150</item>
+        <item>Vespa VXl 150</item>
+        <item>Vespa Note 125</item>
+        <item>Vespa LX 125</item>
+        <item>Vespa VXL 125</item>
+        <item>Vespa Urban Club</item>
+        <item>Vespa SXL 125</item>
+        <item>Vespa ZX 125</item>
+        <item>Vespa Elegante 150</item>
+        <item>Vespa RED 125</item>
+    </string-array>
+
+    <string-array name="bmw">
+        <item>BMW G 310 R</item>
+        <item>BMW S 1000 RR</item>
+        <item>BMW R 1200 GS Adventure</item>
+        <item>BMW R 1250 GS</item>
+        <item>BMW G 310 GS</item>
+        <item>BMW R 1200 GS</item>
+        <item>BMW R nine T</item>
+        <item>BMW R 1200 GS Adventure</item>
+        <item>BMW R nineT Scrambler</item>
+        <item>BMW F 750 GS</item>
+    </string-array>
+
+    <string-array name="select_model">
+        <item>- SELECT BRAND FIRST -</item>
     </string-array>
 </resources>

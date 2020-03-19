@@ -1,23 +1,262 @@
 package com.motofit.beta.r1.Fragment;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.motofit.beta.r1.Firebase_Classes.Breakdown;
 import com.motofit.beta.r1.R;
 
-public class MotorcycleFragment extends Fragment{
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+
+public class MotorcycleFragment extends Fragment {
     View v;
+    private Spinner brand, model, service_drop;
+    private LocationManager locationManager;
+    private CoordinatorLayout coordinatorLayout;
+    private static final int REQUEST_LOCATION = 1;
+    private EditText current_location;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference m_reference;
+    private String userID;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_motorcycle, container, false);
+        //Spinners
+        brand = v.findViewById(R.id.brand);
+        service_drop = v.findViewById(R.id.service_drop);
+        model = v.findViewById(R.id.model);
+        //Button
+        final ImageButton location_btn = v.findViewById(R.id.imageButton);
+        current_location = v.findViewById(R.id.e1);
+        final Button register = v.findViewById(R.id.register);
+        //SnapBar layout object
+        coordinatorLayout = v.findViewById(R.id.doorstep_coordinator);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            userID = user.getUid();
+        }
+
+
+        //Brand name... DropDown
+        ArrayAdapter<String> Company = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.company));
+        Company.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        brand.setAdapter(Company);
+
+        //Model name... DropDown
+        ArrayAdapter<String> Doorstep = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.doorstep_service));
+        Doorstep.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        service_drop.setAdapter(Doorstep);
+
+        //Model name fetch from spinner of brand
+        brand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (brand.getSelectedItem().equals("Hero Motors")) {
+                    ArrayAdapter<String> service1 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.hero));
+                    service1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service1);
+                } else if (brand.getSelectedItem().equals("Honda Motors")) {
+                    ArrayAdapter<String> service2 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.honda));
+                    service2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service2);
+                } else if (brand.getSelectedItem().equals("TVS Motors")) {
+                    ArrayAdapter<String> service3 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.tvs));
+                    service3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service3);
+                } else if (brand.getSelectedItem().equals("Bajaj Motors")) {
+                    ArrayAdapter<String> service4 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bajaj));
+                    service4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service4);
+                } else if (brand.getSelectedItem().equals("Yamaha Motors")) {
+                    ArrayAdapter<String> service5 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.yamaha));
+                    service5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service5);
+                } else if (brand.getSelectedItem().equals("Royal Enfield")) {
+                    ArrayAdapter<String> service6 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.royol_enfield));
+                    service6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service6);
+                } else if (brand.getSelectedItem().equals("Mahindra Motors")) {
+                    ArrayAdapter<String> service7 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.mahindra));
+                    service7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service7);
+                } else if (brand.getSelectedItem().equals("KTM")) {
+                    ArrayAdapter<String> service8 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ktm));
+                    service8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service8);
+                } else if (brand.getSelectedItem().equals("Piaggio")) {
+                    ArrayAdapter<String> service9 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.piaggio));
+                    service9.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service9);
+                } else if (brand.getSelectedItem().equals("BMW")) {
+                    ArrayAdapter<String> service10 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bmw));
+                    service10.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service10);
+                } else {
+                    ArrayAdapter<String> service12 = new ArrayAdapter<>(getActivity(),
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.select_model));
+                    service12.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    model.setAdapter(service12);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        ///////code for getting location
+        location_btn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View v) {
+                locationManager = (LocationManager) Objects.requireNonNull(getContext()).getSystemService(Context.LOCATION_SERVICE);
+                if (locationManager != null) {
+                    if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                        //enable to gps on your devices.
+                        OnGPS();
+                    } else {
+                        //gps is already on ..
+                        getlocation();
+                    }
+                }
+            }
+        });
+        // Push Data To FireBase By Clicking Button
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                register.setClickable(true);
+                String Brand = brand.getSelectedItem().toString().trim();
+                String Model = model.getSelectedItem().toString().trim();
+                String Service_drop = service_drop.getSelectedItem().toString().trim();
+                String Location = current_location.getText().toString().trim();
+                if (Location.isEmpty()) {
+                    current_location.setError("Locate Your Self!!");
+                    current_location.requestFocus();
+                    return;
+                }
+                m_reference = FirebaseDatabase.getInstance().getReference("BreakDown_Service");
+                Breakdown breakdown = new Breakdown(Brand,Model,Service_drop,Location);
+                m_reference.child(userID).push().setValue(breakdown);
+                m_reference.keepSynced(true);
+                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Service Registered.", Snackbar.LENGTH_LONG);
+                snackbar.show();
+                register.setClickable(false);
+            }
+        });
         return v;
     }
 
+    ////getting location method from onclicklistener
+    private void getlocation() {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]
+                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
+            Location LocationGps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Location LocationNetwork = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            Location LocationPassive = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            if (LocationGps != null) {
+                double lat = LocationGps.getLatitude();
+                double log = LocationGps.getLongitude();
+                location(lat, log);
+            }
+            if (LocationNetwork != null) {
+                double lat = LocationNetwork.getLatitude();
+                double log = LocationNetwork.getLongitude();
+                location(lat, log);
+            }
+            if (LocationPassive != null) {
+                double lat = LocationPassive.getLatitude();
+                double log = LocationPassive.getLongitude();
+                location(lat, log);
+            } else {
+                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Can't Get Your Location", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        }
+    }
 
+    private void location(double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+            String address = addresses.get(0).getAddressLine(0);
+            String area = addresses.get(0).getLocality();
+            String city = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalcode = addresses.get(0).getPostalCode();
+            String fulladdress = address + ", " + area + ", " + city + ", " + country + ", " + postalcode;
+            current_location.setText(fulladdress);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 }
