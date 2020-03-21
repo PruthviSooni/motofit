@@ -26,9 +26,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class login extends AppCompatActivity {
-    private EditText pwd, mail;
     Button loginup;
     TextView signup;
+    private EditText pwd, mail;
     private ProgressBar pb;
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;

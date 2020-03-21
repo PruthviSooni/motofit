@@ -22,8 +22,8 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/accentcolor"
         android:progress="25"
-        android:visibility="gone"
         android:scrollbarStyle="outsideOverlay"
+        android:visibility="gone"
         tools:ignore="UnusedAttribute" />
 
     <ScrollView

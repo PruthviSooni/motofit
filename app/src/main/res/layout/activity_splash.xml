@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.test.motofit_temp.test_1.com.test.motofit_temp.stable_1.splash"
-    android:background="@drawable/grdnt">
+    android:background="@drawable/grdnt"
+    tools:context="com.test.motofit_temp.test_1.com.test.motofit_temp.stable_1.splash">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,11 +17,11 @@
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:layout_marginBottom="64dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.507"
-        app:srcCompat="@drawable/motofit_img"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/motofit_img" />
 </android.support.constraint.ConstraintLayout>

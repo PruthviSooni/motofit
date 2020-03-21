@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
         <TextView
@@ -207,68 +208,68 @@
 
         </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout_4"
-        android:layout_width="350dp"
-        android:layout_height="140dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="495dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/dgrate"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imagw6"
-            android:layout_width="70dp"
-            android:layout_height="64dp"
-            app:layout_constraintBottom_toTopOf="@+id/text5"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout_4"
+            android:layout_width="350dp"
+            android:layout_height="140dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="495dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/dgrate"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_bike"
-            tools:ignore="DuplicateIds,VectorDrawableCompat" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/textview7"
-            android:layout_width="320dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="-5dp"
-            android:gravity="center"
-            android:inputType="textMultiLine"
-            android:text="We drop the vehicle at your doorstep on satisfactory completion of work."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text5" />
+            <ImageView
+                android:id="@+id/imagw6"
+                android:layout_width="70dp"
+                android:layout_height="64dp"
+                app:layout_constraintBottom_toTopOf="@+id/text5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bike"
+                tools:ignore="DuplicateIds,VectorDrawableCompat" />
 
-        <TextView
-            android:id="@+id/text5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drop Vehicle"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/text7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagw6"
-            tools:ignore="DuplicateIds,NotSibling" />
+            <TextView
+                android:id="@+id/textview7"
+                android:layout_width="320dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="-5dp"
+                android:gravity="center"
+                android:inputType="textMultiLine"
+                android:text="We drop the vehicle at your doorstep on satisfactory completion of work."
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text5" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop Vehicle"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/text7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.533"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imagw6"
+                tools:ignore="DuplicateIds,NotSibling" />
 
-</RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
+
+    </RelativeLayout>
 </ScrollView>

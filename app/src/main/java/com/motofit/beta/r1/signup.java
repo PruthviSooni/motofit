@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.motofit.beta.r1.Firebase_Classes.Users;
 
 public class signup extends AppCompatActivity {
-    EditText mail, pass,mophone,usrname;
+    EditText mail, pass, mophone, usrname;
     Button sup;
     ProgressBar pb;
     TextView lin;
@@ -35,7 +35,7 @@ public class signup extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
 
     private String userId;
-    private  String Email;
+    private String Email;
 
 
     @Override
@@ -89,9 +89,9 @@ public class signup extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         pb.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            Snackbar snackbar = Snackbar.make(coordinatorLayout,"User Registered", Snackbar.LENGTH_LONG);
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout, "User Registered", Snackbar.LENGTH_LONG);
                             snackbar.show();
-                            Intent it = new Intent(signup.this,login.class);
+                            Intent it = new Intent(signup.this, login.class);
                             it.addFlags(it.FLAG_ACTIVITY_CLEAR_TOP | it.FLAG_ACTIVITY_CLEAR_TASK);
 
                             // Firebase Database
@@ -99,17 +99,17 @@ public class signup extends AppCompatActivity {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             userId = user.getUid();
                             Email = user.getEmail();
-                            Users myUser = new Users(usr_name,email,mob_num);
+                            Users myUser = new Users(usr_name, email, mob_num);
                             mreference.child(userId).setValue(myUser);
 
                             startActivity(it);
                         } else {
-                            if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Snackbar snackbar = Snackbar.make(coordinatorLayout,"You Are Already Registered", Snackbar.LENGTH_LONG);
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout, "You Are Already Registered", Snackbar.LENGTH_LONG);
                                 snackbar.show();
 
-                            }else{
-                                Snackbar snackbar = Snackbar.make(coordinatorLayout,task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                            } else {
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout, task.getException().getMessage(), Snackbar.LENGTH_LONG);
                                 snackbar.show();
                             }
                         }

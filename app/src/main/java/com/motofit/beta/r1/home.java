@@ -27,23 +27,53 @@ import com.motofit.beta.r1.Fragment.ServicesFragment;
 import com.motofit.beta.r1.Fragment.more_infoFragment;
 
 public class home extends AppCompatActivity {
+    boolean doubleBackToExitPressedOnce = false;
     private CoordinatorLayout coordinatorLayout;
     private Dialog buildDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         coordinatorLayout = findViewById(R.id.coordinator);
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         //For Check Connection
         if (!isConnected(home.this)) buildDialog(home.this).show();
         else {
             setContentView(R.layout.activity_home);
         }
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
+    // Buttom Navigation
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    //Organise com.motofit.beta.r1.Fragment while selecting
+                    Fragment selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            selectedFragment = new HomeFragment();
+                            item.setChecked(true);
+                            break;
+                        case R.id.nav_motorcycle:
+                            selectedFragment = new MotorcycleFragment();
+                            item.setChecked(true);
+                            break;
+                        case R.id.nav_services:
+                            selectedFragment = new ServicesFragment();
+                            item.setChecked(true);
+                            break;
+                        case R.id.nav_more:
+                            selectedFragment = new more_infoFragment();
+                            item.setChecked(true);
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+                    return false;
+                }
+
+            };
 
     //Creating Menu Item Option
     @Override
@@ -74,40 +104,6 @@ public class home extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    // Buttom Navigation
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    //Organise com.motofit.beta.r1.Fragment while selecting
-                    Fragment selectedFragment = null;
-                    switch (item.getItemId()) {
-                        case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
-                            item.setChecked(true);
-                            break;
-                        case R.id.nav_motorcycle:
-                            selectedFragment = new MotorcycleFragment();
-                            item.setChecked(true);
-                            break;
-                        case R.id.nav_services:
-                            selectedFragment = new ServicesFragment();
-                            item.setChecked(true);
-                            break;
-                        case R.id.nav_more:
-                            selectedFragment = new more_infoFragment();
-                            item.setChecked(true);
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-                    return false;
-                }
-
-            };
-
-    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {

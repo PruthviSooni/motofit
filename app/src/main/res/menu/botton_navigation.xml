@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
         android:id="@+id/nav_home"
-        android:title="Home"
         android:icon="@drawable/ic_home"
+        android:title="Home"
         tools:ignore="HardcodedText" />
-    <item
-        android:id="@+id/nav_motorcycle"
-        android:title="Break Down"
-        android:icon="@drawable/ic_break_down"
-        tools:ignore="HardcodedText" />
+
     <item
         android:id="@+id/nav_services"
-        android:title="Services"
         android:icon="@drawable/ic_services"
+        android:title="Services"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/nav_motorcycle"
+        android:icon="@drawable/ic_break_down"
+        android:title="Break Down"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/nav_more"
-        android:title="More"
         android:icon="@drawable/ic_more_horiz"
+        android:title="More"
         tools:ignore="HardcodedText" />
-
 
 
 </menu>

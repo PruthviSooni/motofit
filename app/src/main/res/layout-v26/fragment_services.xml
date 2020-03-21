@@ -21,16 +21,16 @@
         <TableRow
             android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             tools:ignore="ExtraText">
 
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_time"
                 tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
@@ -61,8 +61,8 @@
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
@@ -70,8 +70,8 @@
                 android:id="@+id/imageView2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_odometer"
                 tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
@@ -94,17 +94,17 @@
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="35dp"
-                android:layout_marginTop="10dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_repair"
                 tools:ignore="ContentDescription,VectorDrawableCompat" />
@@ -134,8 +134,8 @@
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
             android:minWidth="50dp"
             android:minHeight="50dp">
 
@@ -143,8 +143,8 @@
                 android:id="@+id/imageView14"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 app:srcCompat="@drawable/ic_location"
                 tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat"
@@ -240,9 +240,9 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:visibility="invisible"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="4dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="4dp" />
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"

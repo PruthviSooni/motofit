@@ -7,16 +7,19 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:padding="10dp">
+
     <TextView
         android:id="@+id/usr_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/usr_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -154,9 +157,9 @@
 
             <ImageView
                 android:layout_width="30dp"
-                android:layout_marginTop="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/ic_location" />
 
             <EditText
@@ -166,18 +169,18 @@
                 android:layout_marginStart="15dp"
                 android:autoSizeTextType="uniform"
                 android:editable="false"
-                android:maxLines="4"
                 android:focusableInTouchMode="false"
                 android:inputType="textMultiLine"
+                android:maxLines="4"
                 tools:targetApi="o" />
 
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="40dp"
-                android:layout_marginTop="30dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:layout_height="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/dgrate"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 app:srcCompat="@drawable/ic_my_location"
                 tools:ignore="UnusedAttribute,VectorDrawableCompat"
                 tools:targetApi="m" />
@@ -199,6 +202,7 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/doorstep_coordinator"
         android:layout_width="match_parent"

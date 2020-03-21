@@ -39,25 +39,24 @@ import java.util.Locale;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class ServicesFragment  extends Fragment {
-    public ServicesFragment(){}
-
-    private EditText et_date,odometer,e4,notes;
+public class ServicesFragment extends Fragment {
+    private EditText et_date, odometer, e4, notes;
     private Button reg_btn;
-    private Spinner s1,sp_time;
+    private Spinner s1, sp_time;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mreference;
     private String userId;
     private CoordinatorLayout coordinatorLayout;
     private TextView username;
-
+    public ServicesFragment() {
+    }
 
     @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_services, container, false);
-
+        getActivity().setTitle("Book Service");
         //Assign id to Variable's
         et_date = v.findViewById(R.id.et_date);
         sp_time = v.findViewById(R.id.spinner_time);
@@ -98,7 +97,8 @@ public class ServicesFragment  extends Fragment {
         });
         return v;
     }
-    private void get_user_data(){
+
+    private void get_user_data() {
         //FireBase Variables
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         DatabaseReference mFirebaseDB = mFirebaseInstance.getReference("Users");
@@ -131,7 +131,8 @@ public class ServicesFragment  extends Fragment {
         });
 
     }
-    private void get_time(){
+
+    private void get_time() {
         //Date Picker Logic
         et_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +160,8 @@ public class ServicesFragment  extends Fragment {
             }
         });
     }
-    private void Firebase_RealTimeDB(){
+
+    private void Firebase_RealTimeDB() {
         ///Register Button Logic
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override

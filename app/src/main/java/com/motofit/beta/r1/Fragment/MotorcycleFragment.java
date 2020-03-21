@@ -51,22 +51,23 @@ import java.util.Objects;
 import static android.support.constraint.Constraints.TAG;
 
 public class MotorcycleFragment extends Fragment {
+    private static final int REQUEST_LOCATION = 1;
     View v;
     private Spinner brand, model, service_drop;
     private LocationManager locationManager;
     private CoordinatorLayout coordinatorLayout;
-    private static final int REQUEST_LOCATION = 1;
     private EditText current_location;
     private DatabaseReference m_reference;
     private String userID;
     private String usrId;
-    private TextView username,usernumber;
+    private TextView username, usernumber;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_motorcycle, container, false);
+        getActivity().setTitle("Book BreakDown");
         //TextView for getting user data
         username = v.findViewById(R.id.usr_name);
         usernumber = v.findViewById(R.id.usr_number);
@@ -201,7 +202,7 @@ public class MotorcycleFragment extends Fragment {
                     return;
                 }
                 m_reference = FirebaseDatabase.getInstance().getReference("BreakDown_Service");
-                Breakdown breakdown = new Breakdown(Name,Number,Brand,Model,Service_drop,Location);
+                Breakdown breakdown = new Breakdown(Name, Number, Brand, Model, Service_drop, Location);
                 m_reference.child(userID).push().setValue(breakdown);
                 m_reference.keepSynced(true);
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, "Service Registered.", Snackbar.LENGTH_LONG);
@@ -276,7 +277,7 @@ public class MotorcycleFragment extends Fragment {
         alertDialog.show();
     }
 
-    private void user_name(){
+    private void user_name() {
 
         //FireBase Variables
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();

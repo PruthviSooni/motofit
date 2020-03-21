@@ -27,12 +27,12 @@ import com.motofit.beta.r1.Firebase_Classes.Users;
 import static android.support.constraint.Constraints.TAG;
 
 public class user_profile extends AppCompatActivity {
-    private DatabaseReference mFirebaseDatabase;
-    private String userId;
     public String Name;
     Button b1;
     TextView t1, t2, t3;
     ProgressBar pb;
+    private DatabaseReference mFirebaseDatabase;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

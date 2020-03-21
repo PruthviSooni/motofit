@@ -30,28 +30,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/usrusr"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:src="@drawable/usrusr" />
+
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email Address"
-                    android:textColorHint="#111"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:letterSpacing="0.1"
-                    android:textSize="16dp"
+                    android:hint="Email Address"
                     android:inputType="text"
+                    android:letterSpacing="0.1"
                     android:textColor="#000000"
+                    android:textColorHint="#111"
+                    android:textSize="16dp"
                     tools:ignore="HardcodedText,RtlHardcoded,SpUsage,TextFields,UnusedAttribute" />
             </LinearLayout>
 
@@ -59,28 +62,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#4a5a71" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/pswd"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:src="@drawable/pswd" />
+
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:textColorHint="#111"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:hint="Password"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
-                    android:textSize="16dp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:textColorHint="#111"
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -94,47 +100,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
         android:gravity="bottom"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
         <Button
             android:id="@+id/but1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp"
             android:background="#876854"
+            android:gravity="center"
+            android:letterSpacing="0.2"
+            android:padding="16dp"
             android:text="Login"
             android:textColor="#111"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="bottom"
-            android:padding="16dp"
-            android:layout_marginBottom="50dp"
-            android:letterSpacing="0.2"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="75dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="75dp"
+            android:gravity="center_horizontal"
             android:letterSpacing="0.1"
             android:text="Create Account ? Signup"
-            android:textColor="#111"
-            />
+            android:textColor="#111" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="400dp"
         android:gravity="center">
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/motofit_img"
-            />
+            android:src="@drawable/motofit_img" />
     </LinearLayout>
 
     <android.support.design.widget.CoordinatorLayout

@@ -1,14 +1,12 @@
 package com.motofit.beta.r1;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,9 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.motofit.beta.r1.Firebase_Classes.Services;
 
-import static android.support.constraint.Constraints.TAG;
-
 public class history extends AppCompatActivity {
+    public String Date, Time, Location;
     private ProgressBar p1;
     private TextView date, time, location;
     private String userId;
@@ -43,7 +40,6 @@ public class history extends AppCompatActivity {
         going_back();
     }
 
-    public String Date, Time, Location;
     private void fetch_data() {
         //FireBase Variables
         DatabaseReference mFirebaseDB = FirebaseDatabase.getInstance().getReference("Services");
@@ -54,12 +50,12 @@ public class history extends AppCompatActivity {
 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Services services = ds.getValue(Services.class);
-                        if (services != null) {
-                            Date = services.date;
-                            Time = services.time;
-                            Location = services.location;
-                        }
+                    Services services = ds.getValue(Services.class);
+                    if (services != null) {
+                        Date = services.date;
+                        Time = services.time;
+                        Location = services.location;
+                    }
                 }
                 date.setText(Date);
                 time.setText(Time);
@@ -73,7 +69,8 @@ public class history extends AppCompatActivity {
         });
 
     }
-    private void going_back(){
+
+    private void going_back() {
         ///Toolbar For Going Back
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
