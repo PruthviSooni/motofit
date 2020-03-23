@@ -17,8 +17,10 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".history"></activity>
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity android:name=".history" />
         <activity android:name=".service_info" />
         <activity android:name=".about_us" />
 
@@ -51,6 +53,17 @@
         </activity>
         <activity android:name=".login" />
         <activity android:name=".signup" />
+
+        <service android:name=".fcm_instance_id_service">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".fcm_messaging_service">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

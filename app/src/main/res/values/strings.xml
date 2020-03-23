@@ -18,6 +18,8 @@
     <string name="this_is_user_info">This is User Info</string>
     <string name="title_1">Regular Repair and Maintenance</string>
     <string name="title_2">Accidental Repair and Free Breakdown.</string>
+    <string name="title_3">Engine TuneUp</string>
+    <string name="title_4">Custom Parts Initialisation</string>
     <string name="hint">Write description in detail. \n \n \n \n</string>
     <string name="location_hint">Get Current Location \n \n \n \n</string>
     <string name="service_title">Register Your Service</string>
@@ -30,4 +32,6 @@
     <string name="Accidental_repair">Anytime, Anywhere, you can count on us for your crashed bike.</string>
     <string name="engine_tuneup">Engine gave up? Need not worry, with our vast experience and expertise, we will rebuild it to make it work like as good as new.</string>
     <string name="custom_parts">With our wide range of genuine accessories and spare parts, we are sure we’ll fulfil all your demands with utmost satisfaction.</string>
+    <string name="FCM_PREF">com.motofit.beta.r1_fcm_pref</string>
+    <string name="FCM_TOKEN">com.motofit.beta.r1_fcm_token</string>
 </resources>

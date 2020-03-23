@@ -44,6 +44,8 @@ import com.motofit.beta.r1.Firebase_Classes.Users;
 import com.motofit.beta.r1.R;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -194,6 +196,8 @@ public class MotorcycleFragment extends Fragment {
                 String Model = model.getSelectedItem().toString().trim();
                 String Service_drop = service_drop.getSelectedItem().toString().trim();
                 String Location = current_location.getText().toString().trim();
+                Date currentTime = Calendar.getInstance().getTime();
+                String Date_and_Time= currentTime.toString().trim();
                 String Name = username.getText().toString().trim();
                 String Number = usernumber.getText().toString().trim();
                 if (Location.isEmpty()) {
@@ -202,12 +206,14 @@ public class MotorcycleFragment extends Fragment {
                     return;
                 }
                 m_reference = FirebaseDatabase.getInstance().getReference("BreakDown_Service");
-                Breakdown breakdown = new Breakdown(Name, Number, Brand, Model, Service_drop, Location);
+                Breakdown breakdown = new Breakdown(Name ,Number, Model, Brand, Service_drop, Location,Date_and_Time);
                 m_reference.child(userID).push().setValue(breakdown);
                 m_reference.keepSynced(true);
-                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Service Registered.", Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Booked Breakdown.", Snackbar.LENGTH_LONG);
                 snackbar.show();
                 register.setClickable(false);
+
+
             }
         });
         return v;
@@ -283,7 +289,6 @@ public class MotorcycleFragment extends Fragment {
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         DatabaseReference mFirebaseDB = mFirebaseInstance.getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         if (user != null) {
             usrId = user.getUid();
         }

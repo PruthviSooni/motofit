@@ -48,6 +48,7 @@ public class ServicesFragment extends Fragment {
     private String userId;
     private CoordinatorLayout coordinatorLayout;
     private TextView username;
+
     public ServicesFragment() {
     }
 

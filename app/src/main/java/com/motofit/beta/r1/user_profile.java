@@ -51,6 +51,7 @@ public class user_profile extends AppCompatActivity {
         mFirebaseDatabase.keepSynced(true);
         ///Toolbar For Going Back
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("User Profile");
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back); // your drawable
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -108,7 +109,7 @@ public class user_profile extends AppCompatActivity {
                     }
                     Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
                     // Display newly updated name and email
-                    t1.setText("User Name : " + user.name);
+                    t1.setText(user.name);
                     t2.setText("Mobile Number : " + user.mobnum);
                     t3.setText("Email : " + user.email);
                     Name = user.name;

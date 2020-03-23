@@ -1,9 +1,11 @@
 package com.motofit.beta.r1.Fragment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -14,10 +16,13 @@ import android.view.ViewGroup;
 
 import com.motofit.beta.r1.R;
 
+import java.util.Objects;
+
 public class HomeFragment extends Fragment implements View.OnClickListener {
     public HomeFragment() {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -26,7 +31,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ConstraintLayout const_2 = v.findViewById(R.id.constraintLayout_2);
         ConstraintLayout const_4 = v.findViewById(R.id.constraintLayout_4);
 
-        getActivity().setTitle("How It's Work?");
+        Objects.requireNonNull(getActivity()).setTitle("How It's Work?");
         const_1.setOnClickListener(this);
         const_2.setOnClickListener(this);
         const_4.setOnClickListener(this);
@@ -36,7 +41,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         final AppCompatActivity activity = (AppCompatActivity) v.getContext();
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.constraintLayout_1:
                 Fragment myFragment_1 = new ServicesFragment();
                 //Select Icon in Bottom Navigation Area
@@ -61,7 +66,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         .commit();
                 break;
             case R.id.constraintLayout_4:
-                Intent i = new Intent(getContext(),com.motofit.beta.r1.history.class);
+                Intent i = new Intent(getContext(), com.motofit.beta.r1.history.class);
                 startActivity(i);
                 break;
             default:

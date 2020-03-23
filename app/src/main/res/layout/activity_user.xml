@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
@@ -27,10 +28,9 @@
 
         <TextView
             android:id="@+id/t5"
-            android:layout_width="250dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="95dp"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/googlesans_regular"
             android:textSize="20sp"
@@ -41,9 +41,8 @@
 
         <TextView
             android:id="@+id/t3"
-            android:layout_width="250dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="95dp"
             android:layout_marginBottom="21dp"
             android:fontFamily="@font/googlesans_regular"
             android:textSize="20sp"
@@ -135,12 +134,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="49dp"
         android:fontFamily="@font/googlesans_regular"
         android:text=""
+        android:textAllCaps="true"
+        android:textColor="?attr/actionMenuTextColor"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -155,8 +154,8 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/googlesans_regular"
         android:text="Account Details"
-        android:textStyle="bold"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"

@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,7 +56,10 @@ public class history extends AppCompatActivity {
                         Date = services.date;
                         Time = services.time;
                         Location = services.location;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No Previous Service Found!!", Toast.LENGTH_LONG).show();
                     }
+
                 }
                 date.setText(Date);
                 time.setText(Time);
@@ -73,6 +77,7 @@ public class history extends AppCompatActivity {
     private void going_back() {
         ///Toolbar For Going Back
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Service History");
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back); // your drawable
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
