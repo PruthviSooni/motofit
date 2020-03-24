@@ -3,13 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/accentcolor"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    android:gravity="center_vertical"
-    app:layout_collapseMode="pin"
-    app:layout_scrollFlags="scroll|enterAlways"
     tools:targetApi="lollipop">
 
 </android.support.v7.widget.Toolbar>

@@ -14,11 +14,11 @@ import com.motofit.app.Firebase_Classes.Breakdown;
 
 import java.util.List;
 
-public class Adapters extends ArrayAdapter<Breakdown> {
+public class breakdown_adapter extends ArrayAdapter<Breakdown> {
     private Activity context;
     private List<Breakdown> breakdownList;
 
-    public Adapters(Activity context, List<Breakdown> breakdownList) {
+    public breakdown_adapter(Activity context, List<Breakdown> breakdownList) {
         super(context, R.layout.history_list_layout, breakdownList);
         this.context = context;
         this.breakdownList = breakdownList;
