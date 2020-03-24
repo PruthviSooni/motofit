@@ -10,24 +10,6 @@
         android:layout_height="wrap_content">
 
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="187dp"
-            android:layout_height="31dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginRight="100dp"
-            android:gravity="center"
-            android:text="How it's Works?"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout_1"
             android:layout_width="350dp"
@@ -38,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/dgrate"
@@ -100,7 +82,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="190dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/dgrate"
@@ -159,7 +141,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="355dp"
+            android:layout_marginTop="345dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/dgrate"
@@ -175,7 +157,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_thumb_up"
+                app:srcCompat="@drawable/ic_bike"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
@@ -185,7 +167,7 @@
                 android:layout_marginTop="1dp"
                 android:gravity="center"
                 android:inputType="textMultiLine"
-                android:text="Our expert team will fix every problem diagnosed and make your vehicle ready for roads again."
+                android:text="We drop the vehicle at your doorstep on satisfactory completion of work."
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.533"
@@ -197,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="Problem Diagnose"
+                android:text="Drop Vehicle"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/text7"
@@ -219,7 +201,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="495dp"
+            android:layout_marginTop="485dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="15dp"
@@ -237,7 +219,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_bike"
+                app:srcCompat="@drawable/ic_history"
                 tools:ignore="DuplicateIds,VectorDrawableCompat" />
 
             <TextView
@@ -248,7 +230,7 @@
                 android:layout_marginBottom="-5dp"
                 android:gravity="center"
                 android:inputType="textMultiLine"
-                android:text="We drop the vehicle at your doorstep on satisfactory completion of work."
+                android:text="You can see your Booking Details by clicking on the history"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.516"
@@ -259,7 +241,7 @@
                 android:id="@+id/text5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Drop Vehicle"
+                android:text="History"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/text7"

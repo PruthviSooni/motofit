@@ -34,4 +34,7 @@
     <string name="custom_parts">With our wide range of genuine accessories and spare parts, we are sure we’ll fulfil all your demands with utmost satisfaction.</string>
     <string name="FCM_PREF">com.motofit.beta.r1_fcm_pref</string>
     <string name="FCM_TOKEN">com.motofit.beta.r1_fcm_token</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
