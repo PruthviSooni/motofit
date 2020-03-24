@@ -1,4 +1,4 @@
-package com.motofit.beta.r1;
+package com.motofit.app;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,7 +35,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.motofit.beta.r1.Firebase_Classes.Users;
+import com.motofit.app.Firebase_Classes.Users;
 
 import java.util.HashMap;
 import java.util.Map;

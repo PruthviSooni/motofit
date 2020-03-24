@@ -1,4 +1,4 @@
-package com.motofit.beta.r1;
+package com.motofit.app;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,10 +19,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.motofit.beta.r1.Fragment.HomeFragment;
-import com.motofit.beta.r1.Fragment.MotorcycleFragment;
-import com.motofit.beta.r1.Fragment.ServicesFragment;
-import com.motofit.beta.r1.Fragment.more_infoFragment;
+import com.motofit.app.Fragment.HomeFragment;
+import com.motofit.app.Fragment.MotorcycleFragment;
+import com.motofit.app.Fragment.ServicesFragment;
+import com.motofit.app.Fragment.more_infoFragment;
 
 public class home extends AppCompatActivity {
 
@@ -47,7 +47,7 @@ public class home extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    //Organise com.motofit.beta.r1.Fragment while selecting
+                    //Organise com.motofit.app.Fragment while selecting
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.nav_home:

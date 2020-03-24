@@ -152,7 +152,7 @@
                 tools:layout_editor_absoluteY="214dp" />
 
             <EditText
-                android:id="@+id/location"
+                android:id="@+id/usr_location"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_span="2"

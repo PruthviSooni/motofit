@@ -1,4 +1,4 @@
-package com.motofit.beta.r1.Fragment;
+package com.motofit.app.Fragment;
 
 import android.content.Intent;
 import android.os.Build;
@@ -14,7 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.motofit.beta.r1.R;
+import com.motofit.app.R;
+import com.motofit.app.history;
 
 import java.util.Objects;
 
@@ -66,7 +67,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         .commit();
                 break;
             case R.id.constraintLayout_4:
-                Intent i = new Intent(getContext(), com.motofit.beta.r1.history.class);
+                Intent i = new Intent(getContext(), history.class);
                 startActivity(i);
                 break;
             default:

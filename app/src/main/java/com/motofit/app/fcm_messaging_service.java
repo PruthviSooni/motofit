@@ -1,4 +1,4 @@
-package com.motofit.beta.r1;
+package com.motofit.app;
 
 import android.annotation.SuppressLint;
 import android.app.NotificationManager;
@@ -21,14 +21,14 @@ public class fcm_messaging_service extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         String message = Objects.requireNonNull(remoteMessage.getNotification()).getBody();
         String title = Objects.requireNonNull(remoteMessage.getNotification()).getTitle();
-        Intent i = new Intent(this, com.motofit.beta.r1.history.class);
+        Intent i = new Intent(this, history.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pi = PendingIntent
                 .getActivity(this, 0, i, 0);
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this);
         notification.setContentTitle(title);
         notification.setContentText(message);
-        notification.setSmallIcon(R.drawable.ic_stat_name);
+        notification.setSmallIcon(R.drawable.motofit_img);
         notification.setAutoCancel(true);
         notification.setContentIntent(pi);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
