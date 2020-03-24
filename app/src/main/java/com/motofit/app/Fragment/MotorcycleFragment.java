@@ -1,4 +1,4 @@
-package com.motofit.beta.r1.Fragment;
+package com.motofit.app.Fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -39,9 +39,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.motofit.beta.r1.Firebase_Classes.Breakdown;
-import com.motofit.beta.r1.Firebase_Classes.Users;
-import com.motofit.beta.r1.R;
+import com.motofit.app.Firebase_Classes.Breakdown;
+import com.motofit.app.Firebase_Classes.Users;
+import com.motofit.app.R;
 
 import java.io.IOException;
 import java.util.Calendar;

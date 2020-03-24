@@ -1,4 +1,4 @@
-package com.motofit.beta.r1;
+package com.motofit.app;
 
 import android.content.Intent;
 import android.os.Bundle;

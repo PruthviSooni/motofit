@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="20dp"
+        tools:layout_editor_absoluteX="13dp">
+
+        <ImageView
+            android:id="@+id/iv5"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="39dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bike_model"
+            app:layout_constraintStart_toEndOf="@+id/bike_brand"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            app:srcCompat="@drawable/ic_bike"
+            tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/iv3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_time"
+            app:layout_constraintBottom_toTopOf="@+id/iv4"
+            app:layout_constraintEnd_toStartOf="@+id/time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv2"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@id/time"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="9dp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingTop="2.2dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/iv5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv3"
+            app:layout_constraintTop_toBottomOf="@+id/usr_location"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintBottom_toTopOf="@+id/iv3"
+            app:layout_constraintEnd_toStartOf="@+id/usr_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv1"
+            tools:ignore="MissingConstraints" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/usr_location"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="none"
+            android:fontFamily="@font/googlesans_regular"
+            android:textSize="18sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv2"
+            app:layout_constraintTop_toBottomOf="@+id/break_type"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="9dp"
+            app:layout_constraintBottom_toTopOf="@+id/iv2"
+            app:layout_constraintEnd_toStartOf="@+id/break_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_regular_service"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/break_type"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/googlesans_regular"
+            android:paddingTop="1.5dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/usr_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bike_brand"
+            android:layout_width="145dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="39dp"
+            android:paddingStart="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv5"
+            app:layout_constraintStart_toEndOf="@+id/iv4"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:ignore="MissingConstraints,RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/bike_model"
+            android:layout_width="135dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="39dp"
+            android:paddingStart="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv5"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:ignore="MissingConstraints,RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/iv4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="39dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bike_brand"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv3"
+            app:srcCompat="@drawable/ic_brand_logo"
+            tools:ignore="MissingConstraints" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</RelativeLayout>

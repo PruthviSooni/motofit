@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grdnt"
-    tools:context="com.test.motofit_temp.test_1.com.test.motofit_temp.stable_1.splash">
+    tools:context="com.motofit.app.splash">
 
     <ImageView
         android:id="@+id/imageView"

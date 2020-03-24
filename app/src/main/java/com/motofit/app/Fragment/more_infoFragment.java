@@ -1,4 +1,4 @@
-package com.motofit.beta.r1.Fragment;
+package com.motofit.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.motofit.beta.r1.R;
-import com.motofit.beta.r1.about_us;
-import com.motofit.beta.r1.user_profile;
+import com.motofit.app.R;
+import com.motofit.app.about_us;
+import com.motofit.app.history;
+import com.motofit.app.user_profile;
 
 @SuppressLint("ValidFragment")
 public class more_infoFragment extends Fragment {
@@ -47,7 +48,7 @@ public class more_infoFragment extends Fragment {
         l3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), com.motofit.beta.r1.history.class);
+                Intent i = new Intent(getActivity(), history.class);
                 startActivity(i);
             }
         });

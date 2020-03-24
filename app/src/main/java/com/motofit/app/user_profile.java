@@ -1,4 +1,4 @@
-package com.motofit.beta.r1;
+package com.motofit.app;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.motofit.beta.r1.Firebase_Classes.Users;
+import com.motofit.app.Firebase_Classes.Users;
 
 import static android.support.constraint.Constraints.TAG;
 

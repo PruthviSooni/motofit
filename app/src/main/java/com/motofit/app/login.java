@@ -1,4 +1,4 @@
-package com.motofit.beta.r1;
+package com.motofit.app;
 
 import android.content.Context;
 import android.content.DialogInterface;

@@ -1,7 +1,13 @@
-package com.motofit.beta.r1.Firebase_Classes;
+package com.motofit.app.Firebase_Classes;
 
 public class Breakdown {
-    public String User_Name, Phone_Number, Model, Brand, Dropdown_service, Location, Date_and_Time;
+    public String User_Name;
+    public String Phone_Number;
+    public String Model;
+    public String Brand;
+    public String Dropdown_service;
+    public String Location;
+    public String Date_and_Time;
 
     public Breakdown() {
     }

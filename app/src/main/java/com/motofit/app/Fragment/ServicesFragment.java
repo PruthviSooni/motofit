@@ -1,4 +1,4 @@
-package com.motofit.beta.r1.Fragment;
+package com.motofit.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -29,9 +29,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.motofit.beta.r1.Firebase_Classes.Services;
-import com.motofit.beta.r1.Firebase_Classes.Users;
-import com.motofit.beta.r1.R;
+import com.motofit.app.Firebase_Classes.Services;
+import com.motofit.app.Firebase_Classes.Users;
+import com.motofit.app.R;
+import com.motofit.app.service_info;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -62,7 +63,7 @@ public class ServicesFragment extends Fragment {
         et_date = v.findViewById(R.id.et_date);
         sp_time = v.findViewById(R.id.spinner_time);
         s1 = v.findViewById(R.id.spinner);
-        e4 = v.findViewById(R.id.location);
+        e4 = v.findViewById(R.id.usr_location);
         reg_btn = v.findViewById(R.id.register);
         notes = v.findViewById(R.id.notes);
         odometer = v.findViewById(R.id.kilometer);
@@ -92,7 +93,7 @@ public class ServicesFragment extends Fragment {
         info_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), com.motofit.beta.r1.service_info.class);
+                Intent i = new Intent(getContext(), service_info.class);
                 startActivity(i);
             }
         });
