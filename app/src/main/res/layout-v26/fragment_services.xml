@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +10,9 @@
         android:id="@+id/tableLayout2"
         android:layout_width="400dp"
         android:layout_height="350dp"
-        android:layout_marginTop="0dp"
+        android:layout_below="@id/textView"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/sharp_dgrate"
         app:layout_constraintBottom_toTopOf="@+id/register"
@@ -206,9 +208,10 @@
         android:id="@+id/register"
         android:layout_width="206dp"
         android:layout_height="41dp"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/tableLayout2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="32dp"
-        android:layout_span="2"
         android:background="#876854"
         android:gravity="center"
         android:text="Register"
@@ -223,6 +226,9 @@
         android:id="@+id/textView"
         android:layout_width="286dp"
         android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
         android:fontFamily="sans-serif-smallcaps"
@@ -257,4 +263,4 @@
         tools:ignore="MissingConstraints" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

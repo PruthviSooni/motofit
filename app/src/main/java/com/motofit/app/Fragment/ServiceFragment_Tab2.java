@@ -1,8 +1,12 @@
 package com.motofit.app.Fragment;
 
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +32,14 @@ import java.util.List;
  */
 public class ServiceFragment_Tab2 extends Fragment {
 
+    List<Services> servicesList;
+    ListView listView_service;
+    private ProgressBar p1;
+    private String userId;
+
     public ServiceFragment_Tab2() {
         // Required empty public constructor
     }
-    private ProgressBar p1;
-    private String userId;
-    List<Services> servicesList;
-    ListView listView_service;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +58,7 @@ public class ServiceFragment_Tab2 extends Fragment {
         return v;
 
     }
+
     private void fetch_data() {
 
         //FireBase Variables
@@ -60,6 +66,7 @@ public class ServiceFragment_Tab2 extends Fragment {
         p1.setVisibility(View.VISIBLE);
         //Access Logged In User Name
         mFirebaseDB.child(userId).addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 servicesList.clear();
@@ -67,10 +74,28 @@ public class ServiceFragment_Tab2 extends Fragment {
                     Services service = ds.getValue(Services.class);
                     servicesList.add(service);
                 }
-                service_adapter service_adapter = new service_adapter(getActivity(),servicesList);
-                listView_service.setAdapter(service_adapter);
+                if (servicesList.isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("My History");
+                    builder.setIcon(R.mipmap.ic_launcher);
+                    builder.setMessage("No ServiceRecord Found Please Register a Service!!")
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                                public void onClick(DialogInterface dialog, int id) {
+                                    getActivity().onBackPressed();
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+                } else {
+                    service_adapter service_adapter = new service_adapter(getActivity(), servicesList);
+                    listView_service.setAdapter(service_adapter);
+                }
                 p1.setVisibility(View.GONE);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }

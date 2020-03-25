@@ -51,6 +51,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="81" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -61,9 +62,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\pruth\StudioProjects\motofit\app\src\main\res\drawable\motofit_img.jpg" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="foregroundImage" value="C:\xampp\htdocs\php\images\logo.png" />
                                       <entry key="legacyIconShape" value="CIRCLE" />
-                                      <entry key="previewDensity" value="XXHIGH" />
                                     </map>
                                   </option>
                                 </PersistentState>

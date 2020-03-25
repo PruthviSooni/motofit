@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.motofit.app.Fragment.ServiceFragment_Tab2">
+
     <ProgressBar
         android:id="@+id/h2_progressBar"
         style="?android:attr/progressBarStyle"
@@ -15,9 +16,10 @@
         android:scrollbarStyle="outsideOverlay"
         android:visibility="gone"
         tools:ignore="UnusedAttribute" />
+
     <ListView
         android:id="@+id/service_history_list"
-        android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp" />
 </RelativeLayout>

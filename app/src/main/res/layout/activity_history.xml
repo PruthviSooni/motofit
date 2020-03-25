@@ -14,21 +14,20 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_below="@+id/tb"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tb"
         android:minHeight="?actionBarSize"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white"
         app:tabBackground="@color/accentcolor"
-        app:tabMode="fixed">
-    </android.support.design.widget.TabLayout>
+        app:tabIndicatorColor="@color/white"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/white" />
 
     <!-- View pager to swipe views -->
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"
+        app:tabBackground="@color/accentcolor" />
 
 
 </RelativeLayout>
