@@ -14,27 +14,23 @@ import com.motofit.app.Fragment.ServiceFragment_Tab2;
 @SuppressLint("Registered")
 public class history extends AppCompatActivity {
 
-    private TabAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         //Assign Id to Components
-
+        going_back();
         final ViewPager viewPager = findViewById(R.id.viewPager);
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
-        adapter = new TabAdapter(getSupportFragmentManager());
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new HistoryFragment_Tab1(), "Breakdown History");
         adapter.addFragment(new ServiceFragment_Tab2(), "Service History");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        going_back();
-
     }
 
-    @SuppressLint("NewApi")
     private void going_back() {
         ///Toolbar For Going Back
         Toolbar toolbar = findViewById(R.id.tb);
@@ -44,8 +40,9 @@ public class history extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed(); // Implemented by activity
+                onBackPressed();
             }
         });
     }
+
 }

@@ -1,17 +1,18 @@
 package com.motofit.app.Fragment;
 
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +37,8 @@ public class ServiceFragment_Tab2 extends Fragment {
     ListView listView_service;
     private ProgressBar p1;
     private String userId;
+    private ImageView service_notFound_Img;
+    private TextView service_notFound_txt;
 
     public ServiceFragment_Tab2() {
         // Required empty public constructor
@@ -48,19 +51,25 @@ public class ServiceFragment_Tab2 extends Fragment {
         View v = inflater.inflate(R.layout.fragment_service__tab2, container, false);
         //Assign Id to Components
         p1 = v.findViewById(R.id.h2_progressBar);
+        service_notFound_Img = v.findViewById(R.id.service_notFound_Img);
+        service_notFound_txt = v.findViewById(R.id.service_notFound_Txt);
         listView_service = v.findViewById(R.id.service_history_list);
         servicesList = new ArrayList<>();
+        if (servicesList.isEmpty()) {
+            Log.d("TAB_1 List Debug", "service_list is Empty");
+        }
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             userId = user.getUid();
         }
-        fetch_data();
         return v;
 
     }
 
-    private void fetch_data() {
 
+    @Override
+    public void onStart() {
+        super.onStart();
         //FireBase Variables
         DatabaseReference mFirebaseDB = FirebaseDatabase.getInstance().getReference("Services");
         p1.setVisibility(View.VISIBLE);
@@ -75,23 +84,17 @@ public class ServiceFragment_Tab2 extends Fragment {
                     servicesList.add(service);
                 }
                 if (servicesList.isEmpty()) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle("My History");
-                    builder.setIcon(R.mipmap.ic_launcher);
-                    builder.setMessage("No ServiceRecord Found Please Register a Service!!")
-                            .setCancelable(false)
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                                public void onClick(DialogInterface dialog, int id) {
-                                    getActivity().onBackPressed();
-                                }
-                            });
-                    AlertDialog alert = builder.create();
-                    alert.show();
-
+                    service_notFound_Img.setVisibility(View.VISIBLE);
+                    service_notFound_txt.setVisibility(View.VISIBLE);
+                    listView_service.setVisibility(View.GONE);
                 } else {
-                    service_adapter service_adapter = new service_adapter(getActivity(), servicesList);
-                    listView_service.setAdapter(service_adapter);
+                    service_notFound_Img.setVisibility(View.GONE);
+                    service_notFound_txt.setVisibility(View.GONE);
+                    if (getActivity() != null) {
+                        service_adapter service_adapter = new service_adapter(getActivity(), servicesList);
+                        listView_service.setAdapter(service_adapter);
+                    }
+
                 }
                 p1.setVisibility(View.GONE);
             }
@@ -103,3 +106,4 @@ public class ServiceFragment_Tab2 extends Fragment {
 
     }
 }
+
