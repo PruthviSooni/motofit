@@ -28,13 +28,13 @@ public class service_adapter extends ArrayAdapter<Services> {
     @Override
     @SuppressLint("ViewHolder")
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        View listviewItem = inflater.inflate(R.layout.service_list_layout, null, true);
-        TextView location = listviewItem.findViewById(R.id.usr_location);
-        TextView time = listviewItem.findViewById(R.id.time);
-        TextView service_type = listviewItem.findViewById(R.id.service_type);
-        TextView notes = listviewItem.findViewById(R.id.usr_notes);
-        TextView odometer = listviewItem.findViewById(R.id.usr_odometer);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        @SuppressLint("InflateParams") View list_view_Item = inflater.inflate(R.layout.service_list_layout, null, true);
+        TextView location = list_view_Item.findViewById(R.id.usr_location);
+        TextView time = list_view_Item.findViewById(R.id.time);
+        TextView service_type = list_view_Item.findViewById(R.id.service_type);
+        TextView notes = list_view_Item.findViewById(R.id.usr_notes);
+        TextView odometer = list_view_Item.findViewById(R.id.usr_odometer);
 
         Services services = serviceList.get(position);
         location.setText(services.location);
@@ -42,7 +42,7 @@ public class service_adapter extends ArrayAdapter<Services> {
         service_type.setText(services.type_service);
         notes.setText(services.notes);
         odometer.setText(services.odometer);
-        return listviewItem;
+        return list_view_Item;
 
 
     }

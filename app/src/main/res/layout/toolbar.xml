@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/accentcolor"
     android:gravity="center_vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:layout_collapseMode="pin"
-    app:layout_scrollFlags="scroll|enterAlways"
     tools:targetApi="lollipop">
 
 </android.support.v7.widget.Toolbar>
