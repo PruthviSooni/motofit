@@ -27,21 +27,7 @@ import com.motofit.app.Fragment.more_infoFragment;
 public class home extends AppCompatActivity {
 
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        //For Check Connection
-        if (!isConnected(home.this)) buildDialog(home.this).show();
-        else {
-            setContentView(R.layout.activity_home);
-        }
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-    }
-
+    boolean doubleBackToExitPressedOnce = false;
     // Buttom Navigation
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -73,6 +59,19 @@ public class home extends AppCompatActivity {
 
             };
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        //For Check Connection
+        if (!isConnected(home.this)) buildDialog(home.this).show();
+        else {
+            setContentView(R.layout.activity_home);
+        }
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+    }
 
     //Creating Menu Item Option
     @Override
@@ -103,7 +102,7 @@ public class home extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -132,9 +131,7 @@ public class home extends AppCompatActivity {
         if (netinfo != null && netinfo.isConnectedOrConnecting()) {
             android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
             android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
-                return true;
-            else return false;
+            return (mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting());
         } else
             return false;
     }

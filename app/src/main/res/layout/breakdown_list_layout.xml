@@ -24,7 +24,7 @@
             tools:layout_editor_absoluteY="28dp" />
 
         <TextView
-            android:id="@+id/service_type"
+            android:id="@+id/break_type"
             android:layout_width="320dp"
             android:layout_height="30dp"
             android:layout_marginStart="15dp"
@@ -51,13 +51,14 @@
             android:id="@+id/usr_location"
             android:layout_width="320dp"
             android:layout_height="30dp"
-            android:layout_below="@id/service_type"
+            android:layout_below="@id/break_type"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/iv2"
             android:ellipsize="none"
             android:fontFamily="@font/googlesans_regular"
             android:textSize="18sp"
+            app:autoSizeTextType="uniform"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="52dp"
             tools:layout_editor_absoluteY="62dp" />
@@ -96,15 +97,15 @@
             android:layout_below="@id/time"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/usr_notes"
-            app:srcCompat="@drawable/ic_odometer"
+            android:layout_toEndOf="@id/bike_brand"
+            app:srcCompat="@drawable/ic_bike"
             tools:ignore="MissingConstraints,VectorDrawableCompat"
             tools:layout_editor_absoluteX="206dp"
             tools:layout_editor_absoluteY="129dp" />
 
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/usr_odometer"
+            android:id="@+id/bike_model"
             android:layout_width="135dp"
             android:layout_height="30dp"
             android:layout_below="@id/time"
@@ -112,13 +113,14 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/iv5"
             android:fontFamily="@font/googlesans_regular"
+            android:textAlignment="viewStart"
             android:textSize="18sp"
             tools:ignore="MissingConstraints,RtlSymmetry"
             tools:layout_editor_absoluteX="235dp"
             tools:layout_editor_absoluteY="128dp" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/usr_notes"
+            android:id="@+id/bike_brand"
             android:layout_width="145dp"
             android:layout_height="30dp"
             android:layout_below="@id/time"
@@ -126,7 +128,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/iv4"
             android:fontFamily="@font/googlesans_regular"
-            android:paddingStart="5dp"
+            android:textAlignment="viewStart"
             android:textSize="18sp"
             tools:ignore="MissingConstraints,RtlSymmetry"
             tools:layout_editor_absoluteX="56dp"
@@ -140,7 +142,7 @@
             android:layout_below="@id/iv3"
             android:layout_marginStart="20dp"
             android:layout_marginTop="11dp"
-            app:srcCompat="@drawable/ic_notes"
+            app:srcCompat="@drawable/ic_brand_logo"
             tools:ignore="MissingConstraints,VectorDrawableCompat"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="127dp" />

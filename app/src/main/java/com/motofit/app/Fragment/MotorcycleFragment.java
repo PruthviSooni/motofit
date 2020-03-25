@@ -197,7 +197,7 @@ public class MotorcycleFragment extends Fragment {
                 String Service_drop = service_drop.getSelectedItem().toString().trim();
                 String Location = current_location.getText().toString().trim();
                 Date currentTime = Calendar.getInstance().getTime();
-                String Date_and_Time= currentTime.toString().trim();
+                String Date_and_Time = currentTime.toString().trim();
                 String Name = username.getText().toString().trim();
                 String Number = usernumber.getText().toString().trim();
                 if (Location.isEmpty()) {
@@ -206,7 +206,7 @@ public class MotorcycleFragment extends Fragment {
                     return;
                 }
                 m_reference = FirebaseDatabase.getInstance().getReference("BreakDown_Service");
-                Breakdown breakdown = new Breakdown(Name ,Number, Model, Brand, Service_drop, Location,Date_and_Time);
+                Breakdown breakdown = new Breakdown(Name, Number, Model, Brand, Service_drop, Location, Date_and_Time);
                 m_reference.child(userID).push().setValue(breakdown);
                 m_reference.keepSynced(true);
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, "Booked Breakdown.", Snackbar.LENGTH_LONG);

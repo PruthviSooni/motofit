@@ -19,7 +19,7 @@ public class breakdown_adapter extends ArrayAdapter<Breakdown> {
     private List<Breakdown> breakdownList;
 
     public breakdown_adapter(Activity context, List<Breakdown> breakdownList) {
-        super(context, R.layout.history_list_layout, breakdownList);
+        super(context, R.layout.breakdown_list_layout, breakdownList);
         this.context = context;
         this.breakdownList = breakdownList;
     }
@@ -27,9 +27,9 @@ public class breakdown_adapter extends ArrayAdapter<Breakdown> {
     @NonNull
     @Override
     @SuppressLint("ViewHolder")
-    public View getView(int position,@Nullable View convertView,@NonNull ViewGroup parent) {
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listviewItem = inflater.inflate(R.layout.history_list_layout,null,true);
+        View listviewItem = inflater.inflate(R.layout.breakdown_list_layout, null, true);
         TextView location = listviewItem.findViewById(R.id.usr_location);
         TextView time = listviewItem.findViewById(R.id.time);
         TextView break_type = listviewItem.findViewById(R.id.break_type);

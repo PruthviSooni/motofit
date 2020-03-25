@@ -29,7 +29,7 @@ public class service_adapter extends ArrayAdapter<Services> {
     @SuppressLint("ViewHolder")
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listviewItem = inflater.inflate(R.layout.service_list_layout,null,true);
+        View listviewItem = inflater.inflate(R.layout.service_list_layout, null, true);
         TextView location = listviewItem.findViewById(R.id.usr_location);
         TextView time = listviewItem.findViewById(R.id.time);
         TextView service_type = listviewItem.findViewById(R.id.service_type);

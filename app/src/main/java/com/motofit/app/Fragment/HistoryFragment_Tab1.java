@@ -17,21 +17,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.motofit.app.breakdown_adapter;
 import com.motofit.app.Firebase_Classes.Breakdown;
 import com.motofit.app.R;
+import com.motofit.app.breakdown_adapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryFragment_Tab1 extends Fragment {
+    List<Breakdown> breakdownList;
+    ListView listView_breakdown;
+    private ProgressBar p1;
+    private String userId;
+
     public HistoryFragment_Tab1() {
         // Required empty public constructor
     }
-    private ProgressBar p1;
-    private String userId;
-    List<Breakdown> breakdownList;
-    ListView listView_breakdown;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class HistoryFragment_Tab1 extends Fragment {
 
         return v;
     }
+
     private void fetch_data() {
 
         //FireBase Variables
@@ -62,10 +65,11 @@ public class HistoryFragment_Tab1 extends Fragment {
                     Breakdown breakdown = ds.getValue(Breakdown.class);
                     breakdownList.add(breakdown);
                 }
-                breakdown_adapter breakdown_adapter = new breakdown_adapter(getActivity(),breakdownList);
+                breakdown_adapter breakdown_adapter = new breakdown_adapter(getActivity(), breakdownList);
                 listView_breakdown.setAdapter(breakdown_adapter);
                 p1.setVisibility(View.GONE);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }

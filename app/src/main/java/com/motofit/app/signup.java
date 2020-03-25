@@ -130,12 +130,10 @@ public class signup extends AppCompatActivity implements OnClickListener {
 
                             startActivity(it);
                         } else {
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException)
-                            {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 Snackbar snackbar = Snackbar.make(coordinatorLayout, "You Are Already Registered", Snackbar.LENGTH_LONG);
                                 snackbar.show();
-                            } else
-                            {
+                            } else {
                                 Snackbar snackbar = Snackbar.make(coordinatorLayout, Objects
                                         .requireNonNull(Objects.requireNonNull(task.getException()).getMessage()), Snackbar.LENGTH_LONG);
                                 snackbar.show();
@@ -162,7 +160,7 @@ public class signup extends AppCompatActivity implements OnClickListener {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("fcm_number",mob_num);
+                        params.put("fcm_number", mob_num);
                         params.put("fcm_token", token);
                         return params;
                     }
