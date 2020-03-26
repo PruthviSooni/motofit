@@ -37,8 +37,5 @@
 
     <style name="Toolbar" parent="@style/ThemeOverlay.AppCompat.Dark" />
 
-    <style name="MyToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
-        <item name="colorControlNormal">@color/accentcolor</item>
-        <item name="titleTextColor">@color/white</item>
-    </style>
+
 </resources>

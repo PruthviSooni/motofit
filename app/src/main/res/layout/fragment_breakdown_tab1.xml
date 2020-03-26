@@ -22,7 +22,6 @@
         android:id="@+id/dropdown_history_list"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="110dp"
         android:visibility="visible" />
 
     <ImageView
