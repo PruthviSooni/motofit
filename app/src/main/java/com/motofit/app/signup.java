@@ -22,11 +22,9 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -43,7 +41,7 @@ import java.util.Objects;
 
 public class signup extends AppCompatActivity implements OnClickListener {
     private static final String TAG = "Activity";
-    private static final String app_server_url = "http://192.168.0.107/motofit/insert.php";
+
     EditText mail, pass, mophone, usrname;
     Button sup;
     ProgressBar pb;
@@ -147,7 +145,7 @@ public class signup extends AppCompatActivity implements OnClickListener {
                 final String token = sharedPreferences.getString(getString(R.string.FCM_TOKEN), "");
                 Log.e(TAG, "Token: " + token);
                 StringRequest stringRequest = new StringRequest
-                        (Request.Method.POST, app_server_url, new Response.Listener<String>() {
+                        (Request.Method.POST, URL.app_server_url, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                             }
@@ -165,9 +163,9 @@ public class signup extends AppCompatActivity implements OnClickListener {
                         return params;
                     }
                 };
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(stringRequest);
-                //MySingleton.getInstance(signup.this).addToRequestque(stringRequest);
+//                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//                requestQueue.add(stringRequest);
+                MySingleton.getInstance(signup.this).addToRequestque(stringRequest);
                 break;
             case R.id.tv2:
                 Intent intent = new Intent(signup.this, login.class);
