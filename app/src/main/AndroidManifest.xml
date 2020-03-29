@@ -23,6 +23,9 @@
         <activity android:name="com.motofit.app.service_info" />
         <activity android:name="com.motofit.app.about_us" />
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/app_icon" />
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" /> <!-- <meta-data -->

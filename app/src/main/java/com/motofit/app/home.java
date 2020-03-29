@@ -26,7 +26,7 @@ import com.motofit.app.Fragment.more_infoFragment;
 
 public class home extends AppCompatActivity {
 
-
+    private BottomNavigationView bottomNav;
     boolean doubleBackToExitPressedOnce = false;
     // Buttom Navigation
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -53,7 +53,9 @@ public class home extends AppCompatActivity {
                             item.setChecked(true);
                             break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    if (selectedFragment != null) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    }
                     return false;
                 }
 
@@ -68,7 +70,7 @@ public class home extends AppCompatActivity {
         else {
             setContentView(R.layout.activity_home);
         }
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
@@ -110,15 +112,21 @@ public class home extends AppCompatActivity {
             finishAffinity();
             return;
         }
-        this.doubleBackToExitPressedOnce = true;
-        Snackbar.make(findViewById(R.id.global_coordinator), "Please click BACK again to exit", Snackbar.LENGTH_LONG).show();
-        new Handler().postDelayed(new Runnable() {
+        if (bottomNav.getSelectedItemId() != R.id.nav_home) {
+            bottomNav.getMenu().getItem(0).setChecked(true);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        } else {
+            this.doubleBackToExitPressedOnce = true;
+            Snackbar.make(findViewById(R.id.global_coordinator), "Please click BACK again to exit", Snackbar.LENGTH_LONG).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
 
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
+                }
+            }, 2000);
+        }
+
     }
 
     //Function For Check Internet Connection
@@ -150,6 +158,7 @@ public class home extends AppCompatActivity {
         return builder;
 
     }
+
 }
 
 
