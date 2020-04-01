@@ -1,5 +1,6 @@
 package com.motofit.app.Fragment;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -20,9 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.motofit.app.Adapters.breakdown_adapter;
 import com.motofit.app.Firebase_Classes.Breakdown;
 import com.motofit.app.R;
-import com.motofit.app.breakdown_adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ public class HistoryFragment_Tab1 extends Fragment {
     private String userId;
     private ImageView service_notFound_Img;
     private TextView service_notFound_txt;
+    private ArrayList<String> KeyList = new ArrayList<>();
 
     public HistoryFragment_Tab1() {
         // Required empty public constructor
@@ -57,9 +61,37 @@ public class HistoryFragment_Tab1 extends Fragment {
             userId = user.getUid();
         }
         fetch_data();
-
+        listView_breakdown.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Breakdown breakdown = breakdownList.get(position);
+                showDeleteDialog(breakdown.Dropdown_service, position);
+                return false;
+            }
+        });
         return v;
     }
+
+    private void showDeleteDialog(String service, final int Pos) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialog = inflater.inflate(R.layout.delete_services, null);
+        builder.setTitle("Service Name : " + service);
+        builder.setView(dialog);
+        final Button delete = dialog.findViewById(R.id.del_button);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference drBreakdown = FirebaseDatabase.getInstance().getReference("BreakDown_Service").child(userId);
+                drBreakdown.child(KeyList.get(Pos)).removeValue();
+                KeyList.remove(Pos);
+                alertDialog.dismiss();
+            }
+        });
+    }
+
 
     private void fetch_data() {
 
@@ -72,6 +104,7 @@ public class HistoryFragment_Tab1 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 breakdownList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    KeyList.add(ds.getKey());
                     Breakdown breakdown = ds.getValue(Breakdown.class);
                     breakdownList.add(breakdown);
                 }
@@ -85,6 +118,7 @@ public class HistoryFragment_Tab1 extends Fragment {
                     if (getActivity() != null) {
                         breakdown_adapter breakdown_adapter = new breakdown_adapter(getActivity(), breakdownList);
                         listView_breakdown.setAdapter(breakdown_adapter);
+                        breakdown_adapter.notifyDataSetChanged();
                     }
                 }
                 p1.setVisibility(View.GONE);

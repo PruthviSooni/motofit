@@ -30,8 +30,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Objects;
 
 public class login extends AppCompatActivity implements OnClickListener {
-    Button loginup;
-    TextView signup;
+    Button Login;
+    TextView sign_up;
     private EditText pwd, mail;
     private ProgressBar pb;
     private FirebaseAuth mAuth;
@@ -57,15 +57,15 @@ public class login extends AppCompatActivity implements OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         //Assigning Component's Id to variables
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
-        loginup = findViewById(R.id.but1);
+        Login = findViewById(R.id.but1);
         mail = findViewById(R.id.email);
         pwd = findViewById(R.id.password);
-        signup = findViewById(R.id.tv1);
+        sign_up = findViewById(R.id.tv1);
         pb = findViewById(R.id.progressBar);
         //Login Button
-        loginup.setOnClickListener(this);
+        Login.setOnClickListener(this);
         //Goto SignUp activity
-        signup.setOnClickListener(this);
+        sign_up.setOnClickListener(this);
     }
 
     //Function For Check Internet Connection

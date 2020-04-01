@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Services">
+        <item>Select Service</item>
         <item>Regular Repair</item>
         <item>Accidental Repair</item>
         <item>Engine Repair</item>
@@ -31,7 +32,7 @@
         <item>TVS Motors</item>
         <item>Bajaj Motors</item>
         <item>Yamaha Motors</item>
-        <item>Royol Enfield</item>
+        <item>Royal Enfield</item>
         <item>Mahindra Motors</item>
         <item>KTM</item>
         <item>Piaggio</item>
@@ -103,15 +104,15 @@
         <item>Yamaha RayZR 125</item>
     </string-array>
 
-    <string-array name="royol_enfield">
-        <item>Royol Enfield Classic 350</item>
-        <item>Royol Enfield BULLET 350</item>
-        <item>Royol Enfield Thunderbird 350X</item>
-        <item>Royol Enfield Himalayan</item>
-        <item>Royol Enfield Interceptor 650</item>
-        <item>Royol Enfield Continental GT650</item>
-        <item>Royol Enfield Thunderbird 350</item>
-        <item>Royol Enfield Bullet Trails 350</item>
+    <string-array name="royal_enfield">
+        <item>Royal Enfield Classic 350</item>
+        <item>Royal Enfield BULLET 350</item>
+        <item>Royal Enfield Thunderbird 350X</item>
+        <item>Royal Enfield Himalayan</item>
+        <item>Royal Enfield Interceptor 650</item>
+        <item>Royal Enfield Continental GT650</item>
+        <item>Royal Enfield Thunderbird 350</item>
+        <item>Royal Enfield Bullet Trails 350</item>
     </string-array>
 
     <string-array name="mahindra">

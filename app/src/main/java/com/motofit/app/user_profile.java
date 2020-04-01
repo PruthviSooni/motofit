@@ -29,7 +29,7 @@ import static android.support.constraint.Constraints.TAG;
 public class user_profile extends AppCompatActivity {
     public String Name;
     Button b1;
-    TextView t1, t2, t3;
+    TextView textView, t2, t3;
     ProgressBar pb;
     private DatabaseReference mFirebaseDatabase;
     private String userId;
@@ -40,7 +40,7 @@ public class user_profile extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         //Id of Activity Components
         b1 = findViewById(R.id.signout);
-        t1 = findViewById(R.id.t2);
+        textView = findViewById(R.id.t2);
         t2 = findViewById(R.id.t3);
         t3 = findViewById(R.id.t5);
         pb = findViewById(R.id.progressBar_1);
@@ -109,10 +109,10 @@ public class user_profile extends AppCompatActivity {
                     }
                     Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
                     // Display newly updated name and email
-                    t1.setText(user.name);
+                    textView.setText(user.name);
                     t2.setText("Mobile Number : " + user.mobnum);
                     t3.setText("Email : " + user.email);
-                    Name = user.name;
+
                     pb.setVisibility(View.GONE);
                 }
 

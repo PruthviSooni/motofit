@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //
                 activity.getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragment_container, myFragment_1)
+                        .replace(R.id.frame_container, myFragment_1)
                         .addToBackStack(null)
                         .commit();
                 break;
@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 navigation_2.setSelectedItemId(R.id.nav_motorcycle);
                 //
                 activity.getSupportFragmentManager()
-                        .beginTransaction().replace(R.id.fragment_container, myFragment_2)
+                        .beginTransaction().replace(R.id.frame_container, myFragment_2)
                         .addToBackStack(null)
                         .commit();
                 break;

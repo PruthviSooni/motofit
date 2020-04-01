@@ -26,8 +26,8 @@ import com.motofit.app.Fragment.more_infoFragment;
 
 public class home extends AppCompatActivity {
 
-    private BottomNavigationView bottomNav;
     boolean doubleBackToExitPressedOnce = false;
+    private BottomNavigationView bottomNav;
     // Buttom Navigation
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,7 +54,7 @@ public class home extends AppCompatActivity {
                             break;
                     }
                     if (selectedFragment != null) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, selectedFragment).commit();
                     }
                     return false;
                 }
@@ -72,7 +72,7 @@ public class home extends AppCompatActivity {
         }
         bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
     }
 
     //Creating Menu Item Option
@@ -114,7 +114,7 @@ public class home extends AppCompatActivity {
         }
         if (bottomNav.getSelectedItemId() != R.id.nav_home) {
             bottomNav.getMenu().getItem(0).setChecked(true);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeFragment()).commit();
         } else {
             this.doubleBackToExitPressedOnce = true;
             Snackbar.make(findViewById(R.id.global_coordinator), "Please click BACK again to exit", Snackbar.LENGTH_LONG).show();

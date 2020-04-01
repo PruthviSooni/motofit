@@ -1,4 +1,4 @@
-package com.motofit.app;
+package com.motofit.app.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.motofit.app.Firebase_Classes.Services;
+import com.motofit.app.R;
 
 import java.util.List;
 
@@ -32,16 +33,18 @@ public class service_adapter extends ArrayAdapter<Services> {
         @SuppressLint("InflateParams") View list_view_Item = inflater.inflate(R.layout.service_list_layout, null, true);
         TextView location = list_view_Item.findViewById(R.id.usr_location);
         TextView time = list_view_Item.findViewById(R.id.time);
-        TextView service_type = list_view_Item.findViewById(R.id.service_type);
+        final TextView service_type = list_view_Item.findViewById(R.id.service_type);
         TextView notes = list_view_Item.findViewById(R.id.usr_notes);
         TextView odometer = list_view_Item.findViewById(R.id.usr_odometer);
 
-        Services services = serviceList.get(position);
+        final Services services = serviceList.get(position);
         location.setText(services.location);
         time.setText(services.time);
         service_type.setText(services.type_service);
         notes.setText(services.notes);
         odometer.setText(services.odometer);
+
+
         return list_view_Item;
 
 

@@ -1,4 +1,4 @@
-package com.motofit.app;
+package com.motofit.app.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.motofit.app.Firebase_Classes.Breakdown;
+import com.motofit.app.R;
 
 import java.util.List;
 
@@ -35,7 +36,6 @@ public class breakdown_adapter extends ArrayAdapter<Breakdown> {
         TextView break_type = listview_Item.findViewById(R.id.break_type);
         TextView brand = listview_Item.findViewById(R.id.bike_brand);
         TextView model = listview_Item.findViewById(R.id.bike_model);
-
         Breakdown breakdown = breakdownList.get(position);
         location.setText(breakdown.Location);
         time.setText(breakdown.Date_and_Time);

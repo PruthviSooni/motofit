@@ -1,5 +1,6 @@
 package com.motofit.app.Fragment;
 
+import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -21,9 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.motofit.app.Adapters.service_adapter;
 import com.motofit.app.Firebase_Classes.Services;
 import com.motofit.app.R;
-import com.motofit.app.service_adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,7 @@ public class ServiceFragment_Tab2 extends Fragment {
     private String userId;
     private ImageView service_notFound_Img;
     private TextView service_notFound_txt;
+    private ArrayList<String> KeyList_2 = new ArrayList<>();
 
     public ServiceFragment_Tab2() {
         // Required empty public constructor
@@ -62,10 +66,37 @@ public class ServiceFragment_Tab2 extends Fragment {
         if (user != null) {
             userId = user.getUid();
         }
+        listView_service.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Services services = servicesList.get(position);
+                showDeleteDialog(services.type_service, position);
+                return false;
+            }
+        });
         return v;
 
     }
 
+    private void showDeleteDialog(String service, final int pos) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialog = inflater.inflate(R.layout.delete_services, null);
+        builder.setTitle("Service Name : " + service);
+        builder.setView(dialog);
+        final Button delete = dialog.findViewById(R.id.del_button);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference drService = FirebaseDatabase.getInstance().getReference("Services").child(userId);
+                drService.child(KeyList_2.get(pos)).removeValue();
+                KeyList_2.remove(pos);
+                alertDialog.dismiss();
+            }
+        });
+    }
 
     @Override
     public void onStart() {
@@ -80,6 +111,7 @@ public class ServiceFragment_Tab2 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 servicesList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    KeyList_2.add(ds.getKey());
                     Services service = ds.getValue(Services.class);
                     servicesList.add(service);
                 }
@@ -93,6 +125,7 @@ public class ServiceFragment_Tab2 extends Fragment {
                     if (getActivity() != null) {
                         service_adapter service_adapter = new service_adapter(getActivity(), servicesList);
                         listView_service.setAdapter(service_adapter);
+                        service_adapter.notifyDataSetChanged();
                     }
 
                 }
