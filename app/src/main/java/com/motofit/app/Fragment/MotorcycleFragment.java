@@ -133,7 +133,7 @@ public class MotorcycleFragment extends Fragment {
                     model.setAdapter(service5);
                 } else if (brand.getSelectedItem().equals("Royal Enfield")) {
                     ArrayAdapter<String> service6 = new ArrayAdapter<>(getActivity(),
-                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.royol_enfield));
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.royal_enfield));
                     service6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service6);
                 } else if (brand.getSelectedItem().equals("Mahindra Motors")) {

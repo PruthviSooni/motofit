@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.motofit.app.Fragment.ServicesFragment"
     tools:layout_editor_absoluteY="25dp">
 
     <TableLayout
         android:id="@+id/tableLayout2"
         android:layout_width="400dp"
-        android:layout_height="350dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/textView"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/sharp_dgrate"
         app:layout_constraintBottom_toTopOf="@+id/register"
@@ -40,9 +41,8 @@
             <EditText
                 android:id="@+id/et_date"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:editable="false"
-                android:ems="10"
                 android:focusableInTouchMode="false"
                 android:hint="Date"
                 android:minWidth="50dp"
@@ -53,7 +53,7 @@
                 android:id="@+id/spinner_time"
                 style="@style/Widget.AppCompat.Spinner.DropDown"
                 android:layout_width="150dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:minWidth="50dp"
                 android:minHeight="50dp"
                 android:theme="@style/Spinner"
@@ -81,7 +81,7 @@
             <EditText
                 android:id="@+id/kilometer"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_span="2"
                 android:ems="10"
                 android:hint="Odometer (Km)"
@@ -131,6 +131,67 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_info"
                 tools:ignore="VectorDrawableCompat" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_span="4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Total Cost"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <View
+                    android:id="@+id/view20"
+                    android:layout_width="150dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/total"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/sharp_dgrate" />
+
+                <TextView
+                    android:id="@+id/service_charge"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view20"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="3dp"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/select_parts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="40dp"
+                    android:text="Select Parts"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
         </TableRow>
 
         <TableRow
@@ -220,7 +281,8 @@
         app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView"

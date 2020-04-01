@@ -19,13 +19,14 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name="com.motofit.app.history" />
-        <activity android:name="com.motofit.app.service_info" />
-        <activity android:name="com.motofit.app.about_us" />
+        <activity android:name=".history" />
+        <activity android:name=".service_info" />
+        <activity android:name=".about_us" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/app_icon" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" /> <!-- <meta-data -->
@@ -34,8 +35,8 @@
         <!-- <meta-data -->
         <!-- android:name="com.google.android.gms.version" -->
         <!-- android:value="@integer/google_play_services_version" /> -->
-        <activity android:name="com.motofit.app.user_profile" />
-        <activity android:name="com.motofit.app.splash">
+        <activity android:name=".user_profile" />
+        <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.motofit.app.home"
+            android:name=".home"
             android:theme="@style/App_Theme"
             tools:ignore="DuplicateActivity">
             <intent-filter>
@@ -53,15 +54,16 @@
                 <action android:name=".more_infoFragment" />
             </intent-filter>
         </activity>
-        <activity android:name="com.motofit.app.login" />
-        <activity android:name="com.motofit.app.signup" />
+        <activity android:name=".login" />
+        <activity android:name=".signup" />
+        <activity android:name=".service_charges" />
 
-        <service android:name="com.motofit.app.fcm_instance_id_service">
+        <service android:name=".fcm_instance_id_service">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.motofit.app.fcm_messaging_service">
+        <service android:name=".fcm_messaging_service">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

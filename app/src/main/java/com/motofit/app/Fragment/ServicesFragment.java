@@ -3,9 +3,11 @@ package com.motofit.app.Fragment;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -13,12 +15,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,30 +33,36 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.motofit.app.Firebase_Classes.ServiceParts;
 import com.motofit.app.Firebase_Classes.Services;
 import com.motofit.app.Firebase_Classes.Users;
 import com.motofit.app.R;
+import com.motofit.app.service_charges;
 import com.motofit.app.service_info;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.support.constraint.Constraints.TAG;
 
 public class ServicesFragment extends Fragment {
+    public TextView username, charges, total;
+    public TableRow tableRow;
     private EditText et_date, odometer, e4, notes;
-    private Button reg_btn;
+    private Button reg_btn, select_parts;
     private Spinner s1, sp_time;
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mreference;
+    private DatabaseReference mReference;
     private String userId;
     private CoordinatorLayout coordinatorLayout;
-    private TextView username;
+    private String parts_price;
 
     public ServicesFragment() {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @SuppressLint("SetTextI18n")
     @Nullable
     @Override
@@ -60,6 +70,7 @@ public class ServicesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_services, container, false);
         getActivity().setTitle("Book Service");
         //Assign id to Variable's
+
         et_date = v.findViewById(R.id.et_date);
         sp_time = v.findViewById(R.id.spinner_time);
         s1 = v.findViewById(R.id.spinner);
@@ -70,26 +81,24 @@ public class ServicesFragment extends Fragment {
         username = v.findViewById(R.id.username);
         coordinatorLayout = v.findViewById(R.id.coordinatorLayout);
         ImageButton info_btn = v.findViewById(R.id.info_btn);
+        select_parts = v.findViewById(R.id.select_parts);
+        tableRow = v.findViewById(R.id.tableRow);
+        charges = v.findViewById(R.id.service_charge);
+        total = v.findViewById(R.id.total);
         //Getting user Name
         get_user_data();
         ////Date Picker
         get_time();
-        //Send Data To Friebase
+        //Send Data To Firebase
         Firebase_RealTimeDB();
-        //Service's DropDown
-        ArrayAdapter<String> service = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services));
-        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s1.setPrompt("Select Service");
-        s1.setAdapter(service);
-
+        //Services Selection
+        Select_service();
         //Time Dropdown
         ArrayAdapter<String> service_time = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services_time));
-        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        service_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_time.setPrompt("Select Time");
         sp_time.setAdapter(service_time);
-
         info_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +107,43 @@ public class ServicesFragment extends Fragment {
             }
         });
         return v;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void Select_service() {
+        //Service's DropDown
+        final ArrayAdapter<String> service = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services));
+        service.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s1.setPrompt("Select Service");
+        s1.setAdapter(service);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                tableRow.setVisibility(View.GONE);
+                if (s1.getSelectedItem().equals("Spare Parts Installation")) {
+                    tableRow.setVisibility(View.VISIBLE);
+                    charges.setVisibility(View.GONE);
+                    select_parts.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i = new Intent(getContext(), service_charges.class);
+                            startActivity(i);
+                        }
+                    });
+
+                } else {
+                    tableRow.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                charges.setVisibility(View.VISIBLE);
+                total.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private void get_user_data() {
@@ -109,7 +155,6 @@ public class ServicesFragment extends Fragment {
         if (user != null) {
             userId = user.getUid();
         }
-
         //Access Logged In User Name
         mFirebaseDB.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -122,7 +167,6 @@ public class ServicesFragment extends Fragment {
                     return;
                 }
                 Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
-
                 username.setText(user.name);
             }
 
@@ -131,7 +175,25 @@ public class ServicesFragment extends Fragment {
 
             }
         });
+        //FireBase Variables
+        DatabaseReference mFirebaseDB_2 = mFirebaseInstance.getReference("Service Parts");
+        //Access Logged In Parts Price
+        mFirebaseDB_2.child(userId);
+        mFirebaseDB_2.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    ServiceParts serviceParts = ds.getValue(ServiceParts.class);
+                    assert serviceParts != null;
+                    charges.setText(serviceParts.price);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     private void get_time() {
@@ -172,20 +234,25 @@ public class ServicesFragment extends Fragment {
                 reg_btn.isEnabled();
                 String Km = " Km";
                 String date = et_date.getText().toString().trim();
-                String odomtr = odometer.getText().toString().trim() + Km;
+                String odometer = ServicesFragment.this.odometer.getText().toString().trim() + Km;
                 String time = sp_time.getSelectedItem().toString().trim();
                 String locate = e4.getText().toString().trim();
                 String service = s1.getSelectedItem().toString().trim();
                 String note = notes.getText().toString().trim();
                 String name = username.getText().toString().trim();
+                if (s1.getSelectedItem().equals("Select Service")) {
+                    ((TextView) s1.getSelectedView()).setError("Select Service");
+                    s1.requestFocus();
+                    return;
+                }
                 if (date.isEmpty()) {
                     et_date.setError("Select Data!!");
                     et_date.requestFocus();
                     return;
                 }
-                if (odomtr.isEmpty()) {
-                    odometer.setError("Enter Total Kilometer!!");
-                    odometer.requestFocus();
+                if (odometer.isEmpty()) {
+                    ServicesFragment.this.odometer.setError("Enter Total Kilometer!!");
+                    ServicesFragment.this.odometer.requestFocus();
                     return;
                 }
                 if (locate.isEmpty()) {
@@ -193,10 +260,10 @@ public class ServicesFragment extends Fragment {
                     e4.requestFocus();
                     return;
                 }
-                mreference = mFirebaseDatabase.getReference("Services");
-                Services services = new Services(name, date, time, service, odomtr, note, locate);
-                mreference.child(userId).push().setValue(services);
-                mreference.keepSynced(true);
+                mReference = mFirebaseDatabase.getReference("Services");
+                Services services = new Services(name, date, time, service, odometer, note, locate);
+                mReference.child(userId).push().setValue(services);
+                mReference.keepSynced(true);
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, "Service Registered.", Snackbar.LENGTH_LONG);
                 snackbar.show();
                 reg_btn.setClickable(false);
@@ -204,4 +271,6 @@ public class ServicesFragment extends Fragment {
         });
 
     }
+
+
 }

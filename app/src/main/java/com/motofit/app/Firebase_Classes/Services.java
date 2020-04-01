@@ -1,6 +1,8 @@
 package com.motofit.app.Firebase_Classes;
 
 public class Services {
+
+
     public String date;
     public String time;
     public String odometer;
@@ -11,6 +13,7 @@ public class Services {
 
     public Services() {
     }
+
 
     public Services(String name, String date, String time, String type_service, String odometer, String notes, String location) {
         this.name = name;

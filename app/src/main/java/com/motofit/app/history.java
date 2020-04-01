@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.motofit.app.Adapters.TabAdapter;
 import com.motofit.app.Fragment.HistoryFragment_Tab1;
 import com.motofit.app.Fragment.ServiceFragment_Tab2;
 
@@ -44,5 +45,6 @@ public class history extends AppCompatActivity {
             }
         });
     }
+
 
 }
