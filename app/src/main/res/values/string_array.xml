@@ -7,7 +7,9 @@
         <item>Engine Repair</item>
         <item>Spare Parts Installation</item>
     </string-array>
+
     <string-array name="Services_time">
+        <item>Select Time</item>
         <item>9AM - 10AM</item>
         <item>11PM - 12PM</item>
         <item>1PM - 2PM</item>
@@ -17,6 +19,7 @@
 
     <!--Motor Cycle Fragment Data-->
     <string-array name="doorstep_service">
+        <item>Select Service</item>
         <item>Mechanical Repairs</item>
         <item>Collision Repairs</item>
         <item>Speed Wash</item>
@@ -26,7 +29,7 @@
     </string-array>
 
     <string-array name="company">
-        <item>-SELECT BRAND-</item>
+        <item>SELECT BRAND</item>
         <item>Hero Motors</item>
         <item>Honda Motors</item>
         <item>TVS Motors</item>
@@ -137,6 +140,7 @@
         <item>KTM 390 Adventure</item>
         <item>KTM 790 Adve</item>
     </string-array>
+
     <string-array name="piaggio">
         <item>Vespa SXL 150</item>
         <item>Vespa VXl 150</item>
@@ -164,6 +168,31 @@
     </string-array>
 
     <string-array name="select_model">
-        <item>-SELECT BRAND FIRST-</item>
+        <item>SELECT BRAND FIRST</item>
+    </string-array>
+
+    <string-array name="spare_parts">
+        <item>Valves</item>
+        <item>Spark Plug</item>
+        <item>Carburetor</item>
+        <item>Air Filter</item>
+        <item>Fuel Lines</item>
+        <item>Fuel Filter</item>
+        <item>Engine Oil</item>
+        <item>Engine Oil Filter Screen</item>
+        <item>Break Front and Rear</item>
+        <item>Break Shoe Front and Rear</item>
+        <item>Clutch</item>
+        <item>Rear Arm Pivot</item>
+        <item>Wheels</item>
+        <item>Wheel Bearing</item>
+        <item>Steering Bearing</item>
+        <item>Front Forks</item>
+        <item>Rear Shock Absorbers</item>
+        <item>Drive Chain</item>
+        <item>Nuts and Bolts</item>
+        <item>Center Stand and Side Stand</item>
+        <item>Battery</item>
+        <item>Control Cables</item>
     </string-array>
 </resources>

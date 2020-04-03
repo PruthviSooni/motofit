@@ -10,18 +10,20 @@ public class Services {
     public String location;
     public String notes;
     public String name;
+    public String spare_parts;
 
     public Services() {
     }
 
 
-    public Services(String name, String date, String time, String type_service, String odometer, String notes, String location) {
+    public Services(String name, String date, String time, String service, String odo_meter, String note, String locate, String spare_parts) {
         this.name = name;
         this.date = date;
         this.time = time;
-        this.odometer = odometer;
-        this.type_service = type_service;
-        this.location = location;
-        this.notes = notes;
+        this.odometer = odo_meter;
+        this.type_service = service;
+        this.location = locate;
+        this.notes = note;
+        this.spare_parts = spare_parts;
     }
 }

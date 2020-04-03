@@ -56,7 +56,6 @@
         </activity>
         <activity android:name=".login" />
         <activity android:name=".signup" />
-        <activity android:name=".service_charges" />
 
         <service android:name=".fcm_instance_id_service">
             <intent-filter>
