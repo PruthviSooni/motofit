@@ -11,10 +11,13 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -41,6 +44,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.motofit.app.Firebase_Classes.Breakdown;
 import com.motofit.app.Firebase_Classes.Users;
+import com.motofit.app.LoadingDialog;
 import com.motofit.app.R;
 
 import java.io.IOException;
@@ -52,6 +56,7 @@ import java.util.Objects;
 
 import static android.support.constraint.Constraints.TAG;
 
+@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class MotorcycleFragment extends Fragment {
     private static final int REQUEST_LOCATION = 1;
     View v;
@@ -62,36 +67,78 @@ public class MotorcycleFragment extends Fragment {
     private DatabaseReference m_reference;
     private String userID;
     private String usrId;
-    private TextView username, usernumber;
+    private TextView userName, userNumber;
+    private Button register;
+    private ImageButton location_btn;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_motorcycle, container, false);
-        getActivity().setTitle("Book BreakDown");
+        Objects.requireNonNull(getActivity()).setTitle("Book BreakDown");
+
         //TextView for getting user data
-        username = v.findViewById(R.id.usr_name);
-        usernumber = v.findViewById(R.id.usr_number);
+        userName = v.findViewById(R.id.usr_name);
+        userNumber = v.findViewById(R.id.usr_number);
+
         //Spinners
         brand = v.findViewById(R.id.brand);
         service_drop = v.findViewById(R.id.service_drop);
         model = v.findViewById(R.id.model);
+
         //Button
-        final ImageButton location_btn = v.findViewById(R.id.imageButton);
+        location_btn = v.findViewById(R.id.imageButton);
         current_location = v.findViewById(R.id.e1);
-        final Button register = v.findViewById(R.id.register);
+        register = v.findViewById(R.id.register);
+
         //SnapBar layout object
         coordinatorLayout = v.findViewById(R.id.doorstep_coordinator);
 
+        //Getting Current userID from FireBase DB
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             userID = user.getUid();
         }
+
         //Calling method of getting user name and number
         user_name();
+
+        //DropDown For Selecting Model And Brand
+        Drop_down();
+
+        //Getting Current Location
+        GettingLocation();
+
+        //Registering Service
+        RegisteredBreakDown();
+
+        return v;
+    }
+
+    private void GettingLocation() {
+        ///////code for getting location
+        location_btn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View v) {
+                locationManager = (LocationManager) Objects.requireNonNull(getContext()).getSystemService(Context.LOCATION_SERVICE);
+                if (locationManager != null) {
+                    if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                        //enable to gps on your devices.
+                        OnGPS();
+                    } else {
+                        //gps is already on ..
+                        getLocation();
+                    }
+                }
+            }
+        });
+    }
+
+    private void Drop_down() {
         //Brand name... DropDown
-        ArrayAdapter<String> Company = new ArrayAdapter<>(getActivity(),
+        ArrayAdapter<String> Company = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.company));
         Company.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         brand.setAdapter(Company);
@@ -107,57 +154,57 @@ public class MotorcycleFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (brand.getSelectedItem().equals("Hero Motors")) {
-                    ArrayAdapter<String> service1 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service1 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.hero));
                     service1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service1);
                 } else if (brand.getSelectedItem().equals("Honda Motors")) {
-                    ArrayAdapter<String> service2 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service2 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.honda));
                     service2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service2);
                 } else if (brand.getSelectedItem().equals("TVS Motors")) {
-                    ArrayAdapter<String> service3 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service3 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.tvs));
                     service3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service3);
                 } else if (brand.getSelectedItem().equals("Bajaj Motors")) {
-                    ArrayAdapter<String> service4 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service4 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bajaj));
                     service4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service4);
                 } else if (brand.getSelectedItem().equals("Yamaha Motors")) {
-                    ArrayAdapter<String> service5 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service5 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.yamaha));
                     service5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service5);
                 } else if (brand.getSelectedItem().equals("Royal Enfield")) {
-                    ArrayAdapter<String> service6 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service6 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.royal_enfield));
                     service6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service6);
                 } else if (brand.getSelectedItem().equals("Mahindra Motors")) {
-                    ArrayAdapter<String> service7 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service7 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.mahindra));
                     service7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service7);
                 } else if (brand.getSelectedItem().equals("KTM")) {
-                    ArrayAdapter<String> service8 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service8 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ktm));
                     service8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service8);
                 } else if (brand.getSelectedItem().equals("Piaggio")) {
-                    ArrayAdapter<String> service9 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service9 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.piaggio));
                     service9.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service9);
                 } else if (brand.getSelectedItem().equals("BMW")) {
-                    ArrayAdapter<String> service10 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service10 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.bmw));
                     service10.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service10);
                 } else {
-                    ArrayAdapter<String> service12 = new ArrayAdapter<>(getActivity(),
+                    ArrayAdapter<String> service12 = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.select_model));
                     service12.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     model.setAdapter(service12);
@@ -169,59 +216,60 @@ public class MotorcycleFragment extends Fragment {
 
             }
         });
+    }
 
-        ///////code for getting location
-        location_btn.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onClick(View v) {
-                locationManager = (LocationManager) Objects.requireNonNull(getContext()).getSystemService(Context.LOCATION_SERVICE);
-                if (locationManager != null) {
-                    if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                        //enable to gps on your devices.
-                        OnGPS();
-                    } else {
-                        //gps is already on ..
-                        getlocation();
-                    }
-                }
-            }
-        });
+    private void RegisteredBreakDown() {
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
         // Push Data To FireBase By Clicking Button
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register.setClickable(true);
+                //Validating
                 String Brand = brand.getSelectedItem().toString().trim();
                 String Model = model.getSelectedItem().toString().trim();
                 String Service_drop = service_drop.getSelectedItem().toString().trim();
                 String Location = current_location.getText().toString().trim();
                 Date currentTime = Calendar.getInstance().getTime();
                 String Date_and_Time = currentTime.toString().trim();
-                String Name = username.getText().toString().trim();
-                String Number = usernumber.getText().toString().trim();
+                String Name = userName.getText().toString().trim();
+                String Number = userNumber.getText().toString().trim();
+                if (brand.getSelectedItem().equals("SELECT BRAND")) {
+                    ((TextView) brand.getSelectedView()).setError("Select Brand");
+                    brand.requestFocus();
+                    return;
+                }
+                if (service_drop.getSelectedItem().equals("Select Service")) {
+                    ((TextView) service_drop.getSelectedView()).setError("Select Service");
+                    service_drop.requestFocus();
+                    return;
+                }
                 if (Location.isEmpty()) {
                     current_location.setError("Locate Your Self!!");
                     current_location.requestFocus();
                     return;
                 }
+                //-------------------------------------------------------------------------------//
+                loadingDialog.startsLoading();
                 m_reference = FirebaseDatabase.getInstance().getReference("BreakDown_Service");
                 Breakdown breakdown = new Breakdown(Name, Number, Model, Brand, Service_drop, Location, Date_and_Time);
                 m_reference.child(userID).push().setValue(breakdown);
-                m_reference.keepSynced(true);
-                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Booked Breakdown.", Snackbar.LENGTH_LONG);
-                snackbar.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDialog.dismissLoading();
+                        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Booked Breakdown.", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }
+                }, 2000);
                 register.setClickable(false);
-
-
             }
         });
-        return v;
     }
 
-    ////getting location method from onclicklistener
-    private void getlocation() {
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+    ////getting location method from onclick
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
         } else {
@@ -253,7 +301,6 @@ public class MotorcycleFragment extends Fragment {
         Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
             String address = addresses.get(0).getAddressLine(0);
             String area = addresses.get(0).getLocality();
             String city = addresses.get(0).getAdminArea();
@@ -284,7 +331,6 @@ public class MotorcycleFragment extends Fragment {
     }
 
     private void user_name() {
-
         //FireBase Variables
         FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
         DatabaseReference mFirebaseDB = mFirebaseInstance.getReference("Users");
@@ -305,9 +351,8 @@ public class MotorcycleFragment extends Fragment {
                     return;
                 }
                 Log.e(TAG, "User data is changed!" + user.name + ", " + user.email);
-
-                username.setText(user.name);
-                usernumber.setText(user.mobnum);
+                userName.setText(user.name);
+                userNumber.setText(user.mobnum);
             }
 
             @Override
@@ -315,7 +360,5 @@ public class MotorcycleFragment extends Fragment {
 
             }
         });
-
-
     }
 }

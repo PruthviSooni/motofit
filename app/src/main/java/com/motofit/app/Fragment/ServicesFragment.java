@@ -1,10 +1,13 @@
 package com.motofit.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -33,42 +36,46 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.motofit.app.Firebase_Classes.ServiceParts;
 import com.motofit.app.Firebase_Classes.Services;
 import com.motofit.app.Firebase_Classes.Users;
+import com.motofit.app.LoadingDialog;
 import com.motofit.app.R;
-import com.motofit.app.service_charges;
 import com.motofit.app.service_info;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 
 import static android.support.constraint.Constraints.TAG;
 
+@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class ServicesFragment extends Fragment {
-    public TextView username, charges, total;
+    public TextView username, parts, total;
     public TableRow tableRow;
     private EditText et_date, odometer, e4, notes;
-    private Button reg_btn, select_parts;
+    private Button reg_btn;
     private Spinner s1, sp_time;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mReference;
     private String userId;
     private CoordinatorLayout coordinatorLayout;
+    private ImageButton info_btn;
     private String parts_price;
+    private String[] SparePartsList;
+    private boolean[] checkedItems;
+    private ArrayList<Integer> mUserItems = new ArrayList<>();
 
     public ServicesFragment() {
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "Assert"})
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_services, container, false);
-        getActivity().setTitle("Book Service");
+        Objects.requireNonNull(getActivity()).setTitle("Book Service");
         //Assign id to Variable's
 
         et_date = v.findViewById(R.id.et_date);
@@ -80,25 +87,39 @@ public class ServicesFragment extends Fragment {
         odometer = v.findViewById(R.id.kilometer);
         username = v.findViewById(R.id.username);
         coordinatorLayout = v.findViewById(R.id.coordinatorLayout);
-        ImageButton info_btn = v.findViewById(R.id.info_btn);
-        select_parts = v.findViewById(R.id.select_parts);
+        info_btn = v.findViewById(R.id.info_btn);
         tableRow = v.findViewById(R.id.tableRow);
-        charges = v.findViewById(R.id.service_charge);
-        total = v.findViewById(R.id.total);
+        parts = v.findViewById(R.id.service_parts);
+
         //Getting user Name
         get_user_data();
+
         ////Date Picker
         get_time();
+
         //Send Data To Firebase
         Firebase_RealTimeDB();
+
         //Services Selection
         Select_service();
-        //Time Dropdown
-        ArrayAdapter<String> service_time = new ArrayAdapter<>(getActivity(),
+
+        //About service
+        InfoBtn();
+
+        //Service Time
+        Time_Picker();
+
+        return v;
+    }
+
+    private void Time_Picker() {
+        ArrayAdapter<String> service_time = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Services_time));
         service_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_time.setPrompt("Select Time");
         sp_time.setAdapter(service_time);
+    }
+
+    private void InfoBtn() {
         info_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,10 +127,8 @@ public class ServicesFragment extends Fragment {
                 startActivity(i);
             }
         });
-        return v;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void Select_service() {
         //Service's DropDown
         final ArrayAdapter<String> service = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
@@ -121,29 +140,58 @@ public class ServicesFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tableRow.setVisibility(View.GONE);
                 if (s1.getSelectedItem().equals("Spare Parts Installation")) {
-                    tableRow.setVisibility(View.VISIBLE);
-                    charges.setVisibility(View.GONE);
-                    select_parts.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i = new Intent(getContext(), service_charges.class);
-                            startActivity(i);
-                        }
-                    });
-
+                    ShowAlertDialog();
                 } else {
                     tableRow.setVisibility(View.GONE);
+                    mUserItems.clear();
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                charges.setVisibility(View.VISIBLE);
-                total.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    private void ShowAlertDialog() {
+        SparePartsList = getResources().getStringArray(R.array.spare_parts);
+        checkedItems = new boolean[SparePartsList.length];
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Select Spare Parts");
+        builder.setMultiChoiceItems(SparePartsList, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int position, boolean isChecked) {
+                if (isChecked) {
+                    mUserItems.add(position);
+                } else {
+                    mUserItems.remove((Integer.valueOf(position)));
+                }
+            }
+        });
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String item = "";
+                for (int i = 0; i < mUserItems.size(); i++) {
+                    item = item + SparePartsList[mUserItems.get(i)];
+                    if (i != mUserItems.size() - 1) {
+                        item = item + ", ";
+                    }
+                }
+                tableRow.setVisibility(View.VISIBLE);
+                parts.setText(item);
+            }
+        });
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 
     private void get_user_data() {
@@ -172,26 +220,6 @@ public class ServicesFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        //FireBase Variables
-        DatabaseReference mFirebaseDB_2 = mFirebaseInstance.getReference("Service Parts");
-        //Access Logged In Parts Price
-        mFirebaseDB_2.child(userId);
-        mFirebaseDB_2.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    ServiceParts serviceParts = ds.getValue(ServiceParts.class);
-                    assert serviceParts != null;
-                    charges.setText(serviceParts.price);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }
@@ -199,6 +227,7 @@ public class ServicesFragment extends Fragment {
     private void get_time() {
         //Date Picker Logic
         et_date.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
                 final Calendar myCalendar = Calendar.getInstance();
@@ -220,29 +249,36 @@ public class ServicesFragment extends Fragment {
                         }
                     }
                 };
-                new DatePickerDialog(getContext(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(Objects.requireNonNull(getContext()), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
 
     private void Firebase_RealTimeDB() {
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
         ///Register Button Logic
         reg_btn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                reg_btn.setClickable(true);
-                reg_btn.isEnabled();
+                //Validating..
                 String Km = " Km";
                 String date = et_date.getText().toString().trim();
-                String odometer = ServicesFragment.this.odometer.getText().toString().trim() + Km;
+                String odo_meter = odometer.getText().toString().trim() + Km;
                 String time = sp_time.getSelectedItem().toString().trim();
                 String locate = e4.getText().toString().trim();
                 String service = s1.getSelectedItem().toString().trim();
                 String note = notes.getText().toString().trim();
                 String name = username.getText().toString().trim();
+                String spare_parts = parts.getText().toString().trim();
                 if (s1.getSelectedItem().equals("Select Service")) {
                     ((TextView) s1.getSelectedView()).setError("Select Service");
                     s1.requestFocus();
+                    return;
+                }
+                if (sp_time.getSelectedItem().equals("Select Time")) {
+                    ((TextView) sp_time.getSelectedView()).setError("Select Time");
+                    sp_time.requestFocus();
                     return;
                 }
                 if (date.isEmpty()) {
@@ -250,9 +286,9 @@ public class ServicesFragment extends Fragment {
                     et_date.requestFocus();
                     return;
                 }
-                if (odometer.isEmpty()) {
-                    ServicesFragment.this.odometer.setError("Enter Total Kilometer!!");
-                    ServicesFragment.this.odometer.requestFocus();
+                if (odo_meter.isEmpty()) {
+                    odometer.setError("Enter Total Kilometer!!");
+                    odometer.requestFocus();
                     return;
                 }
                 if (locate.isEmpty()) {
@@ -260,17 +296,22 @@ public class ServicesFragment extends Fragment {
                     e4.requestFocus();
                     return;
                 }
+                //---------------------------------------------------------------------------------//
+                loadingDialog.startsLoading();
                 mReference = mFirebaseDatabase.getReference("Services");
-                Services services = new Services(name, date, time, service, odometer, note, locate);
+                Services services = new Services(name, date, time, service, odo_meter, note, locate, spare_parts);
                 mReference.child(userId).push().setValue(services);
-                mReference.keepSynced(true);
-                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Service Registered.", Snackbar.LENGTH_LONG);
-                snackbar.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDialog.dismissLoading();
+                        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Service Registered.", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }
+                }, 2000);
                 reg_btn.setClickable(false);
             }
         });
-
     }
-
-
 }
