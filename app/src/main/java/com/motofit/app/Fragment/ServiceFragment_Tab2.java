@@ -1,6 +1,7 @@
 package com.motofit.app.Fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -71,7 +72,19 @@ public class ServiceFragment_Tab2 extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Services services = servicesList.get(position);
                 showDeleteDialog(services.type_service, position);
-                return false;
+                return true;
+            }
+        });
+        listView_service.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Services services = servicesList.get(position);
+                Intent i = new Intent(getContext(), com.motofit.app.common_my_service.class);
+                i.putExtra("Service Name", services.type_service);
+                i.putExtra("Service Location", services.location);
+                i.putExtra("Service Time", services.time);
+                i.putExtra("Meter", services.odometer);
+                startActivity(i);
             }
         });
         return v;

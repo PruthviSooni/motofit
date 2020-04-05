@@ -19,6 +19,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity android:name=".common_my_service"></activity>
+        <activity android:name=".common_myHistory" />
         <activity android:name=".history" />
         <activity android:name=".service_info" />
         <activity android:name=".about_us" />

@@ -1,6 +1,7 @@
 package com.motofit.app.Fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -66,7 +67,19 @@ public class HistoryFragment_Tab1 extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Breakdown breakdown = breakdownList.get(position);
                 showDeleteDialog(breakdown.Dropdown_service, position);
-                return false;
+                return true;
+            }
+        });
+        listView_breakdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Breakdown breakdown = breakdownList.get(position);
+                Intent i = new Intent(getContext(), com.motofit.app.common_myHistory.class);
+                i.putExtra("Service Name", breakdown.Dropdown_service);
+                i.putExtra("Service Location", breakdown.Location);
+                i.putExtra("Service Time", breakdown.Date_and_Time);
+                i.putExtra("Bike", breakdown.Model);
+                startActivity(i);
             }
         });
         return v;

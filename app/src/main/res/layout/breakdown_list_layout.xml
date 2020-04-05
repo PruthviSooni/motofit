@@ -115,6 +115,7 @@
             android:fontFamily="@font/googlesans_regular"
             android:textAlignment="viewStart"
             android:textSize="18sp"
+            app:autoSizeTextType="uniform"
             tools:ignore="MissingConstraints,RtlSymmetry"
             tools:layout_editor_absoluteX="235dp"
             tools:layout_editor_absoluteY="128dp" />

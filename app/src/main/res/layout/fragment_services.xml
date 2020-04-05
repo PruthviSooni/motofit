@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.motofit.app.Fragment.ServicesFragment"
+    android:paddingTop="30dp"
     tools:layout_editor_absoluteY="25dp">
 
     <TableLayout
@@ -124,7 +125,7 @@
                 android:id="@+id/info_btn"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="#E9E9E9"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:scaleType="fitCenter"
@@ -137,8 +138,6 @@
             android:id="@+id/tableRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="10dp"
             android:visibility="visible">
 
             <RelativeLayout
@@ -149,12 +148,10 @@
 
                 <TextView
                     android:id="@+id/total"
-                    android:layout_width="2000dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
                     android:text="Selected Spare Parts"
                     android:textAlignment="center"
                     android:textSize="20sp"
@@ -241,7 +238,8 @@
                 android:minWidth="50dp"
                 android:minHeight="50dp"
                 android:text=""
-                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                tools:targetApi="o" />
         </TableRow>
 
     </TableLayout>

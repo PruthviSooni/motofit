@@ -269,7 +269,8 @@ public class MotorcycleFragment extends Fragment {
 
     ////getting location method from onclick
     private void getLocation() {
-        if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
         } else {
@@ -293,8 +294,10 @@ public class MotorcycleFragment extends Fragment {
             } else {
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, "Can't Get Your Location", Snackbar.LENGTH_LONG);
                 snackbar.show();
+
             }
         }
+
     }
 
     private void location(double latitude, double longitude) {

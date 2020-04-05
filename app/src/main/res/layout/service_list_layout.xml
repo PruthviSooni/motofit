@@ -55,6 +55,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/iv2"
+            app:autoSizeTextType="uniform"
             android:ellipsize="none"
             android:fontFamily="@font/googlesans_regular"
             android:textSize="18sp"

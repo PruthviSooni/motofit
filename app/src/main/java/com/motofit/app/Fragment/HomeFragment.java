@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return v;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onClick(View v) {
         final AppCompatActivity activity = (AppCompatActivity) v.getContext();

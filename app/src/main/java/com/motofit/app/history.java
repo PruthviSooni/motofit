@@ -22,12 +22,11 @@ public class history extends AppCompatActivity {
         //Assign Id to Components
         going_back();
         final ViewPager viewPager = findViewById(R.id.viewPager);
-
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.addFragment(new HistoryFragment_Tab1(), "Breakdown History");
         adapter.addFragment(new ServiceFragment_Tab2(), "Service History");
+        adapter.addFragment(new HistoryFragment_Tab1(), "Breakdown History");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

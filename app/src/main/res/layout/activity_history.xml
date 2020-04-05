@@ -1,50 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.motofit.app.history">
 
-    <!-- our tablayout to display tabs  -->
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb"
+    <!-- Collapsing ToolBar -->
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/accentcolor"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        tools:targetApi="lollipop">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <ImageView
-            android:id="@+id/delete"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="390dp"
-            android:src="@drawable/ic_delete"
-            android:visibility="gone" />
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
 
-    </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_collapseMode="none"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tb"
-        android:minHeight="?actionBarSize"
-        app:tabBackground="@color/accentcolor"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white" />
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="55dp"
+                android:minHeight="?actionBarSize"
+                app:tabBackground="@color/accentcolor"
+                app:tabIndicatorColor="@color/white"
+                app:tabTextColor="@color/white" />
 
-    <!-- View pager to swipe views -->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tabLayout"
-        app:layout_behavior="android.support.design.widget.AppBarLayout"
-        app:tabBackground="@color/accentcolor" />
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- View pager to swipe views -->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tabBackground="@color/accentcolor" />
+        </android.support.constraint.ConstraintLayout>
 
-</RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
