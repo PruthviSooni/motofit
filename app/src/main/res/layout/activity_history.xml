@@ -1,111 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.motofit.beta.r1.history">
+    tools:context="com.motofit.app.history">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <!-- Collapsing ToolBar -->
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@id/toolbar"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/accentcolor"
-        android:progress="25"
-        android:scrollbarStyle="outsideOverlay"
-        android:visibility="gone"
-        tools:ignore="UnusedAttribute" />
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <ScrollView
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_collapseMode="none"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="55dp"
+                android:minHeight="?actionBarSize"
+                app:tabBackground="@color/accentcolor"
+                app:tabIndicatorColor="@color/white"
+                app:tabTextColor="@color/white" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="25dp">
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="385dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/sharp_dgrate">
-
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_time"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/time"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="38dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/time"
-                app:layout_constraintTop_toBottomOf="@+id/location" />
-
-            <TextView
-                android:id="@id/time"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/date"
-                app:layout_constraintStart_toEndOf="@+id/imageView11" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="11dp"
-                android:src="@drawable/ic_location"
-                app:layout_constraintBottom_toTopOf="@+id/imageView11"
-                app:layout_constraintEnd_toStartOf="@+id/location"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="290dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="38dp"
-                android:layout_marginBottom="31dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- View pager to swipe views -->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tabBackground="@color/accentcolor" />
         </android.support.constraint.ConstraintLayout>
 
+    </android.support.v4.widget.NestedScrollView>
 
-    </ScrollView>
-
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

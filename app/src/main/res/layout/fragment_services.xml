@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.motofit.app.Fragment.ServicesFragment"
+    android:paddingTop="30dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sharp_dgrate"
+        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TableRow
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            tools:ignore="ExtraText">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_time"
+                tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
+
+            <EditText
+                android:id="@+id/et_date"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Date"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded,TextFields" />
+
+            <Spinner
+                android:id="@+id/spinner_time"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:theme="@style/Spinner"
+                tools:ignore="RtlHardcoded" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_odometer"
+                tools:ignore="MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
+
+            <EditText
+                android:id="@+id/kilometer"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_span="2"
+                android:ems="10"
+                android:hint="Odometer (Km)"
+                android:inputType="number"
+                android:maxLength="8"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_repair"
+                tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_span="2"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                tools:ignore="RtlHardcoded" />
+
+            <ImageButton
+                android:id="@+id/info_btn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:background="#E9E9E9"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_info"
+                tools:ignore="UnusedAttribute,VectorDrawableCompat" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Selected Spare Parts"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/service_parts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/total"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:textAlignment="center"
+                    android:text="No Parts is Selected"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_location"
+                tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat"
+                tools:layout_editor_absoluteX="7dp"
+                tools:layout_editor_absoluteY="214dp" />
+
+            <EditText
+                android:id="@+id/usr_location"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_span="2"
+                android:autoSizeTextType="uniform"
+                android:ems="10"
+                android:hint="@string/location_hint"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:minWidth="50dp"
+                android:minHeight="50dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_marginTop="7dp"
+            android:minWidth="50dp"
+            android:minHeight="50dp">
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_notes"
+                tools:ignore="ContentDescription,MissingConstraints,RtlHardcoded,VectorDrawableCompat" />
+
+            <EditText
+                android:id="@+id/notes"
+                android:layout_width="328dp"
+                android:layout_height="50dp"
+                android:layout_span="2"
+                android:autoSizePresetSizes="50dp"
+                android:ems="10"
+                android:hint="@string/hint"
+                android:inputType="textMultiLine"
+                android:lines="1"
+                android:maxLength="120"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:text=""
+                tools:ignore="HardcodedText,MissingConstraints,RtlHardcoded"
+                tools:targetApi="o" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="206dp"
+        android:layout_height="41dp"
+        android:layout_below="@id/tableLayout2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="32dp"
+        android:background="#876854"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="286dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="@string/service_title"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".MainActivity"
+        tools:ignore="MissingConstraints" />
+
+
+</RelativeLayout>

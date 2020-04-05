@@ -5,18 +5,19 @@
     android:id="@+id/home_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.motofit.beta.r1.home">
+    tools:context="com.motofit.app.home">
 
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"/>
+        android:layout_above="@+id/bottom_navigation" />
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/global_coordinator"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_above="@id/bottom_navigation"/>
+        android:layout_above="@id/bottom_navigation" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"

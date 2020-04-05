@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Services">
+        <item>Select Service</item>
         <item>Regular Repair</item>
         <item>Accidental Repair</item>
         <item>Engine Repair</item>
         <item>Spare Parts Installation</item>
     </string-array>
+
     <string-array name="Services_time">
+        <item>Select Time</item>
         <item>9AM - 10AM</item>
         <item>11PM - 12PM</item>
         <item>1PM - 2PM</item>
@@ -16,6 +19,7 @@
 
     <!--Motor Cycle Fragment Data-->
     <string-array name="doorstep_service">
+        <item>Select Service</item>
         <item>Mechanical Repairs</item>
         <item>Collision Repairs</item>
         <item>Speed Wash</item>
@@ -25,13 +29,13 @@
     </string-array>
 
     <string-array name="company">
-        <item>-SELECT BRAND-</item>
+        <item>SELECT BRAND</item>
         <item>Hero Motors</item>
         <item>Honda Motors</item>
         <item>TVS Motors</item>
         <item>Bajaj Motors</item>
         <item>Yamaha Motors</item>
-        <item>Royol Enfield</item>
+        <item>Royal Enfield</item>
         <item>Mahindra Motors</item>
         <item>KTM</item>
         <item>Piaggio</item>
@@ -103,15 +107,15 @@
         <item>Yamaha RayZR 125</item>
     </string-array>
 
-    <string-array name="royol_enfield">
-        <item>Royol Enfield Classic 350</item>
-        <item>Royol Enfield BULLET 350</item>
-        <item>Royol Enfield Thunderbird 350X</item>
-        <item>Royol Enfield Himalayan</item>
-        <item>Royol Enfield Interceptor 650</item>
-        <item>Royol Enfield Continental GT650</item>
-        <item>Royol Enfield Thunderbird 350</item>
-        <item>Royol Enfield Bullet Trails 350</item>
+    <string-array name="royal_enfield">
+        <item>Royal Enfield Classic 350</item>
+        <item>Royal Enfield BULLET 350</item>
+        <item>Royal Enfield Thunderbird 350X</item>
+        <item>Royal Enfield Himalayan</item>
+        <item>Royal Enfield Interceptor 650</item>
+        <item>Royal Enfield Continental GT650</item>
+        <item>Royal Enfield Thunderbird 350</item>
+        <item>Royal Enfield Bullet Trails 350</item>
     </string-array>
 
     <string-array name="mahindra">
@@ -136,6 +140,7 @@
         <item>KTM 390 Adventure</item>
         <item>KTM 790 Adve</item>
     </string-array>
+
     <string-array name="piaggio">
         <item>Vespa SXL 150</item>
         <item>Vespa VXl 150</item>
@@ -163,6 +168,31 @@
     </string-array>
 
     <string-array name="select_model">
-        <item>-SELECT BRAND FIRST-</item>
+        <item>SELECT BRAND FIRST</item>
+    </string-array>
+
+    <string-array name="spare_parts">
+        <item>Valves</item>
+        <item>Spark Plug</item>
+        <item>Carburetor</item>
+        <item>Air Filter</item>
+        <item>Fuel Lines</item>
+        <item>Fuel Filter</item>
+        <item>Engine Oil</item>
+        <item>Engine Oil Filter Screen</item>
+        <item>Break Front and Rear</item>
+        <item>Break Shoe Front and Rear</item>
+        <item>Clutch</item>
+        <item>Rear Arm Pivot</item>
+        <item>Wheels</item>
+        <item>Wheel Bearing</item>
+        <item>Steering Bearing</item>
+        <item>Front Forks</item>
+        <item>Rear Shock Absorbers</item>
+        <item>Drive Chain</item>
+        <item>Nuts and Bolts</item>
+        <item>Center Stand and Side Stand</item>
+        <item>Battery</item>
+        <item>Control Cables</item>
     </string-array>
 </resources>

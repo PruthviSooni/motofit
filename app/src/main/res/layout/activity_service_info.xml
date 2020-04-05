@@ -10,7 +10,7 @@
 
         <include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar"
+            layout="@layout/toolbar_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="75dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="13dp"
@@ -88,8 +88,9 @@
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="75dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:gravity="center"
@@ -140,8 +141,8 @@
 
             <TextView
                 android:id="@+id/text7"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
@@ -192,7 +193,7 @@
 
             <TextView
                 android:id="@+id/textview7"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="75dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
