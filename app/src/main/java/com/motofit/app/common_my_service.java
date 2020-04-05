@@ -12,7 +12,7 @@ public class common_my_service extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.commanLayout_Service);
+        setContentView(R.layout.comman_layout_service);
         CollapsingToolbarLayout t1 = findViewById(R.id.collapsing_toolbar);
         TextView location = findViewById(R.id.usr_location);
         TextView time = findViewById(R.id.time);

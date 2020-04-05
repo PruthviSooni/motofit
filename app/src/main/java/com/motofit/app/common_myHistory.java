@@ -12,7 +12,7 @@ public class common_myHistory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.commonLayout_BreakDown);
+        setContentView(R.layout.common_layout_breakdown);
         CollapsingToolbarLayout t1 = findViewById(R.id.collapsing_toolbar);
         TextView location = findViewById(R.id.usr_location);
         TextView time = findViewById(R.id.time);
