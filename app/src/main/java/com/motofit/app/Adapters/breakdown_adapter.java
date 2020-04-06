@@ -31,15 +31,11 @@ public class breakdown_adapter extends ArrayAdapter<Breakdown> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         @SuppressLint("InflateParams") View listview_Item = inflater.inflate(R.layout.breakdown_list_layout, null, true);
-        TextView location = listview_Item.findViewById(R.id.usr_location);
         TextView time = listview_Item.findViewById(R.id.time);
         TextView break_type = listview_Item.findViewById(R.id.break_type);
-        TextView brand = listview_Item.findViewById(R.id.bike_brand);
         TextView model = listview_Item.findViewById(R.id.bike_model);
         Breakdown breakdown = breakdownList.get(position);
-        location.setText(breakdown.Location);
         time.setText(breakdown.Date_and_Time);
-        brand.setText(breakdown.Brand);
         model.setText(breakdown.Model);
         break_type.setText(breakdown.Dropdown_service);
         return listview_Item;

@@ -12,7 +12,7 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:indeterminateTint="@color/accentcolor"
+        android:indeterminateTint="@color/accentColor"
         android:progress="25"
         android:scrollbarStyle="outsideOverlay"
         android:visibility="gone"
@@ -22,7 +22,9 @@
         android:id="@+id/service_history_list"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:nestedScrollingEnabled="true"
+        android:visibility="visible"
+        tools:targetApi="lollipop" />
 
     <ImageView
         android:id="@+id/service_notFound_Img"
@@ -40,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/service_notFound_Img"
         android:layout_marginStart="110dp"
-        android:fontFamily="@font/googlesans_regular"
+        android:fontFamily="@font/google_sans_regular"
         android:text="No Service Record Found!"
         android:textAlignment="center"
         android:textSize="22sp"

@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/accentcolor"
+        android:indeterminateTint="@color/accentColor"
         android:progress="25"
         android:scrollbarStyle="outsideOverlay"
         android:visibility="gone" />

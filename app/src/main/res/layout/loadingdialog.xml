@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/googlesans_regular"
+        android:fontFamily="@font/google_sans_regular"
         android:text="Loading.."
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
