@@ -34,7 +34,7 @@
             android:layout_marginTop="10dp"
             android:text="Select Your Bike Brand"
             android:textAlignment="center"
-            android:textColor="@color/accentcolor"
+            android:textColor="@color/accentColor"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
@@ -72,7 +72,7 @@
             android:layout_marginTop="10dp"
             android:text="Select Your Bike Model"
             android:textAlignment="center"
-            android:textColor="@color/accentcolor"
+            android:textColor="@color/accentColor"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
@@ -111,7 +111,7 @@
             android:layout_marginTop="10dp"
             android:text="Select Doorstep Services"
             android:textAlignment="center"
-            android:textColor="@color/accentcolor"
+            android:textColor="@color/accentColor"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
@@ -151,7 +151,7 @@
             android:layout_marginTop="10dp"
             android:text="Get Current Location"
             android:textAlignment="center"
-            android:textColor="@color/accentcolor"
+            android:textColor="@color/accentColor"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 

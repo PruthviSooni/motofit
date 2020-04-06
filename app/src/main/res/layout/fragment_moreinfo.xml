@@ -33,6 +33,12 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/account_activity"
+        android:background="@drawable/sharp_dgrate" />
+
     <LinearLayout
         android:id="@+id/history_activity"
         android:layout_width="match_parent"
@@ -61,6 +67,12 @@
             tools:ignore="HardcodedText" />
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/history_activity"
+        android:background="@drawable/sharp_dgrate" />
 
     <LinearLayout
         android:id="@+id/about_us"
@@ -91,4 +103,6 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
     </LinearLayout>
+
+
 </RelativeLayout>

@@ -7,17 +7,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="20dp"
-        tools:layout_editor_absoluteX="13dp">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
 
         <ImageView
             android:id="@+id/iv1"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_regular_service"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="14dp"
@@ -29,45 +27,18 @@
             android:layout_height="30dp"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/iv1"
-            android:fontFamily="@font/googlesans_regular"
-            android:paddingTop="1.5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/google_sans_regular"
+            android:paddingTop="2.5dp"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="52dp"
             tools:layout_editor_absoluteY="28dp" />
 
         <ImageView
-            android:id="@+id/iv2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/iv1"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_location"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="14dp"
-            tools:layout_editor_absoluteY="61dp" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/usr_location"
-            android:layout_width="320dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/service_type"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/iv2"
-            app:autoSizeTextType="uniform"
-            android:ellipsize="none"
-            android:fontFamily="@font/googlesans_regular"
-            android:textSize="18sp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="62dp" />
-
-        <ImageView
             android:id="@+id/iv3"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_below="@id/iv2"
+            android:layout_below="@id/iv1"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_time"
@@ -79,73 +50,14 @@
             android:id="@id/time"
             android:layout_width="320dp"
             android:layout_height="30dp"
-            android:layout_below="@id/usr_location"
+            android:layout_below="@id/service_type"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toEndOf="@id/iv3"
-            android:fontFamily="@font/googlesans_regular"
-            android:paddingTop="2.2dp"
-            android:textSize="18sp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="95dp" />
-
-        <ImageView
-            android:id="@+id/iv5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/time"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/usr_notes"
-            app:srcCompat="@drawable/ic_odometer"
-            tools:ignore="MissingConstraints,VectorDrawableCompat"
-            tools:layout_editor_absoluteX="206dp"
-            tools:layout_editor_absoluteY="129dp" />
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/usr_odometer"
-            android:layout_width="135dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/time"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/iv5"
-            android:fontFamily="@font/googlesans_regular"
-            android:textSize="18sp"
-            tools:ignore="MissingConstraints,RtlSymmetry"
-            tools:layout_editor_absoluteX="235dp"
-            tools:layout_editor_absoluteY="128dp" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/usr_notes"
-            android:layout_width="145dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/time"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/iv4"
-            android:fontFamily="@font/googlesans_regular"
-            android:paddingStart="5dp"
-            android:textSize="18sp"
-            tools:ignore="MissingConstraints,RtlSymmetry"
-            tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="128dp" />
-
-
-        <ImageView
-            android:id="@+id/iv4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/iv3"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="11dp"
-            app:srcCompat="@drawable/ic_notes"
-            tools:ignore="MissingConstraints,VectorDrawableCompat"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="127dp" />
-
+            android:fontFamily="@font/google_sans_regular"
+            android:paddingTop="2.5dp"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </RelativeLayout>
