@@ -2,7 +2,7 @@
 # motofit
 # Android App for 2 Wheelers  Services  
 # 1. Home Layout.
-![github small](https://github.com/PruthviSooni/motofit/blob/master/Home.png)
+<img src="Home.png" width="520" height="940">
 
 # 2. Book Service.
 ![Finished App](https://github.com/PruthviSooni/motofit/blob/master/Book-Service.gif)
