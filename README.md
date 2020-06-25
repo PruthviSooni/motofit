@@ -1,6 +1,5 @@
-
-# motofit
-# Android App for 2 Wheelers  Services  
+# Motofit
+Android App for 2 Wheelers  Services  
 # 1. Home Layout.                               
 <img src="Home.png" width="314" height="596">   
 
